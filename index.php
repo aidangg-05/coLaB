@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" http-equiv="refresh" content="10">
+    <meta charset="UTF-8" >
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript " src="script.js"></script>
@@ -19,19 +19,24 @@
     <section class="header">
         <span class="title">CoLab</span>
         <span class="icons">
-            <a href="#">
-               <span class="material-symbols-outlined" style="font-size: 35px">notifications</span>
-            </a>
-            <a href="#">
-               <span class="material-symbols-outlined" style="font-size: 35px">account_circle</span>
-            </a>
+            <span class="material-symbols-outlined" style="font-size: 35px" onclick="togglePopup()">notifications</span>
+            <span class="material-symbols-outlined" style="font-size: 35px" onclick="goprofile()">account_circle</span>
         </span>
     </section>
+
+    <!-- Pop-up content -->
+    <div class="popup" id="notificationPopup">
+        <!--pop-up content here -->
+        <h4>Notifications</h4>
+        <button onclick="closePopup()">Close</button>
+    </div>
+
+
 
     <nav class="navbar">
         <ul>
             <li><a href="">Projects</a></li>
-            <li><a href="">Gantt charts</a></li>
+            <li><a href="charts.html">Gantt charts</a></li>
         </ul>
     </nav>
 

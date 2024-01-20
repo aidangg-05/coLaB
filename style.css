@@ -27,9 +27,9 @@ body {
     padding-right: 30px;
 }
 
-.header a{
+.header span{
     text-decoration: none;
-    color: ghostwhite;
+    color: white;
 }
 
 .material-symbols-outlined:hover{
@@ -66,6 +66,18 @@ body {
 .filter input{
     padding: 5px;
 
+}
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 999;
 }
 
 
