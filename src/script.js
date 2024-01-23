@@ -9,3 +9,4 @@ function closePopup() {
 function goprofile(){
     window.location.href="profile.php";
 }
+
