@@ -32,13 +32,8 @@
     </div>
 
 
+    <span style="font-size: large;font-weight: bold">Your Projects:</span>
 
-    <nav class="navbar">
-        <ul>
-            <li><a href="">Projects</a></li>
-            <li><a href="charts.html">Gantt charts</a></li>
-        </ul>
-    </nav>
 
     <section class="filter" style="margin-right: 20px;">
         <form class="row g-3 justify-content-end">
@@ -64,7 +59,46 @@
 
 
     <section class="headings">
-        headings
+        <span class="titlepname" style="border-right:2px solid rgba(0,0,0,0.2);">Project Name</span>
+        <span class="others" style="border-right:2px solid rgba(0, 0, 0, 0.2);">End Date</span>
+        <span class="others" style="border-right:2px solid rgba(0, 0, 0, 0.2);">Status</span>
+        <span class="others">Priority</span>
+
+    </section>
+
+    <section class="mainbody">
+        <button type="button" onclick="" class="addprojectbtn">
+            <span class="material-symbols-outlined" id="addbtn">add</span>
+            <span>Add Project </span>
+        </button>
+
+        <div class="Placeholder">
+            <span class="pname">Placeholder Project Name</span>
+            <span class="enddate">1/1/20</span>
+            <span class="status1">Not started</span>
+            <span class="priority">Placeholder Priority</span>
+
+        </div>
+        <div class="Placeholder">
+            <span class="pname">Placeholder Project Name</span>
+            <span class="enddate">1/2/20</span>
+            <span class="status2">Progress</span>
+            <span class="priority">Placeholder Priority</span>
+
+        </div>
+        <div class="Placeholder">
+            <span class="pname">Placeholder Project Name</span>
+            <span class="enddate">1/3/20</span>
+            <span class="status3">Complete</span>
+            <span class="priority">Placeholder Priority</span>
+
+        </div>
+
+
+
+
+
+
     </section>
 
 
