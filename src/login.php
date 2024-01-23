@@ -6,16 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles_login.css">
     <title>Login Form</title>
+
+    <script>
+        function validateForm() {
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+
+            if (email === "" || password === "") {
+                alert("Please fill in all the information.");
+                return false;
+            }
+        }
+    </script>
 </head>
 <body>
 <div class="container">
     <div class="login-container">
         <h1>Login</h1>
-        <form method="post">
+        <form method="post" onsubmit="return validateForm()">
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required
                    value="<?php echo $email; ?>"
-
             >
 
             <label for="password">Password:</label>
@@ -23,7 +34,7 @@
                    value="<?php echo $password; ?>"
             >
 
-            <button type="submit" name="submit" >Login</button>
+            <button type="submit" name="submit">Login</button>
         </form>
     </div>
     <p class="signup-text">Don't have an account? <a href="signup.php" class="signup-link">Sign up</a></p>
