@@ -63,7 +63,6 @@
         <span class="others" style="border-right:2px solid rgba(0, 0, 0, 0.2);">End Date</span>
         <span class="others" style="border-right:2px solid rgba(0, 0, 0, 0.2);">Status</span>
         <span class="others">Priority</span>
-
     </section>
 
     <section class="mainbody">
@@ -91,14 +90,7 @@
             <span class="enddate">1/3/20</span>
             <span class="status3">Complete</span>
             <span class="priority">Placeholder Priority</span>
-
         </div>
-
-
-
-
-
-
     </section>
 
 
