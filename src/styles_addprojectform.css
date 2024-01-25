@@ -1,0 +1,102 @@
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: ghostwhite;
+
+}
+form {
+    width: 50%; /* width of form, adjust if needed */
+    padding: 10px;
+    border: 1px solid #bebebe;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.input_box{
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 5px;
+}
+.input_text{
+    font-size: large;
+}
+.desc_input,.enddate_input,.project_name_input{
+    font-size: 16px;
+    padding:10px;
+
+}
+h1{
+    text-align: center;
+    background-color: #464646;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 10px 10px;
+}
+.add_user_button{
+
+    width: 10%;
+    font-size: 15px;
+    margin: 0;
+}
+.form_buttons{
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 10px 10px;
+
+}
+.back{
+    font-size: 15px;
+    width:100px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    border:3px solid #464646;
+}
+
+.reset{
+    font-size: 15px;
+    width:100px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    border: 3px solid #ff0000;
+
+
+}
+.submit{
+    font-size: 15px;
+    width:100px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    border: 3px solid #04AA6D;
+}
+
+.back:hover{
+    background-color: #464646;
+    color: white;
+    transition: 0.5s;
+}
+
+.reset:hover{
+    background-color: #ff0000;
+    color: white;
+    transition: 0.5s;
+
+
+}
+.submit:hover{
+    background-color: #04AA6D;
+    color: white;
+    transition: 0.5s;
+}
