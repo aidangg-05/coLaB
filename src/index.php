@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" >
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles_mainpage.css">
     <script type="text/javascript " src="script.js"></script>
 
     <!--For icons-->
@@ -32,7 +32,7 @@
     </div>
 
 
-    <span style="font-size: large;font-weight: bold">Your Projects:</span>
+    <span style="font-size: large;font-weight: bold; padding-left: 10px">Your Projects:</span>
 
 
     <section class="filter" style="margin-right: 20px;">
@@ -63,11 +63,10 @@
         <span class="others" style="border-right:2px solid rgba(0, 0, 0, 0.2);">End Date</span>
         <span class="others" style="border-right:2px solid rgba(0, 0, 0, 0.2);">Status</span>
         <span class="others">Priority</span>
-
     </section>
 
     <section class="mainbody">
-        <button type="button" onclick="" class="addprojectbtn">
+        <button type="button" onclick="addproject()" class="addprojectbtn">
             <span class="material-symbols-outlined" id="addbtn">add</span>
             <span>Add Project </span>
         </button>
@@ -91,14 +90,7 @@
             <span class="enddate">1/3/20</span>
             <span class="status3">Complete</span>
             <span class="priority">Placeholder Priority</span>
-
         </div>
-
-
-
-
-
-
     </section>
 
 
