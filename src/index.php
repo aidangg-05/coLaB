@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" >
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style_mainpage.css">
     <script type="text/javascript " src="script.js"></script>
 
     <!--For icons-->
@@ -32,7 +32,7 @@
     </div>
 
 
-    <span style="font-size: large;font-weight: bold">Your Projects:</span>
+    <span style="font-size: large;font-weight: bold; padding-left: 10px">Your Projects:</span>
 
 
     <section class="filter" style="margin-right: 20px;">
@@ -66,7 +66,7 @@
     </section>
 
     <section class="mainbody">
-        <button type="button" onclick="" class="addprojectbtn">
+        <button type="button" onclick="addproject()" class="addprojectbtn">
             <span class="material-symbols-outlined" id="addbtn">add</span>
             <span>Add Project </span>
         </button>

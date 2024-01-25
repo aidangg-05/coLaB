@@ -9,4 +9,7 @@ function closePopup() {
 function goprofile(){
     window.location.href="profile.php";
 }
+function addproject(){
+    window.location.href="addprojectform.php"
+}
 
