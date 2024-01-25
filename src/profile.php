@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles_profile.css">
+    <title>Profile</title>
     <script>
         function goback(){
             window.location.href = "index.php";
@@ -10,7 +12,35 @@
     </script>
 </head>
 <body>
-This is a profile page
-<input type="button" value="back" onclick="goback()">
+<div class="profile-container">
+    <div class="top">
+        <img src="noimg.jpg" alt="Profile Image">
+        <text class="name">Insert Name</text>
+        <button type="button" id="logout">Log Out</button>
+    </div>
+    <p>
+        <span class="textA">Account</span>
+        <br />
+        <span class="textB">Update your personal information</span>
+    </p>
+    <form action="#" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" placeholder="Insert Existing Username Value">
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Insert Existing Email Value">
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter password to confirm" required>
+
+        <a class="chg-password" href="password.php">Change Password</a>
+
+        <div class="buttons">
+            <button type="reset" id="reset">Discard</button>
+            <button type="submit" id="submit">Update Info</button>
+        </div>
+    </form>
+</div>
+
 </body>
 </html>

@@ -1,0 +1,140 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.profile-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    width: 700px;
+}
+
+.top {
+    background: #5F5F5F;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    justify-content: left;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+img {
+    width: 100px;
+    height: auto;
+}
+
+.name {
+    color: #ffffff;
+    margin-left: 30px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+#logout {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 10px;
+    border: 2px solid #000000;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin-left: auto;
+    border-radius: 4px;
+}
+
+.textA {
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.textB {
+    font-size: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 8px;
+    color: #555;
+}
+
+input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.chg-password {
+    color: #3498db;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+    .chg-password:hover {
+        text-decoration: underline;
+    }
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+}
+
+#reset {
+    background-color: #ffffff;
+    color: #3498db;
+    padding: 10px;
+    border: 2px solid #3498db;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    width: 150px;
+    margin-top: 30px;
+    margin-right: 30px;
+    border-radius: 4px;
+}
+
+#submit {
+    background-color: #3498db;
+    color: #ffffff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    width: 150px;
+    margin-top: 30px;
+    border-radius: 4px;
+}
+
+#logout:hover {
+    background-color: #DCDCDC;
+}
+
+#reset:hover {
+    background-color: #DCDCDC;
+}
+
+#submit:hover {
+    background-color: #2980b9;
+}
