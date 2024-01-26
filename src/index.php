@@ -38,15 +38,15 @@
     <section class="filter" style="margin-right: 20px;">
         <form class="row g-3 justify-content-end">
             <div class="col-auto">
-                <select class="form-select" aria-label="Default select example">
+                <select class="form-select" id="form-select" aria-label="Default select example">
                     <option selected disabled>Sort by:</option>
-                    <option value="end_date" name="end_date">End Date</option>
-                    <option value="status" name="status">Status</option>
-                    <option value="priority" name="priority">Priority</option>
+                    <option value="end_date" name="end_date" id="end_date">End Date</option>
+                    <option value="status" name="status" id="status">Status</option>
+                    <option value="priority" name="priority" id="priority">Priority</option>
                 </select>
             </div>
             <div class="col-auto">
-                <input type="button" class="btn btn-primary" value="Filter" style="padding-right: 10px;padding-left: 10px;">
+                <input type="button" class="btn btn-primary" value="Filter" style="padding-right: 10px;padding-left: 10px;" onclick="sorting()">
             </div>
             <div class="col-auto">
                 <input type="reset" class="btn btn-secondary" value="Reset" style="padding-right: 10px;padding-left: 10px">
@@ -70,24 +70,38 @@
 
         <div class="Placeholder">
             <span class="pname">Placeholder Project Name</span>
-            <span class="enddate">1/1/20</span>
-            <span class="status1">Not started</span>
-            <span class="priority">Placeholder Priority</span>
+            <span class="enddate">1/12/20</span>
+            <span class="status" id="status1">Not started</span>
+            <span class="priority">High Priority</span>
 
         </div>
         <div class="Placeholder">
             <span class="pname">Placeholder Project Name</span>
             <span class="enddate">1/2/20</span>
-            <span class="status2">Progress</span>
-            <span class="priority">Placeholder Priority</span>
+            <span class="status" id="status2">Progress</span>
+            <span class="priority">Medium Priority</span>
 
         </div>
         <div class="Placeholder">
             <span class="pname">Placeholder Project Name</span>
             <span class="enddate">1/3/20</span>
-            <span class="status3">Complete</span>
-            <span class="priority">Placeholder Priority</span>
+            <span class="status" id="status3">Complete</span>
+            <span class="priority">Low Priority</span>
         </div>
+        <div class="Placeholder">
+            <span class="pname">Placeholder Project Name</span>
+            <span class="enddate">1/1/20</span>
+            <span class="status" id="status3">Complete</span>
+            <span class="priority">Low Priority</span>
+        </div>
+        <div class="Placeholder">
+            <span class="pname">Placeholder Project Name</span>
+            <span class="enddate">1/12/20</span>
+            <span class="status" id="status1">Not started</span>
+            <span class="priority">High Priority</span>
+
+        </div>
+
     </section>
 
 
