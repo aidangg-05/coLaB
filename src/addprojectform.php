@@ -19,6 +19,10 @@
             <span class="input_text">Project Name:</span>
             <input type="text" class="project_name_input" placeholder="Your project name">
         </div>
+        <div class="input_box">
+            <span class="input_text">Start Date:</span>
+            <input type="datetime-local" class="startdate_input">
+        </div>
 
         <div class="input_box">
             <span class="input_text">End Date:</span>
