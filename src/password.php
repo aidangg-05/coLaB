@@ -20,7 +20,10 @@
         <label for="cfm-newpw">Confirm New Password:</label>
         <input type="password" name="password" required>
 
-        <button type="submit">Change Password</button>
+        <div class="buttons">
+            <button type="button" id="back" onclick="window.location.href='https://www.youtube.com/watch?v=TTG8o4gnqVw'">Back</button>
+            <button type="submit" id="submit">Change Password</button>
+        </div>
     </form>
 </div>
 
