@@ -1,38 +1,45 @@
 <?php
-session_start();
-$_SESSION['message'] = "";
-$email = "";
-$password = "";
-$password_pull = "";
-
-$userbase_db = mysqli_connect('localhost', 'root', '', 'colab_userbase');
+$userbase_db = mysqli_connect('colab-instance.cjaiw2wo2z3k.ap-southeast-2.rds.amazonaws.com', 'admin1', 'admin123' , 'colab_db');
 
 if (!$userbase_db) {
     die("Connection failed:" . mysqli_connect_error());
 }
 
-if (isset($_POST['submit'])) {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+$email = "";
+$password = "";
+$password_pull = "";
+$errEmail = $errPassword =  "";
 
-    $pull_email_statement = "SELECT * FROM user_id WHERE email='$email'";
 
-    $email_result = mysqli_query($userbase_db, $pull_email_statement);     //For $username need to use ' '
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    if (mysqli_num_rows($email_result) == 1) {           //Available record
+    if (empty($_POST["email"])) {
+        $errEmail = "Email required";
+    }
 
-        $results = mysqli_fetch_array($email_result);  //Pull password
-        $password_pull = $results['password'];
+    if (empty($_POST["password"])) {
+        $errPassword = "Password required";
+    } else                                           //When all input valid
+    {
+        $email = $_POST['email'];
+        $password = $_POST['password'];
 
-        if ($password_pull == $password) {
-            header("Location: index.php");
-            exit();
-        } else{
-            $_SESSION['message'] = "Wrong";
+        $pull_email = "SELECT * FROM user_table WHERE email='$email'";
+        $email_result = mysqli_query($userbase_db, $pull_email);
+
+        if (mysqli_num_rows($email_result) == 1) {           //Available record
+
+            $results = mysqli_fetch_array($email_result);
+            $password_pull = $results['password'];
+
+            if ($password_pull == $password) {          //Password correct
+                header("Location: index.php");
+                exit();
+            } else {                                     //Incorrect Password
+                $errPassword = "Password Incorrect";
+            }
+        } else {          //No available record
+            $errEmail = "Account don't exist";
         }
-    } else {          //No available record
-        $_SESSION['message'] = "No account";
     }
 }
-
-?>

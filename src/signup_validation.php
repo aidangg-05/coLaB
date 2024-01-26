@@ -1,34 +1,50 @@
 <?php
-session_start();
-$username = "";
-$password = "";
-$email = "";
-$userbase_db = mysqli_connect('localhost', 'root', '' , 'colab_userbase');
+$userbase_db = mysqli_connect('colab-instance.cjaiw2wo2z3k.ap-southeast-2.rds.amazonaws.com', 'admin1', 'admin123' , 'colab_db');
 
 if (!$userbase_db){
     die("Connection failed:" . mysqli_connect_error());
 }
 
-if (isset($_POST['submit'])) {
-    $username = $_POST['name'];
-    $password = $_POST['password'];
-    $email = $_POST['email'];
+$email = "";
+$name = "";
+$password = "";
+$errName = $errEmail = $errPassword =  "";
 
-    $insert_statement = "INSERT INTO user_id (username,email,password) VALUES ('$username','$email','$password')";
-    $pull_username_statement = "SELECT * FROM user_id WHERE username='$username'";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $username_result = mysqli_query($userbase_db, $pull_username_statement);     //For $username need to use ' '
+    if (empty($_POST["email"]))
+    {
+        $errEmail = "Email required";
+    }
 
-    if (mysqli_num_rows($username_result) == 1) {     //Account is already available
-        $_SESSION['message'] = "Account already exist";
-    } else {                                              //No account available
+    if (empty($_POST["name"]))
+    {
+        $errName = "Name required";
+    }
 
-        if (mysqli_query($userbase_db, $insert_statement)) {  //Able to create account
-            $_SESSION['message'] = "Account created";
+    if (empty($_POST["password"]))
+    {
+        $errPassword = "Password required";
+    }
+
+    else            //When all input valid
+    {
+        $email = $_POST['email'];
+        $name = $_POST['name'];
+        $password = $_POST['password'];
+
+        $pull_email = "SELECT * FROM user_table WHERE email='$email'";
+        $insert = "INSERT INTO user_table (name,email,password) VALUES ('$name','$email','$password')"; //For $name need to use ' '
+
+        $name_result = mysqli_query($userbase_db, $pull_email);
+        if (mysqli_num_rows($name_result) == 1) {
+            $errEmail = "Account already exist";
+        } else {
             header("Location: index.php");
             exit();
-        } else {                                               //Unable to create account
-            $_SESSION['message'] = "Account not created";
         }
     }
+
 }
+
+
