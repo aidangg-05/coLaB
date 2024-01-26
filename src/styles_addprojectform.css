@@ -33,7 +33,7 @@ form {
 }
 h1{
     text-align: center;
-    background-color: #464646;
+    background-color: #3498db;
     color: white;
     border-radius: 5px;
     padding: 10px;
@@ -58,7 +58,7 @@ h1{
     background-color: white;
     border-radius: 5px;
     font-weight: bold;
-    border:3px solid #464646;
+    border:3px solid #3498db;
 }
 
 .reset{
@@ -83,7 +83,7 @@ h1{
 }
 
 .back:hover{
-    background-color: #464646;
+    background-color: #3498db;
     color: white;
     transition: 0.5s;
 }

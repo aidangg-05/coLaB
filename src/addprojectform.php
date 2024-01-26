@@ -21,12 +21,12 @@
         </div>
         <div class="input_box">
             <span class="input_text">Start Date:</span>
-            <input type="datetime-local" class="startdate_input">
+            <input type="date" class="startdate_input">
         </div>
 
         <div class="input_box">
             <span class="input_text">End Date:</span>
-            <input type="datetime-local" class="enddate_input">
+            <input type="date" class="enddate_input">
         </div>
 
         <div class="input_box">

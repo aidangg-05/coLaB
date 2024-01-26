@@ -46,10 +46,7 @@
                 </select>
             </div>
             <div class="col-auto">
-                <span class="material-symbols-outlined" style="font-size: 30px">swap_vert</span>
-            </div>
-            <div class="col-auto">
-                <input type="button" class="btn btn-primary" value="Filter" style="padding-right: 10px;padding-left: 10px">
+                <input type="button" class="btn btn-primary" value="Filter" style="padding-right: 10px;padding-left: 10px;">
             </div>
             <div class="col-auto">
                 <input type="reset" class="btn btn-secondary" value="Reset" style="padding-right: 10px;padding-left: 10px">
