@@ -25,7 +25,7 @@
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" placeholder="Insert Existing Email Value">
 
-            <a class="chg-password" href="password.html">Change Password</a>
+            <a class="chg-password" href="password.php">Change Password</a>
 
             <div class="buttons">
                 <button type="button" id="back" onclick="window.location.href='https://www.youtube.com/watch?v=TTG8o4gnqVw'">Back</button>
