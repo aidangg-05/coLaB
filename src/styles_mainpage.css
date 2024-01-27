@@ -39,8 +39,18 @@ body {
     padding: 5px;
 
 }
-.popup {
+/*--popup css--*/
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998;
     display: none;
+}
+.popup {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -50,7 +60,55 @@ body {
     border: 1px solid #ccc;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     z-index: 999;
+    width: 400px;
+    max-width: 90vw;
+    border-radius: 5px;
 }
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.popup-header span {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.close-icon {
+    cursor: pointer;
+    font-size: 18px;
+    padding: 5px;
+    border-radius: 5px;
+}
+.close-icon:hover {
+    background-color: black;
+    color: white;
+    transition: 0.35s;
+
+}
+
+.popup-content {
+    height: 300px;
+    overflow-y: auto;
+}
+
+.popup-content ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.popup-content li {
+    padding: 5px 0;
+}
+#notificationPopup {
+    display: none;
+}
+
+/*---------------------------------------------------*/
 .headings{
     border-bottom:2px solid rgba(0, 0, 0, 0.2);
     margin:10px;

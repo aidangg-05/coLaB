@@ -12,18 +12,17 @@ $errEmail = $errPassword =  "";
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = trim($_POST['email']);
+    $password = trim($_POST['password']);
 
-    if (empty($_POST["email"])) {
-        $errEmail = "Email required";
-    }
+    if ($email==="") {
+        $errEmail = "*Email required";
 
-    if (empty($_POST["password"])) {
-        $errPassword = "Password required";
-    } else                                           //When all input valid
+    }else if($password===""){
+        $errPassword = "*Password required";
+    }else
     {
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-
+                                                                            //When all input valid
         $pull_email = "SELECT * FROM user_table WHERE email='$email'";
         $email_result = mysqli_query($userbase_db, $pull_email);
 

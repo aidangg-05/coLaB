@@ -16,19 +16,31 @@
     <title>Main Page</title>
 </head>
 <body>
+
     <section class="header">
         <span class="title">CoLab</span>
         <span class="icons">
-            <span class="material-symbols-outlined" style="font-size: 35px" onclick="togglePopup()">notifications</span>
+            <span class="material-symbols-outlined" style="font-size: 35px" onclick="togglePopup()" >notifications</span>
             <span class="material-symbols-outlined" style="font-size: 35px" onclick="goprofile()">account_circle</span>
         </span>
     </section>
 
     <!-- Pop-up content -->
+    <div class="overlay" id="overlay"></div>
     <div class="popup" id="notificationPopup">
-        <!--pop-up content here -->
-        <h4>Notifications</h4>
-        <button onclick="closePopup()">Close</button>
+        <div class="popup-header">
+            <span>Notifications</span>
+            <span class="material-symbols-outlined close-icon" onclick="closePopup()">close</span>
+        </div>
+        <div class="popup-content">
+            <!--pop-up content here -->
+            <ul>
+                <li>Notification 1</li>
+                <li>Notification 2</li>
+                <li>Notification 3</li>
+                <!-- Add more notifications here -->
+            </ul>
+        </div>
     </div>
 
 

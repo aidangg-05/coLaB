@@ -1,10 +1,22 @@
 function togglePopup() {
-    var popup = document.getElementById("notificationPopup");
-    popup.style.display = (popup.style.display === "none") ? "block" : "none";
+    const popup = document.getElementById('notificationPopup');
+    const overlay = document.getElementById('overlay');
+
+    if (popup.style.display === 'block') {
+        popup.style.display = 'none';
+        overlay.style.display = 'none';
+    } else {
+        popup.style.display = 'block';
+        overlay.style.display = 'block';
+    }
 }
 
 function closePopup() {
-    document.getElementById("notificationPopup").style.display = "none";
+    const popup = document.getElementById('notificationPopup');
+    const overlay = document.getElementById('overlay');
+
+    popup.style.display = 'none';
+    overlay.style.display = 'none';
 }
 function goprofile(){
     window.location.href="profile.php";
