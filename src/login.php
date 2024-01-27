@@ -1,4 +1,4 @@
-a<!DOCTYPE html>
+<!DOCTYPE html>
 <?php include 'login_validation.php'; ?>
 <html lang="en">
 <head>
