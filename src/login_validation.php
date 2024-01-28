@@ -1,4 +1,5 @@
 <?php
+session_start();
 $userbase_db = mysqli_connect('colab-instance.cjaiw2wo2z3k.ap-southeast-2.rds.amazonaws.com', 'admin1', 'admin123' , 'colab_db');
 
 if (!$userbase_db) {
@@ -9,7 +10,7 @@ $email = "";
 $password = "";
 $password_pull = "";
 $errEmail = $errPassword =  "";
-
+$regex = '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST['email']);
@@ -17,11 +18,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($email==="") {
         $errEmail = "*Email required";
+    }
+    else if (preg_match($regex,$email) === 0){
+        $errEmail = "*Invalid email";
+    }
 
-    }else if($password===""){
+    if($password===""){
         $errPassword = "*Password required";
-    }else
-    {
+    }
+    else {
                                                                             //When all input valid
         $pull_email = "SELECT * FROM user_table WHERE email='$email'";
         $email_result = mysqli_query($userbase_db, $pull_email);
@@ -32,8 +37,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $password_pull = $results['password'];
 
             if ($password_pull == $password) {          //Password correct
+                $_SESSION['current_email'] = $email;
                 header("Location: index.php");
                 exit();
+
             } else {                                     //Incorrect Password
                 $errPassword = "Password Incorrect";
             }

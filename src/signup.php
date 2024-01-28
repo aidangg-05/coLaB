@@ -13,7 +13,7 @@
     <h1>Sign Up</h1>
     <form method="post">
         <label for="email">Email:</label>
-        <input type="email" name="email">
+        <input type="text" name="email">
         <span class="error-text"> <?php echo $errEmail ?> &nbsp; </span>
 
 

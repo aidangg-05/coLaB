@@ -12,12 +12,12 @@
         <h1>Login</h1>
         <form method="post">
             <label for="email">Email:</label>
-            <input type="email" name="email" value="<?php echo $email?>">
+            <input type="text" name="email" value="<?php echo $email?>">
             <span class="error-text">  <?php echo $errEmail ?>  &nbsp; </span>
 
             <label for="password">Password:</label>
             <input type="password"  name="password" value="<?php echo $password?>">
-            <span class="error-text" > <?php echo $errPassword ?>  &nbsp; </span>
+            <span class="error-text"> <?php echo $errPassword ?>  &nbsp; </span>
 
             <button type="submit">Login</button>
         </form>

@@ -56,60 +56,6 @@ function sorting() {
     });
 }
 
-function validate_signup(){
-    var regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-    var name = document.getElementById('name').value.trim();
-    var email = document.getElementById('email').value.trim();
-    var password = document.getElementById('password').value.trim();
-    document.getElementById('errEmail').innerHTML =  "&nbsp;"
-    document.getElementById('errName').innerHTML = "&nbsp;"
-    document.getElementById('errPassword').innerHTML = "&nbsp;"
-
-    if (email === ""){
-        document.getElementById('errEmail').innerHTML = "<sup>*</sup>Email required"
-    }
-
-    else if (!regex.test(email)) {
-        document.getElementById('errEmail').innerHTML = "<sup>*</sup>Invalid Email"
-    }
-
-    else if (name === ""){
-        document.getElementById('errName').innerHTML = "<sup>*</sup>Full Name required"
-    }
-
-    else if (password === ""){
-        document.getElementById('errPassword').innerHTML = "<sup>*</sup>Password required"
-    }
-
-    else {
-        document.getElementById('formID').submit()
-    }
-}
-
-function validate_login() {
-    var regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-    var email = document.getElementById('email').value.trim();
-    var password = document.getElementById('password').value.trim();
-    document.getElementById('errEmail').innerHTML =  "&nbsp;"
-    document.getElementById('errPassword').innerHTML = "&nbsp;"
-
-    if (email === ""){
-        document.getElementById('errEmail').innerHTML = "<span> <sup>*</sup>Email required</span>"
-        return false
-    }
-
-    else if (!regex.test(email)) {
-        document.getElementById('errEmail').innerHTML = "<sup>*</sup>Invalid Email"
-    }
-
-    else if (password === ""){
-        document.getElementById('errPassword').innerHTML = "<sup>*</sup>Password required"
-    }
-
-    else {
-        document.getElementById('formID').submit()
-    }
-}
 // Helper function to determine order of statuses
 function getStatusOrder(status) {
     switch (status.toLowerCase()) {
