@@ -44,7 +44,7 @@
         <div class="form_buttons">
             <input type="button" value="Back" class="back" onclick="backtomain()">
             <input type="reset" class="reset">
-            <input type="button" value="Submit" class="submit">
+            <input type="button" value="Submit" class="submit" onclick="onClickSubmitButton()">
         </div>
     </form>
 </html>

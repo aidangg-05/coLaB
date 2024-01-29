@@ -21,6 +21,9 @@ function closePopup() {
 function goprofile(){
     window.location.href="profile.php";
 }
+function goabout(){
+    window.location.href="about.php"
+}
 function addproject(){
     window.location.href="addprojectform.php"
 }

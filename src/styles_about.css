@@ -7,6 +7,12 @@ body {
     height: 100vh;
     background-color: #f4f4f4;
 }
+.title{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin-top: 0;
+    background-color: #cdcdcd;
+}
 
 .about-container {
     background-color: #ffffff;
@@ -15,17 +21,25 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: left;
     width: 800px;
+
+}
+.scroll-container{
+    height: 400px;
+    overflow-y: auto;
+
 }
 
 #title-top {
     font-size: 40px;
     font-weight: bold;
+    padding-left: 10px;
 }
 
 #title-bottom {
     font-size: 40px;
     font-weight: bold;
     color: #6C6C6C;
+    padding-left:10px;
 }
 
 .top {
@@ -86,5 +100,6 @@ body {
 }
 
 #back:hover {
-    background-color: #DCDCDC;
+    background-color: #3498db;
+    color: white;
 }

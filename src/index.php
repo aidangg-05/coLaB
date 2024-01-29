@@ -20,8 +20,10 @@
     <section class="header">
         <span class="title">CoLab</span>
         <span class="icons">
+            <span class="material-symbols-outlined" style="font-size: 35px" onclick="goabout()">help</span>
             <span class="material-symbols-outlined" style="font-size: 35px" onclick="togglePopup()" >notifications</span>
             <span class="material-symbols-outlined" style="font-size: 35px" onclick="goprofile()">account_circle</span>
+
         </span>
     </section>
 
@@ -44,7 +46,7 @@
     </div>
 
 
-    <span style="font-size: large;font-weight: bold; padding-left: 10px">Your Projects:</span>
+    <span style="font-size: large;font-weight: bold; padding-left: 10px;color: white">Your Projects:</span>
 
 
     <section class="filter" style="margin-right: 20px;">
