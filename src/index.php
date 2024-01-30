@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php include 'index_backend.php'; ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8" >
@@ -20,7 +21,6 @@
     <section class="header">
         <span class="title">CoLab</span>
         <span class="icons">
-            <span class="material-symbols-outlined" style="font-size: 35px" onclick="gocontactus()">feedback</span>
             <span class="material-symbols-outlined" style="font-size: 35px" onclick="goabout()">help</span>
             <span class="material-symbols-outlined" style="font-size: 35px" onclick="togglePopup()" >notifications</span>
             <span class="material-symbols-outlined" style="font-size: 35px" onclick="goprofile()">account_circle</span>
@@ -84,12 +84,28 @@
         </button>
         <section class="scroll-container">
 
-            <div class="Placeholder">
-                <span class="pname">Placeholder Project Name</span>
-                <span class="enddate">1/12/20</span>
-                <span class="status" id="status1">Not started</span>
-                <span class="priority" id="highP" >High Priority</span>
-            </div>
+            <?php while ($row = mysqli_fetch_assoc($user_projects_result)){  //Display list of project id
+                $project_id = $row['project_id'];
+                $projects_result = mysqli_query($userbase_db, "SELECT * FROM project_info WHERE project_id = $project_id ");
+                $projects_info = mysqli_fetch_assoc($projects_result); //That project information, in array
+                $project_name = $projects_info['project_name'];
+                $project_end = $projects_info['end_date'];
+
+                $dateObject = new DateTime($project_end);
+                $formattedDate = $dateObject->format('d-m-Y');
+
+                $project_status = $projects_info['status'];
+                $project_priority = $projects_info['priority'];
+                ?>
+
+                <div class="Placeholder" onclick=>
+                    <span class="pname"><?php echo $project_name?></span>
+                    <span class="enddate"><?php echo $formattedDate?> </span>
+                    <span class="status" id="status1"> <?php echo $project_status?> </span>
+                    <span class="priority" id="highP"> <?php echo $project_priority?> </span>
+                </div>
+            <?php }?>
+
             <div class="Placeholder">
                 <span class="pname">Placeholder Project Name</span>
                 <span class="enddate">1/2/20</span>

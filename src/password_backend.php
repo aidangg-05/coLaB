@@ -6,13 +6,12 @@ if (!$userbase_db) {
     die("Connection failed:" . mysqli_connect_error());
 }
 
-$email = $_SESSION['current_email'];
+$user_id = $_SESSION['current_id'];
 $errOld = $errNew = $errConfirm = "";
 $old_pass = $new_pass = $confirm_pass = "";
 
-$pull_email = "SELECT * FROM user_table WHERE email='$email'";
-$email_result = mysqli_query($userbase_db, $pull_email);
-$results = mysqli_fetch_array($email_result);
+$user_result = mysqli_query($userbase_db, "SELECT * FROM user_table WHERE user_id='$user_id'");
+$results = mysqli_fetch_array($user_result);
 $password_pull = $results['password'];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -47,8 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         else {
-            $update_email = "UPDATE user_table SET password='$new_pass' WHERE email='$email'";
-            $update_email_result = mysqli_query($userbase_db, $update_email);
+            $update_email_result = mysqli_query($userbase_db, "UPDATE user_table SET password='$new_pass' WHERE user_id='$user_id'");
 
             header("Location: profile.php");
             exit();

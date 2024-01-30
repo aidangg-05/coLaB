@@ -6,9 +6,7 @@ if (!$userbase_db){
     die("Connection failed:" . mysqli_connect_error());
 }
 
-$email = "";
-$name = "";
-$password = "";
+$email = $name = $password = "";
 $errName = $errEmail = $errPassword =  "";
 $regex = '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
 
@@ -19,7 +17,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errEmail = "Email required";
     }
 
-    else if (preg_match($regex, $_POST["email"]) === 0){
+    else if (preg_match($regex, $_POST["email"]) === 0)
+    {
         $errEmail = "*Invalid email";
     }
 
@@ -39,22 +38,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $name = $_POST['name'];
         $password = $_POST['password'];
 
-        $pull_email = "SELECT * FROM user_table WHERE email='$email'";
-        $insert = "INSERT INTO user_table (name,email,password) VALUES ('$name','$email','$password')"; //For $name need to use ' '
+        $row_result = mysqli_query($userbase_db, "SELECT * FROM user_table WHERE email='$email'");
 
-        $name_result = mysqli_query($userbase_db, $pull_email);
-
-        if (mysqli_num_rows($name_result) == 1) {
+        if (mysqli_num_rows($row_result) == 1) {        //When email already has account
 
             $errEmail = "Account already exist";
 
         } else {
 
-            $account_results = mysqli_query($userbase_db, $insert);
+            $table_name = $email."_table";
 
-            $_SESSION['current_email'] = $email;
-            header("Location: index.php");
-            exit();
+            if ($userbase_db -> query("INSERT INTO user_table (name,email,password) VALUES ('$name','$email','$password')") === TRUE){  //If able to insert into user_table
+
+                $userid_result = mysqli_query($userbase_db, "SELECT user_id FROM user_table WHERE email = '$email'");  //Fetch user_id
+                $userid = mysqli_fetch_array($userid_result)['user_id'];                                                     //Gte user_id from the array
+
+                $user_table_name = "user_".$userid."_table";                             //add table at the end
+
+                if ($userbase_db -> query("CREATE TABLE `colab_db`.`$user_table_name`(`project_id` INT NOT NULL,`permission` INT NOT NULL);") === TRUE){
+                    $_SESSION['current_id'] = $userid;          //Set the session (To determine current user)
+                    header("Location: index.php");
+                    exit();
+                }
+
+                else {
+                    $errEmail = "Error - Cannot create Table";
+                }
+            }
+
+            else {
+                $errEmail = "Error -Cannot insert data ";
+            }
 
         }
     }

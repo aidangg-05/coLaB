@@ -13,7 +13,7 @@
         <div class="top">
             <img src="noimg.jpg" alt="Profile Image">
             <text class="name"> <?php echo $name ?> </text>
-            <button type="button" id="logout" onclick="logout()">Log out</button>
+            <button type="button" id="logout" onclick="window.location.href='login.php'">Log out</button>
         </div>
 
         <p>
