@@ -168,8 +168,8 @@ body {
     align-items: center;
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    overflow: auto;
+    justify-content: flex-start ;
+    width: 100%;
 
 
 }
@@ -179,6 +179,7 @@ body {
 .pname{
     width:40%;
     padding-left: 10px;
+    justify-items: center;
 
 }
 .enddate,#status1,#status2,#status3{
@@ -186,7 +187,9 @@ body {
     padding-left: 10px;
 }
 .priority{
-    overflow-x: hidden;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-weight: bold;
 
 }

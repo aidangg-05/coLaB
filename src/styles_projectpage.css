@@ -18,7 +18,7 @@ body {
     margin-top: 20px;
     margin-bottom: 20px;
     display: flex;
-    flex-direction: column; /* Change flex direction to column */
+    flex-direction: row; /* Change flex direction to column */
     gap: 20px;
 }
 

@@ -20,6 +20,7 @@
     <section class="header">
         <span class="title">CoLab</span>
         <span class="icons">
+            <span class="material-symbols-outlined" style="font-size: 35px" onclick="gocontactus()">feedback</span>
             <span class="material-symbols-outlined" style="font-size: 35px" onclick="goabout()">help</span>
             <span class="material-symbols-outlined" style="font-size: 35px" onclick="togglePopup()" >notifications</span>
             <span class="material-symbols-outlined" style="font-size: 35px" onclick="goprofile()">account_circle</span>
@@ -87,9 +88,7 @@
                 <span class="pname">Placeholder Project Name</span>
                 <span class="enddate">1/12/20</span>
                 <span class="status" id="status1">Not started</span>
-                <span class="priority" id="highP">
-                High Priority
-            </span>
+                <span class="priority" id="highP" >High Priority</span>
             </div>
             <div class="Placeholder">
                 <span class="pname">Placeholder Project Name</span>

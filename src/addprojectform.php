@@ -13,46 +13,47 @@
 <body>
 
 </body>
-    <form>
+    <form >
         <h1>Add Your Project Here!</h1>
-        <div class="input_box">
-            <span class="input_text">Project Name:</span>
-            <input type="text" class="project_name_input" placeholder="Your project name">
-        </div>
-        <div class="input_box">
-            <span class="input_text">Start Date:</span>
-            <input type="date" class="startdate_input">
-        </div>
+        <section>
 
-        <div class="input_box">
-            <span class="input_text">End Date:</span>
-            <input type="date" class="enddate_input">
-        </div>
+            <div class="input_box">
+                <span class="input_text">Project Name:</span>
+                <input type="text" class="project_name_input" placeholder="Your project name">
+            </div>
+            <div class="input_box">
+                <span class="input_text">Start Date:</span>
+                <input type="date" class="startdate_input">
+            </div>
 
-        <div class="input_box">
-            <span class="input_text">Project Description:</span>
-            <textarea placeholder="Input your project description here" class="desc_input"></textarea>
-        </div>
+            <div class="input_box">
+                <span class="input_text">End Date:</span>
+                <input type="date" class="enddate_input">
+            </div>
 
-        <div class="input_box">
-            <span class="input_text">Add Priority:</span>
-            <select class="priority_input" content="Choose One">
-                <option disabled selected>Choose One</option>
-                <option>High</option>
-                <option>Medium</option>
-                <option>Low</option>
-            </select>
-        </div>
+            <div class="input_box">
+                <span class="input_text">Project Description:</span>
+                <textarea placeholder="Input your project description here" class="desc_input"></textarea>
+            </div>
 
-        <div class="input_box">
-            <span class="input_text">Add Other Users:</span>
-            <input type="text">
-            <input type="text">
-            <input type="text">
+            <div class="input_box">
+                <span class="input_text">Add Priority:</span>
+                <select class="priority_input" content="Choose One">
+                    <option disabled selected>Choose One</option>
+                    <option>High</option>
+                    <option>Medium</option>
+                    <option>Low</option>
+                </select>
+            </div>
 
-        </div>
+            <div class="input_box">
+                <span class="input_text">Add Other Users:</span>
+                <input type="text" class="adduser_input">
+                <input type="text" class="adduser_input">
+                <input type="text" class="adduser_input">
 
-
+            </div>
+        </section>
         <div class="form_buttons">
             <input type="button" value="Back" class="back" onclick="backtomain()">
             <input type="reset" class="reset">

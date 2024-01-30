@@ -9,12 +9,17 @@ body{
 
 }
 form {
-    width: 50%; /* width of form, adjust if needed */
-    padding: 10px;
+    width: 70%; /* width of form, adjust if needed */
     border: 1px solid #bebebe;
+    padding: 10px;
     border-radius: 5px;
     background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+section{
+    overflow-y: auto;
+    height: 500px;
 }
 .input_box{
     padding: 10px;
@@ -26,7 +31,7 @@ form {
 .input_text{
     font-size: large;
 }
-.desc_input,.enddate_input,.project_name_input,.startdate_input,.priority_input{
+.desc_input,.enddate_input,.project_name_input,.startdate_input,.priority_input,.adduser_input{
     font-size: 16px;
     padding:10px;
 
@@ -39,12 +44,7 @@ h1{
     padding: 10px;
     margin: 10px 10px 10px;
 }
-.add_user_button{
 
-    width: 10%;
-    font-size: 15px;
-    margin: 0;
-}
 .form_buttons{
     display: flex;
     justify-content: space-between;
