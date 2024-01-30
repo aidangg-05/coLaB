@@ -7,7 +7,6 @@
     <title>Project Management</title>
 </head>
 <body>
-
 <div class="project-details">
     <h1>Project Name</h1>
     <!-- Add Task Button -->

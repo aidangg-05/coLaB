@@ -113,3 +113,39 @@ button {
 button:hover {
     background-color: #1a73e8;
 }
+
+#ramen {
+    display:block;
+    width:70px;
+    margin-top:0;
+    margin-left:10px;
+
+
+}
+
+#button {
+    display:none;
+}
+
+.hamburger {
+    width:40px;
+    margin-top:5px;
+    margin-right:5px;
+    display:none
+}
+
+@media screen and (max-width: 1000px) {
+    .navlinks {
+        display: none;
+    }
+
+    .hamburger {
+        display:inline;
+    }
+
+    #button {
+        display:inline;
+        background-color: white;
+        border: none;
+    }
+}
