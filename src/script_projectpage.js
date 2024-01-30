@@ -7,6 +7,9 @@ function openModal() {
 function closeModal() {
     document.getElementById("addTaskModal").style.display = "none";
 }
+function goGanttchart(){
+    window.location.href="gantt.php";
+}
 
 function addTask() {
     const taskForm = document.getElementById("taskForm");

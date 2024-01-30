@@ -5,8 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles_projectpage.css">
     <title>Project Management</title>
+    <!--For icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
 </head>
 <body>
+<nav class="navbar">
+
+    <ul>
+        <li><span class="material-symbols-outlined" onclick="window.location.href='index.php'">arrow_back</span></li>
+        <li>Projects</li>
+        <li onclick="goGanttchart()">Gnatt Chart</li>
+    </ul>
+</nav>
 <div class="project-details">
     <h1>Project Name</h1>
     <!-- Add Task Button -->
