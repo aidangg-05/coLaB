@@ -26,7 +26,7 @@ form {
 .input_text{
     font-size: large;
 }
-.desc_input,.enddate_input,.project_name_input,.startdate_input{
+.desc_input,.enddate_input,.project_name_input,.startdate_input,.priority_input{
     font-size: 16px;
     padding:10px;
 
@@ -99,4 +99,7 @@ h1{
     background-color: #04AA6D;
     color: white;
     transition: 0.5s;
+}
+.priority_input{
+
 }
