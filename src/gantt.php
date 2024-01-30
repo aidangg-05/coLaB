@@ -1,32 +1,3 @@
-<?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Process form data
-    $chartData = json_decode($_POST['chartData'], true);
-
-    // Extract and save chart details
-    $numberOfRows = count($chartData);
-    $numberOfCols = count($chartData[0]['weeks']);
-
-    // Save row names and other details to your database
-    // Example: $mysqli->query("INSERT INTO your_table (row_name, week_number, color) VALUES ...");
-
-    foreach ($chartData as $row) {
-        $rowName = $row['task'];
-
-        foreach ($row['weeks'] as $week) {
-            $weekNumber = $week['week'];
-            $color = $week['color'];
-
-            // Save row name, week number, and color to your database
-            // Example: $mysqli->query("INSERT INTO your_table (row_name, week_number, color) VALUES ('$rowName', '$weekNumber', '$color')");
-        }
-    }
-
-    echo "Chart data saved successfully!";
-    exit;
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,6 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <button onclick="saveChart()">Save Chart</button>
 
 <script>
+    let rows;
+
     function openChartModal() {
         const chartModal = document.getElementById('chartModal');
         chartModal.style.display = 'block';
@@ -65,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     function createChart() {
-        const rows = document.getElementById('rows').value;
+        rows = document.getElementById('rows').value;
         const cols = document.getElementById('cols').value;
 
         if (!rows || !cols) {
@@ -111,10 +84,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         const currentColor = cell.style.backgroundColor;
 
         if (currentColor === 'transparent' || currentColor === '') {
-            cell.style.backgroundColor = getSelectedColor();
+            // Set a cool color gradient based on row index
+            const rowIndex = cell.parentElement.rowIndex - 1; // Subtract 1 to exclude the header row
+            const coolColor = getCoolColor(rowIndex);
+            cell.style.backgroundColor = coolColor;
         } else {
             cell.style.backgroundColor = 'transparent';
         }
+    }
+
+    // Function to get a cool color based on the row index
+    function getCoolColor(rowIndex) {
+        // You can adjust the color gradient as needed
+        const startColor = [0, 128, 255]; // Blue
+        const endColor = [0, 255, 128]; // Green
+
+        const coolColor = startColor.map((start, i) =>
+            Math.round(start + (endColor[i] - start) * (rowIndex / (rows - 1)))
+        );
+
+        return `rgb(${coolColor.join(',')})`;
     }
 
     function showColorPicker() {
@@ -159,7 +148,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             chartData.push(rowData);
         }
 
-        // Send chart data to the server without showing any pop-ups
         fetch(window.location.href, {
             method: 'POST',
             headers: {
@@ -168,7 +156,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             body: 'chartData=' + JSON.stringify(chartData),
         })
             .then(response => response.text())
-            .then(data => console.log(data)) // Log the response (for debugging purposes)
+            .then(data => console.log(data))
             .catch(error => console.error('Error:', error));
     }
 </script>
