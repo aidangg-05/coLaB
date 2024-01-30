@@ -81,40 +81,45 @@
             <span class="material-symbols-outlined" id="addbtn">add</span>
             <span>Add Project </span>
         </button>
+        <section class="scroll-container">
 
-        <div class="Placeholder">
-            <span class="pname">Placeholder Project Name</span>
-            <span class="enddate">1/12/20</span>
-            <span class="status" id="status1">Not started</span>
-            <span class="priority">High Priority</span>
+            <div class="Placeholder">
+                <span class="pname">Placeholder Project Name</span>
+                <span class="enddate">1/12/20</span>
+                <span class="status" id="status1">Not started</span>
+                <span class="priority" id="highP">
+                High Priority
+            </span>
+            </div>
+            <div class="Placeholder">
+                <span class="pname">Placeholder Project Name</span>
+                <span class="enddate">1/2/20</span>
+                <span class="status" id="status2">Progress</span>
+                <span class="priority" id="medP">Medium Priority</span>
 
-        </div>
-        <div class="Placeholder">
-            <span class="pname">Placeholder Project Name</span>
-            <span class="enddate">1/2/20</span>
-            <span class="status" id="status2">Progress</span>
-            <span class="priority">Medium Priority</span>
+            </div>
+            <div class="Placeholder">
+                <span class="pname">Placeholder Project Name</span>
+                <span class="enddate">1/3/20</span>
+                <span class="status" id="status3">Complete</span>
+                <span class="priority" id="lowP">Low Priority</span>
+            </div>
+            <div class="Placeholder">
+                <span class="pname">Placeholder Project Name</span>
+                <span class="enddate">1/1/20</span>
+                <span class="status" id="status3">Complete</span>
+                <span class="priority" id="lowP">Low Priority</span>
+            </div>
+            <div class="Placeholder">
+                <span class="pname">Placeholder Project Name</span>
+                <span class="enddate">1/12/20</span>
+                <span class="status" id="status1">Not started</span>
+                <span class="priority" id="lowP">Low Priority</span>
+            </div>
 
-        </div>
-        <div class="Placeholder">
-            <span class="pname">Placeholder Project Name</span>
-            <span class="enddate">1/3/20</span>
-            <span class="status" id="status3">Complete</span>
-            <span class="priority">Low Priority</span>
-        </div>
-        <div class="Placeholder">
-            <span class="pname">Placeholder Project Name</span>
-            <span class="enddate">1/1/20</span>
-            <span class="status" id="status3">Complete</span>
-            <span class="priority">Low Priority</span>
-        </div>
-        <div class="Placeholder">
-            <span class="pname">Placeholder Project Name</span>
-            <span class="enddate">1/12/20</span>
-            <span class="status" id="status1">Not started</span>
-            <span class="priority">High Priority</span>
+        </section>
 
-        </div>
+
 
     </section>
 

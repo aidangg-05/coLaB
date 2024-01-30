@@ -41,7 +41,7 @@ body {
     padding: 5px;
 
 }
-/*--popup css--*/
+/*--popup css----------------------------------*/
 .overlay {
     position: fixed;
     top: 0;
@@ -169,6 +169,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    overflow: auto;
 
 
 }
@@ -180,9 +181,23 @@ body {
     padding-left: 10px;
 
 }
-.enddate,#status1,#status2,#status3,.priority{
+.enddate,#status1,#status2,#status3{
     width:20%;
     padding-left: 10px;
+}
+.priority{
+    overflow-x: hidden;
+    font-weight: bold;
+
+}
+#highP{
+    color: red;
+}
+#medP{
+    color: orange;
+}
+#lowP{
+    color: #04AA6D;
 }
 .Placeholder #status1{
     border-radius: 5px;
@@ -216,5 +231,7 @@ body {
     border: 2px solid white;
     padding: 5px;
     background-color: rgba(255, 255, 255, 0.5);
+
 }
+
 

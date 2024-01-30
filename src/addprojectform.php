@@ -35,11 +35,28 @@
         </div>
 
         <div class="input_box">
+            <span class="input_text">Add Priority:</span>
+            <select class="priority_input" content="Choose One">
+                <option disabled selected>Choose One</option>
+                <option>High</option>
+                <option>Medium</option>
+                <option>Low</option>
+            </select>
+        </div>
+
+        <div class="input_box">
             <span class="input_text">Add Other Users:</span>
-            <button class="add_user_button">
+            <button class="add_user_button">User 1
+                <span class="material-symbols-outlined">group_add</span>
+            </button>
+            <button class="add_user_button">User 2
+                <span class="material-symbols-outlined">group_add</span>
+            </button>
+            <button class="add_user_button">User 3
                 <span class="material-symbols-outlined">group_add</span>
             </button>
         </div>
+
 
         <div class="form_buttons">
             <input type="button" value="Back" class="back" onclick="backtomain()">
