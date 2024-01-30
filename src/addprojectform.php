@@ -46,15 +46,10 @@
 
         <div class="input_box">
             <span class="input_text">Add Other Users:</span>
-            <button class="add_user_button">User 1
-                <span class="material-symbols-outlined">group_add</span>
-            </button>
-            <button class="add_user_button">User 2
-                <span class="material-symbols-outlined">group_add</span>
-            </button>
-            <button class="add_user_button">User 3
-                <span class="material-symbols-outlined">group_add</span>
-            </button>
+            <input type="text">
+            <input type="text">
+            <input type="text">
+
         </div>
 
 
