@@ -13,8 +13,8 @@
 <nav class="navbar">
 
     <ul>
-        <li><span class="material-symbols-outlined" onclick="window.location.href='index.php'">arrow_back</span></li>
-        <li>Projects</li>
+        <li><span class="material-symbols-outlined" onclick="window.location.href='index.php'" style="font-size: 20px">arrow_back</span></li>
+        <li style="background-color: white;color: black">Projects</li>
         <li onclick="goGanttchart()">Gnatt Chart</li>
     </ul>
 </nav>

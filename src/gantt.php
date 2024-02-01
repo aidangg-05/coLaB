@@ -4,13 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles_gantt.css">
+
+    <!--For icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
     <title>Gantt Chart Generator</title>
 </head>
 <body>
 <nav class="navbar">
     <ul>
+        <li><span class="material-symbols-outlined" onclick="window.location.href='index.php'" style="font-size: 20px">arrow_back</span></li>
         <li onclick="goProjects()">Projects</li>
-        <li>Gnatt Chart</li>
+        <li style="background-color: white;color: black">Gnatt Chart</li>
     </ul>
 </nav>
 <section class="mainbody">

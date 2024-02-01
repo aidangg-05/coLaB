@@ -1,5 +1,5 @@
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
@@ -125,6 +125,7 @@ button.save-chart {
     text-align: center;
     float: left;
     cursor: default;
+    border-right:2px solid white ;
 }
 .navbar li:hover{
     background-color: rgba(0, 0, 0, 0.1);
