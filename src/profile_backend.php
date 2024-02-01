@@ -10,16 +10,16 @@ $name =$email = $password = "";
 $new_name = $new_email = $errName = $errEmail ="";
 $regex = '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
 
-$email = $_SESSION['current_email'];
+$userid = $_SESSION['current_id'];
 
-$pull_email = "SELECT * FROM user_table WHERE email='$email'";
+$pull_email = "SELECT * FROM user_table WHERE user_id='$userid'";
 
 $email_result = mysqli_query($userbase_db, $pull_email);
-
 
 $results = mysqli_fetch_array($email_result);
 $name = $results['name'];
 $password = $results['password'];
+$email = $results['email'];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -50,13 +50,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             } else {                                             //No available record
 
-                $update_email = "UPDATE user_table SET email='$new_email' WHERE email='$email'";
+                $update_email = "UPDATE user_table SET email='$new_email' WHERE user_id='$userid'";
                 $update_email_result = mysqli_query($userbase_db, $update_email);
 
-                $update_name = "UPDATE user_table SET name='$new_name' WHERE email='$email'";
+                $update_name = "UPDATE user_table SET name='$new_name' WHERE user_id='$userid'";
                 $update_name_result = mysqli_query($userbase_db, $update_name);
-
-                $_SESSION['current_email'] = $new_email;
 
                 header("Location: profile.php");
                 exit();

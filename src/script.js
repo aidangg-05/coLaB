@@ -27,6 +27,9 @@ function goabout(){
 function addproject(){
     window.location.href="addprojectform.php"
 }
+function gocontactus(){
+    window.location.href="contactus.php"
+}
 function sorting() {
     let sort = document.getElementById('form-select').value;
     let mainBody = document.querySelector('.mainbody');

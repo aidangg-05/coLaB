@@ -37,7 +37,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $password_pull = $results['password'];
 
             if ($password_pull == $password) {          //Password correct
-                $_SESSION['current_email'] = $email;
+
+                $userid_result = mysqli_query($userbase_db, "SELECT user_id FROM user_table WHERE email = '$email'");
+                $userid = mysqli_fetch_array($userid_result)['user_id'];       //Fetch user_id
+
+                $_SESSION['current_id'] = $userid;
                 header("Location: index.php");
                 exit();
 

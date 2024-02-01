@@ -4,25 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles_gantt.css">
+
+    <!--For icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
     <title>Gantt Chart Generator</title>
 </head>
 <body>
-<h1>Gantt Chart Generator</h1>
+<nav class="navbar">
+    <ul>
+        <li><span class="material-symbols-outlined" onclick="window.location.href='index.php'" style="font-size: 20px">arrow_back</span></li>
+        <li onclick="goProjects()">Projects</li>
+        <li style="background-color: white;color: black">Gnatt Chart</li>
+    </ul>
+</nav>
+<section class="mainbody">
+    <h1>Gantt Chart Generator</h1>
 
-<button class="create-chart" onclick="openChartModal()">Create Chart</button>
+    <button class="create-chart" onclick="openChartModal()">Create Chart</button>
 
-<div id="chartModal">
-    <h2>Enter Gantt Chart Details</h2>
-    <label for="rows">Number of Rows:</label>
-    <input type="number" id="rows" min="1" required>
-    <label for="cols">Number of Weeks:</label>
-    <input type="number" id="cols" min="1" required>
-    <button class="create-chart" onclick="createChart()">Create Chart</button>
-</div>
+    <div id="chartModal">
+        <h2>Enter Gantt Chart Details</h2>
+        <label for="rows">Number of Rows:</label>
+        <input type="number" id="rows" min="1" required>
+        <label for="cols">Number of Weeks:</label>
+        <input type="number" id="cols" min="1" required>
+        <button class="create-chart" onclick="createChart()">Create Chart</button>
+    </div>
 
-<div id="chartContainer"></div>
+    <div id="chartContainer"></div>
 
-<button onclick="saveChart()">Save Chart</button>
+    <button onclick="saveChart()">Save Chart</button>
+
+</section>
+
 
 <script>
     let rows;
@@ -158,6 +173,9 @@
             .then(response => response.text())
             .then(data => console.log(data))
             .catch(error => console.error('Error:', error));
+    }
+    function goProjects(){
+        window.location.href="projectpage.php"
     }
 </script>
 </body>
