@@ -191,29 +191,26 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
     font-weight: bold;
-
 }
-#highP{
+
+#High{
     color: red;
 }
-#medP{
+#Medium{
     color: orange;
 }
-#lowP{
+#Low{
     color: #04AA6D;
 }
-.Placeholder #status1{
+.Placeholder #Not_started{
     border-radius: 5px;
     font-weight: bold;
     color: white;
     padding:10px;
     text-align: center;
     background-color: #ff0000;
-
-
-
 }
-.Placeholder #status2{
+.Placeholder #Progress{
     border-radius: 5px;
     font-weight: bold;
     color: white;
@@ -221,7 +218,7 @@ body {
     text-align: center;
     background-color: #0024ff;
 }
-.Placeholder #status3{
+.Placeholder #Complete{
     border-radius: 5px;
     font-weight: bold;
     color: white;
