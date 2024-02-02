@@ -7,7 +7,8 @@ body {
     height: 100vh;
     background-color: #f4f4f4;
 }
-.title{
+
+.title {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     margin-top: 0;
@@ -21,12 +22,12 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: left;
     width: 800px;
-
+    margin-bottom: 20px;
 }
-.scroll-container{
+
+.scroll-container {
     height: 400px;
     overflow-y: auto;
-
 }
 
 #title-top {
@@ -39,7 +40,7 @@ body {
     font-size: 40px;
     font-weight: bold;
     color: #6C6C6C;
-    padding-left:10px;
+    padding-left: 10px;
 }
 
 .top {
@@ -99,7 +100,40 @@ body {
     border-radius: 4px;
 }
 
-#back:hover {
+    #back:hover {
+        background-color: #3498db;
+        color: white;
+    }
+
+.donate-container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    justify-content: center;
+    width: 800px;
+}
+
+#support {
+    font-size: 35px;
+    font-weight: bold;
+    padding-right: 50px;
+}
+
+#donate {
     background-color: #3498db;
-    color: white;
+    color: #ffffff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    width: 150px;
+    border-radius: 4px;
+}
+
+#donate:hover {
+    background-color: #2980b9;
 }
