@@ -19,6 +19,7 @@
     <section class="header">
         <span class="title">CoLab</span>
         <span class="icons">
+            <span class="material-symbols-outlined" style="font-size: 35px" onclick="gocontactus()">feedback</span>
             <span class="material-symbols-outlined" style="font-size: 35px" onclick="goabout()">help</span>
             <span class="material-symbols-outlined" style="font-size: 35px" onclick="togglePopup()" >notifications</span>
             <span class="material-symbols-outlined" style="font-size: 35px" onclick="goprofile()">account_circle</span>
@@ -116,33 +117,6 @@
                 </div>
 
             <?php $i++; }?>
-
-            <div class="Placeholder">
-                <span class="pname">Placeholder Project Name</span>
-                <span class="enddate">1/2/20</span>
-                <span class="status" id="Progress">Progress</span>
-                <span class="priority" id="Medium">Medium Priority</span>
-
-            </div>
-            <div class="Placeholder">
-                <span class="pname">Placeholder Project Name</span>
-                <span class="enddate">1/3/20</span>
-                <span class="status" id="status3">Complete</span>
-                <span class="priority" id="Low">Low Priority</span>
-            </div>
-            <div class="Placeholder">
-                <span class="pname">Placeholder Project Name</span>
-                <span class="enddate">1/1/20</span>
-                <span class="status" id="status3">Complete</span>
-                <span class="priority" id="Low">Low Priority</span>
-            </div>
-            <div class="Placeholder">
-                <span class="pname">Placeholder Project Name</span>
-                <span class="enddate">1/12/20</span>
-                <span class="status" id="status1">Not started</span>
-                <span class="priority" id="Low">Low Priority</span>
-            </div>
-
         </section>
     </section>
 
