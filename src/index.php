@@ -46,7 +46,7 @@
     </div>
 
 
-    <span style="font-size: large;font-weight: bold; padding-left: 10px;color: white">Your Projects:</span>
+    <span style="font-size: large;font-weight: bold; padding-left: 10px;color: blackx">Your Projects:</span>
 
 
     <section class="filter" style="margin-right: 20px;">
@@ -101,7 +101,6 @@
                 if ($project_status === "Not started"){
                     $project_status_id = "Not_started";
                 }
-
                 else {
                     $project_status_id =  $project_status;
                 }
@@ -109,7 +108,7 @@
 
                 ?>
 
-                <div class="Placeholder" onclick="window.location.href='projectpage.php'">
+                <div class="projectrow" onclick="window.location.href='projectpage.php'">
                     <span class="pname"><?php echo $project_name?></span>
                     <span class="enddate"><?php echo $formattedDate?> </span>
                     <span class="status" id="<?php echo $project_status_id?>"><?php echo $project_status?></span>
