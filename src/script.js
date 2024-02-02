@@ -32,15 +32,19 @@ function gocontactus(){
 }
 function sorting() {
     let sort = document.getElementById('form-select').value;
-    let mainBody = document.querySelector('.mainbody');
-    let projects = mainBody.querySelectorAll('.Placeholder');
+    let mainBody = document.querySelector('.scroll-container');
+    let projects = mainBody.querySelectorAll('.projectrow');
 
     let sortedProjects = Array.from(projects);
 
     if (sort === "end_date") {
         sortedProjects.sort((a, b) => {
-            let dateA = new Date(a.querySelector('.enddate').textContent);
-            let dateB = new Date(b.querySelector('.enddate').textContent);
+            let dateA = new Date(
+                a.querySelector('.enddate').textContent.split('-').reverse().join('/')
+            );
+            let dateB = new Date(
+                b.querySelector('.enddate').textContent.split('-').reverse().join('/')
+            );
             return dateA - dateB;
         });
     } else if (sort === "status") {

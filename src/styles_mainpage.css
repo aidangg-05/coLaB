@@ -117,7 +117,6 @@ body {
     background-color: ghostwhite;
     border-radius: 2px;
     height: auto;
-
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -160,37 +159,40 @@ body {
     font-size: 18px;
     transition: 0.5s;
 }
-.Placeholder{
-    border: 2px solid rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
+.projectrow{
+
+    display: table;
+    border: 1px solid black;
     margin-top: 5px;
-    height:55px;
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start ;
+    height: 55px;
+    border-radius: 5px;
     width: 100%;
-
-
+    table-layout: fixed; /* Ensure consistent cell width */
 }
-.Placeholder:hover{
+.projectrow > span {
+    display: table-cell; /* Change display to table-cell */
+    vertical-align: middle; /* Align content vertically */
+    padding: 10px; /* Add padding for spacing */
+}
+.projectrow:hover{
     background: rgba(115, 115, 115, 0.1);
 }
+
 .pname{
     width:40%;
     padding-left: 10px;
     justify-items: center;
 
 }
-.enddate,#status1,#status2,#status3{
+.enddate{
     width:20%;
     padding-left: 10px;
+
 }
 .priority{
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    width: 20%;
     font-weight: bold;
+    text-align: center;
 }
 
 #High{
@@ -202,7 +204,7 @@ body {
 #Low{
     color: #04AA6D;
 }
-.Placeholder #Not_started{
+.projectrow #Not_started{
     border-radius: 5px;
     font-weight: bold;
     color: white;
@@ -210,7 +212,7 @@ body {
     text-align: center;
     background-color: #ff0000;
 }
-.Placeholder #Progress{
+.projectrow #Progress{
     border-radius: 5px;
     font-weight: bold;
     color: white;
@@ -218,7 +220,7 @@ body {
     text-align: center;
     background-color: #0024ff;
 }
-.Placeholder #Complete{
+.projectrow #Complete{
     border-radius: 5px;
     font-weight: bold;
     color: white;
