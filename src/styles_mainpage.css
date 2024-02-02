@@ -191,15 +191,16 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
     font-weight: bold;
+    margin-left:10px ;
 
 }
-#highP{
+#High{
     color: red;
 }
-#medP{
+#Medium{
     color: orange;
 }
-#lowP{
+#Low{
     color: #04AA6D;
 }
 .Placeholder #status1{
@@ -209,9 +210,6 @@ body {
     padding:10px;
     text-align: center;
     background-color: #ff0000;
-
-
-
 }
 .Placeholder #status2{
     border-radius: 5px;

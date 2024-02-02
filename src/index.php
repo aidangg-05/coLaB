@@ -21,6 +21,7 @@
     <section class="header">
         <span class="title">CoLab</span>
         <span class="icons">
+            <span class="material-symbols-outlined" style="font-size: 35px" onclick="gocontactus()"> feedback </span>
             <span class="material-symbols-outlined" style="font-size: 35px" onclick="goabout()">help</span>
             <span class="material-symbols-outlined" style="font-size: 35px" onclick="togglePopup()" >notifications</span>
             <span class="material-symbols-outlined" style="font-size: 35px" onclick="goprofile()">account_circle</span>
@@ -95,6 +96,7 @@
                 $formattedDate = $dateObject->format('d-m-Y');
 
                 $project_status = $projects_info['status'];
+
                 $project_priority = $projects_info['priority'];
                 ?>
 
@@ -102,42 +104,10 @@
                     <span class="pname"><?php echo $project_name?></span>
                     <span class="enddate"><?php echo $formattedDate?> </span>
                     <span class="status" id="status1"> <?php echo $project_status?> </span>
-                    <span class="priority" id="highP"> <?php echo $project_priority?> </span>
+                    <span class="priority" id="<?php echo $project_priority?>"> <?php echo $project_priority?> Priority</span>
                 </div>
             <?php }?>
-
-            <div class="Placeholder">
-                <span class="pname">Placeholder Project Name</span>
-                <span class="enddate">1/2/20</span>
-                <span class="status" id="status2">Progress</span>
-                <span class="priority" id="medP">Medium Priority</span>
-
-            </div>
-            <div class="Placeholder">
-                <span class="pname">Placeholder Project Name</span>
-                <span class="enddate">1/3/20</span>
-                <span class="status" id="status3">Complete</span>
-                <span class="priority" id="lowP">Low Priority</span>
-            </div>
-            <div class="Placeholder">
-                <span class="pname">Placeholder Project Name</span>
-                <span class="enddate">1/1/20</span>
-                <span class="status" id="status3">Complete</span>
-                <span class="priority" id="lowP">Low Priority</span>
-            </div>
-            <div class="Placeholder">
-                <span class="pname">Placeholder Project Name</span>
-                <span class="enddate">1/12/20</span>
-                <span class="status" id="status1">Not started</span>
-                <span class="priority" id="lowP">Low Priority</span>
-            </div>
-
         </section>
-
-
-
     </section>
-
-
 </body>
 </html>
