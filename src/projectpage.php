@@ -238,6 +238,10 @@
 
         hidePopup();
     }
+
+    function goGanttchart(){
+        window.location.href="gantt.php";
+    }
 </script>
 </body>
 </html>
