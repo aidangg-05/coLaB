@@ -12,8 +12,6 @@
     <!--Bookstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-
-
     <title>Main Page</title>
 </head>
 <body>
@@ -21,7 +19,6 @@
     <section class="header">
         <span class="title">CoLab</span>
         <span class="icons">
-            <span class="material-symbols-outlined" style="font-size: 35px" onclick="gocontactus()"> feedback </span>
             <span class="material-symbols-outlined" style="font-size: 35px" onclick="goabout()">help</span>
             <span class="material-symbols-outlined" style="font-size: 35px" onclick="togglePopup()" >notifications</span>
             <span class="material-symbols-outlined" style="font-size: 35px" onclick="goprofile()">account_circle</span>
@@ -85,7 +82,10 @@
         </button>
         <section class="scroll-container">
 
-            <?php while ($row = mysqli_fetch_assoc($user_projects_result)){  //Display list of project id
+            <?php
+            $i = 0;
+            while ($row = mysqli_fetch_assoc($user_projects_result)){  //Display list of project id
+
                 $project_id = $row['project_id'];
                 $projects_result = mysqli_query($userbase_db, "SELECT * FROM project_info WHERE project_id = $project_id ");
                 $projects_info = mysqli_fetch_assoc($projects_result); //That project information, in array
@@ -97,17 +97,55 @@
 
                 $project_status = $projects_info['status'];
 
+                if ($project_status === "Not started"){
+                    $project_status_id = "Not_started";
+                }
+
+                else {
+                    $project_status_id =  $project_status;
+                }
                 $project_priority = $projects_info['priority'];
+
                 ?>
 
-                <div class="Placeholder" onclick=>
+                <div class="Placeholder" onclick="window.location.href='projectpage.php'">
                     <span class="pname"><?php echo $project_name?></span>
                     <span class="enddate"><?php echo $formattedDate?> </span>
-                    <span class="status" id="status1"> <?php echo $project_status?> </span>
-                    <span class="priority" id="<?php echo $project_priority?>"> <?php echo $project_priority?> Priority</span>
+                    <span class="status" id="<?php echo $project_status_id?>"><?php echo $project_status?></span>
+                    <span class="priority" id="<?php echo $project_priority?>"><?php echo $project_priority?> Priority</span>
                 </div>
-            <?php }?>
+
+            <?php $i++; }?>
+
+            <div class="Placeholder">
+                <span class="pname">Placeholder Project Name</span>
+                <span class="enddate">1/2/20</span>
+                <span class="status" id="Progress">Progress</span>
+                <span class="priority" id="Medium">Medium Priority</span>
+
+            </div>
+            <div class="Placeholder">
+                <span class="pname">Placeholder Project Name</span>
+                <span class="enddate">1/3/20</span>
+                <span class="status" id="status3">Complete</span>
+                <span class="priority" id="Low">Low Priority</span>
+            </div>
+            <div class="Placeholder">
+                <span class="pname">Placeholder Project Name</span>
+                <span class="enddate">1/1/20</span>
+                <span class="status" id="status3">Complete</span>
+                <span class="priority" id="Low">Low Priority</span>
+            </div>
+            <div class="Placeholder">
+                <span class="pname">Placeholder Project Name</span>
+                <span class="enddate">1/12/20</span>
+                <span class="status" id="status1">Not started</span>
+                <span class="priority" id="Low">Low Priority</span>
+            </div>
+
         </section>
     </section>
+
+
 </body>
 </html>
