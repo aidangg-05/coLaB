@@ -15,7 +15,7 @@
     <ul>
         <li><span class="material-symbols-outlined" onclick="window.location.href='index.php'" style="font-size: 20px">arrow_back</span></li>
         <li onclick="goProjects()">Projects</li>
-        <li style="background-color: white;color: black">Gnatt Chart</li>
+        <li style="background-color: white;color: black">Gantt Chart</li>
     </ul>
 </nav>
 <section class="mainbody">
@@ -37,7 +37,6 @@
     <button onclick="saveChart()">Save Chart</button>
 
 </section>
-
 
 <script>
     let rows;
@@ -163,19 +162,20 @@
             chartData.push(rowData);
         }
 
-        fetch(window.location.href, {
+        const formData = new FormData();
+        formData.append('chartData', JSON.stringify(chartData));
+
+        fetch('save_chart.php', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: 'chartData=' + JSON.stringify(chartData),
+            body: formData
         })
             .then(response => response.text())
             .then(data => console.log(data))
             .catch(error => console.error('Error:', error));
     }
-    function goProjects(){
-        window.location.href="projectpage.php"
+
+    function goProjects() {
+        window.location.href = "projectpage.php";
     }
 </script>
 </body>
