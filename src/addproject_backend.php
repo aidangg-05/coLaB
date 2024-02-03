@@ -21,6 +21,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $err1 = $err2 = $err3 = TRUE ;
 
+    if(isset($_POST['users'])) {
+        $users = $_POST['users'];
+    } else {
+        $users = "no other users";
+    }
+
     if ($project_name === ""){
         $errName = "*Name required";
     }
@@ -34,23 +40,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if ($project_des === ""){
-        $errDesc= "*Desc required";
+        $errDesc = "*Desc required";
+    }
+    if ($users === ""){
+        $errUsers = "*Email required";
     }
 
 
-    else {
+else {
 
-        if(isset($_POST['users'])) {
-            $users = $_POST['users'];
+    $users_array = explode(',', $users); //array of users
 
-            if($users === "") {
-                $errUsers = "*User's Email required";
-            } else {
-                $users_array = explode(',', $users); //array of users
-            }
-        } else {// if user never add any other users
-            $users = "no other users";
-        }
 
 
         //To check,if unable to insert into project_info

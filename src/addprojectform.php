@@ -51,8 +51,7 @@
 
             <div class="input_box" id="add_users_box">
                 <span class="input_text">Add Other Users:</span>
-
-                <span id="errmsg" style="color: red"><?php echo $errUsers?></span>
+                <span id="errmsg" class="error-text"><?php echo $errUsers?></span>
                 <span class="material-symbols-outlined" onclick="addTextInput()">add</span>
             </div>
 

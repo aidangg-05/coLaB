@@ -1,13 +1,13 @@
-body {
+body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
+    margin:0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     background-color: ghostwhite;
-}
 
+}
 form {
     width: 70%; /* width of form, adjust if needed */
     border: 1px solid #bebebe;
@@ -15,31 +15,29 @@ form {
     border-radius: 5px;
     background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
 
-section {
+}
+section{
     overflow-y: auto;
     height: 500px;
 }
-
-.input_box {
+.input_box{
     padding: 10px;
     display: flex;
     justify-content: center;
     flex-direction: column;
     row-gap: 5px;
 }
-
-.input_text {
+.input_text{
     font-size: large;
 }
 
 .desc_input, .enddate_input, .project_name_input, .startdate_input, .priority_input, .adduser_input, .user_input {
     font-size: 16px;
-    padding: 10px;
-}
+    padding:10px;
 
-h1 {
+}
+h1{
     text-align: center;
     background-color: #3498db;
     color: white;
@@ -48,35 +46,36 @@ h1 {
     margin: 10px 10px 10px;
 }
 
-.form_buttons {
+.form_buttons{
     display: flex;
     justify-content: space-between;
     margin: 5px 10px 10px;
-}
 
-.back {
+}
+.back{
     font-size: 15px;
-    width: 100px;
+    width:100px;
     padding: 10px;
     background-color: white;
     border-radius: 5px;
     font-weight: bold;
-    border: 3px solid #3498db;
+    border:3px solid #3498db;
 }
 
-.reset {
+.reset{
     font-size: 15px;
-    width: 100px;
+    width:100px;
     padding: 10px;
     background-color: white;
     border-radius: 5px;
     font-weight: bold;
     border: 3px solid #ff0000;
-}
 
-.submit {
+
+}
+.submit{
     font-size: 15px;
-    width: 100px;
+    width:100px;
     padding: 10px;
     background-color: white;
     border-radius: 5px;
@@ -84,37 +83,47 @@ h1 {
     border: 3px solid #04AA6D;
 }
 
-.back:hover {
+.back:hover{
     background-color: #3498db;
     color: white;
     transition: 0.5s;
 }
 
-.reset:hover {
+.reset:hover{
     background-color: #ff0000;
     color: white;
     transition: 0.5s;
-}
 
-.submit:hover {
+
+}
+.submit:hover{
     background-color: #04AA6D;
     color: white;
     transition: 0.5s;
 }
 
-.material-symbols-outlined {
+.material-symbols-outlined{
     cursor: pointer;
     font-size: 35px;
 }
-
 .add_user_input_box {
     padding-left: 10px;
     padding-top: 20px;
 }
 
 .user_input {
+    width: calc(100% - 100px); /* Adjust width for the delete button */
     font-size: 16px;
     padding: 10px;
+    margin-bottom: 10px;
+}
+
+.delete-button {
+    padding: 5px;
+    background-color: #ff0000;
+    color: #fff;
+    cursor: pointer;
+    margin-left: 10px;
 }
 
 .input-wrapper {
