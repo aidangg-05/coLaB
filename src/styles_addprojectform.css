@@ -31,7 +31,7 @@ section{
 .input_text{
     font-size: large;
 }
-.desc_input,.enddate_input,.project_name_input,.startdate_input,.priority_input,.adduser_input{
+.desc_input,.enddate_input,.project_name_input,.startdate_input,.priority_input,.adduser_input,.user_input{
     font-size: 16px;
     padding:10px;
 
@@ -100,6 +100,23 @@ h1{
     color: white;
     transition: 0.5s;
 }
-.priority_input{
 
+.material-symbols-outlined{
+    cursor: pointer;
+    font-size: 35px;
 }
+.add_user_input_box {
+    padding-left: 10px;
+    padding-top: 20px;
+}
+
+.user_input{
+    font-size: 16px;
+    padding: 10px;
+}
+.input-wrapper{
+    display: flex;
+    align-items: center;
+}
+
+

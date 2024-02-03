@@ -18,25 +18,25 @@
             <div class="input_box">
                 <span class="input_text">Project Name:</span>
                 <input type="text" class="project_name_input" placeholder="Your project name" name="name">
-                <span> <?php echo $errName?> </span>
+                <span style="color: red"> <?php echo $errName?> </span>
             </div>
 
             <div class="input_box">
                 <span class="input_text">Start Date:</span>
                 <input type="date" class="startdate_input" name="start">
-                <span> <?php echo $errStart?> </span>
+                <span style="color: red"> <?php echo $errStart?> </span>
             </div>
 
             <div class="input_box">
                 <span class="input_text">End Date:</span>
                 <input type="date" class="enddate_input" name="end">
-                <span> <?php echo $errEnd?> </span>
+                <span style="color: red"> <?php echo $errEnd?> </span>
             </div>
 
             <div class="input_box">
                 <span class="input_text">Project Description:</span>
                 <textarea placeholder="Input your project description here" class="desc_input" name="desc"></textarea>
-                <span> <?php echo $errDesc?> </span>
+                <span style="color: red"> <?php echo $errDesc?> </span>
             </div>
 
             <div class="input_box">
@@ -49,13 +49,11 @@
                 </select>
             </div>
 
-            <div class="input_box">
+            <div class="input_box" id="add_users_box">
                 <span class="input_text">Add Other Users:</span>
-                <input type="text" name="user1">
-                <input type="text" name="user2">
-                <input type="text" name="user3">
-                <span></span>
 
+                <span id="errmsg" style="color: red"><?php echo $errUsers?></span>
+                <span class="material-symbols-outlined" onclick="addTextInput()">add</span>
             </div>
 
         </section>

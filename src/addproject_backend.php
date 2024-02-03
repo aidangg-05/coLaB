@@ -9,8 +9,7 @@ if (!$userbase_db) {
 $user_id = $_SESSION['current_id'];
 
 $project_name = $start_date = $end_date = $project_des = $priority  = "";
-$user1 = $user2 = $user3 ="";
-$errName = $errStart = $errEnd = $errDesc = "";
+$errName = $errStart = $errEnd = $errDesc = $errUsers = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -19,28 +18,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $end_date = $_POST['end'];
     $project_des = $_POST['desc'];
     $priority = $_POST['priority'];
-    $user1 = $_POST['user1'];
-    $user2 = $_POST['user2'];
-    $user3 = $_POST['user3'];
+
     $err1 = $err2 = $err3 = TRUE ;
 
     if ($project_name === ""){
-        $errName = "Name required";
+        $errName = "*Name required";
     }
 
     if ($start_date === ""){
-        $errStart = "Start Date required";
+        $errStart = "*Start Date required";
     }
 
     if ($end_date === ""){
-        $errEnd = "End Date required";
+        $errEnd = "*End Date required";
     }
 
     if ($project_des === ""){
-        $errDesc= "Desc required";
+        $errDesc= "*Desc required";
     }
 
+
     else {
+
+        if(isset($_POST['users'])) {
+            $users = $_POST['users'];
+
+            if($users === "") {
+                $errUsers = "*User's Email required";
+            } else {
+                $users_array = explode(',', $users); //array of users
+            }
+        } else {// if user never add any other users
+            $users = "no other users";
+        }
+
 
         //To check,if unable to insert into project_info
         if ($userbase_db -> query("  
