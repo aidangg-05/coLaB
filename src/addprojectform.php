@@ -18,25 +18,25 @@
             <div class="input_box">
                 <span class="input_text">Project Name:</span>
                 <input type="text" class="project_name_input" placeholder="Your project name" name="name">
-                <span style="color: red"> <?php echo $errName?> </span>
+                <span class="error-text"><?php echo $errName ?>  &nbsp; </span>
             </div>
 
             <div class="input_box">
                 <span class="input_text">Start Date:</span>
                 <input type="date" class="startdate_input" name="start">
-                <span style="color: red"> <?php echo $errStart?> </span>
+                <span class="error-text"> <?php echo $errStart?> &nbsp; </span>
             </div>
 
             <div class="input_box">
                 <span class="input_text">End Date:</span>
                 <input type="date" class="enddate_input" name="end">
-                <span style="color: red"> <?php echo $errEnd?> </span>
+                <span class="error-text"> <?php echo $errEnd?> &nbsp; </span>
             </div>
 
             <div class="input_box">
                 <span class="input_text">Project Description:</span>
                 <textarea placeholder="Input your project description here" class="desc_input" name="desc"></textarea>
-                <span style="color: red"> <?php echo $errDesc?> </span>
+                <span class="error-text"> <?php echo $errDesc?> &nbsp; </span>
             </div>
 
             <div class="input_box">
