@@ -58,11 +58,13 @@ body {
 }
 
 .left {
-    margin-right: 60px;
+    margin-right: 10px;
+    width: 350px;
 }
 
 .right {
-    margin-left: 60px;
+    margin-left: 10px;
+    width: 350px;
 }
 
 .name {
@@ -135,6 +137,6 @@ body {
     border-radius: 4px;
 }
 
-#donate:hover {
-    background-color: #2980b9;
-}
+    #donate:hover {
+        background-color: #2980b9;
+    }
