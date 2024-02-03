@@ -18,15 +18,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $status = $_POST['status'];
 
     if ($task_name === ""){
-        $errName = "Task name cannot be empty";
+        $errName = "*Task name cannot be empty";
     }
 
     if ($assign === ""){
-        $errAssign = "Cannot be empty";
+        $errAssign = "*Cannot be empty";
     }
 
     if ($due === ""){
-        $errAssign = "Due start cannot be empty";
+        $errAssign = "*Due start cannot be empty";
     }
 
     else {
