@@ -23,7 +23,7 @@
         </p>
 
         <form method="post">
-            <label for="name">name:</label>
+            <label for="name">Name:</label>
             <input type="text" id="name" name="name" value="<?php echo $name ?>">
             <span class="error-text">  <?php echo $errName ?>  &nbsp; </span>
 
