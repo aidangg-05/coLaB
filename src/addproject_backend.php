@@ -77,14 +77,14 @@ else {
                                               PRIMARY KEY (`task_id`));
                                             ") === TRUE){ $err2 = FALSE; }
         else{
-                $errEnd= "Unable to create table";
+                $errEnd= "*Unable to create table";
             }
 
         //Insert to user project_info
         $user_table = "user_".$user_id."_table";
         if ($userbase_db -> query("INSERT INTO `$user_table`  (project_id,permission) VALUES($project_id,1)") === TRUE){ $err3 = FALSE; }
         else {
-            $errDesc= "Unable to insert into user_table";
+            $errDesc= "*Unable to insert into user_table";
         }
 
         if ($err1 == FALSE && $err2 == FALSE && $err3 == FALSE){
