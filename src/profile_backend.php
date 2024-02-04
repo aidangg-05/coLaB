@@ -24,7 +24,7 @@ $email = $results['email'];
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $new_name = trim($_POST['name']);
-    $new_email = trim($_POST['email']);
+    $new_email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
 
     if ($new_name==="") {
         $errName = "*Name required";
@@ -40,6 +40,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     else
     {
+            $new_name = filter_var($new_name, FILTER_SANITIZE_STRING);
+
             $pull_new_email = "SELECT * FROM user_table WHERE email='$new_email'";
             $new_email_result = mysqli_query($userbase_db, $pull_new_email);
 
