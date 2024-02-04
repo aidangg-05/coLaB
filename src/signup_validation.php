@@ -14,22 +14,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (empty($_POST["email"]))
     {
-        $errEmail = "Email required";
+        $errEmail = "*Email required";
+    } else {
+        $email = $_POST['email'];
+
+        $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+
+        if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+            $errEmail = "*Invalid email";
+        }
     }
 
-    else if (preg_match($regex, $_POST["email"]) === 0)
-    {
-        $errEmail = "*Invalid email";
-    }
-
-    if (empty($_POST["name"]))
-    {
-        $errName = "Name required";
+    if (empty($_POST["name"])) {
+        $errName = "*Name required";
+    } else {
+        $name = $_POST['name'];
+        $name = filter_var($name, FILTER_SANITIZE_STRING);
     }
 
     if (empty($_POST["password"]))
     {
-        $errPassword = "Password required";
+        $errPassword = "*Password required";
     }
 
     else            //When all input valid
@@ -42,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (mysqli_num_rows($row_result) == 1) {        //When email already has account
 
-            $errEmail = "Account already exist";
+            $errEmail = "*Account already exist";
 
         } else {
 
