@@ -10,32 +10,34 @@ $errName = $errAssign = $errDue = "";
 $project_id = $_SESSION['project_id'];
 echo $project_id;
 
+$project_task_name = "project_".$project_id."_tasks";
+$projects_task_result = mysqli_query($userbase_db, "SELECT * FROM `$project_task_name` ");
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $task_name = $_POST['name'];
-    $assign= $_POST['assign'];
+    $assign = $_POST['assign'];
     $due = $_POST['due_date'];
     $status = $_POST['status'];
 
-    if ($task_name === ""){
-        $errName = "*Task name cannot be empty";
+    if ($task_name === "") {
+        $errName = "Task name cannot be empty";
     }
 
-    if ($assign === ""){
-        $errAssign = "*Cannot be empty";
+    if ($assign === "") {
+        $errAssign = "Cannot be empty";
     }
 
-    if ($due === ""){
-        $errAssign = "*Due start cannot be empty";
+    if ($due === "") {
+        $errDue = "Due start cannot be empty";
+    } else {
+        $project_task_name = "project_" . $project_id . "_tasks";
+        if ($userbase_db->query("  
+                                        INSERT INTO `$project_task_name` (task,assignee,status,due_date)
+                                        VALUES ('$task_name', '$assign', '$status', '$due' )") === TRUE) {
+        } else {
+            $errName = "Unable to insert into to project task";
+        }
     }
-
-    else {
-
-    }
-
-
-
-
-
-
 }

@@ -147,19 +147,22 @@
 </div>
 
 <div class="popup-form" id="taskForm">
-    <form id="addTaskForm" onsubmit="addTask(); return false;">
+    <form id="addTaskForm" method="post" >
         <label for="taskName">Task Name:</label>
-        <input type="text" id="taskName" required>
+        <input type="text" id="taskName" name="name">
+        <span> </span>
 
         <label for="dueDate">Due Date:</label>
-        <input type="date" id="dueDate" required>
+        <input type="date" id="dueDate" name="due_date">
+        <span> </span>
 
         <label for="assignee">Assignee:</label>
-        <input type="text" id="assignee" required>
+        <input type="text" id="assignee" name="assign">
+        <span> </span>
 
         <label for="status">Status:</label>
-        <select id="status" required>
-            <option value="Not Started">Not Started</option>
+        <select id="status" name="status">
+            <option value="Not Started" selected>Not Started</option>
             <option value="In Progress">In Progress</option>
             <option value="Finished">Finished</option>
         </select>
@@ -180,6 +183,34 @@
     </tr>
     </thead>
     <tbody id="taskList">
+    <?php
+    $i = 0;
+    while ($row = mysqli_fetch_assoc($projects_task_result)) {
+
+        $task_id = $row['task_id'];
+        $task = $row['task'];
+        $assignee = $row['assignee'];
+        $status = $row['status'];
+        $due = $row['due_date'];
+        $dateObject = new DateTime($due);
+        $formattedDate = $dateObject->format('d-m-Y');
+
+    ?>
+
+        <tr>
+            <td><?php echo $task?></td>
+            <td><?php echo $formattedDate?> </td>
+            <td><?php echo $assignee?></td>
+            <td>
+                <select>
+                <option value="Not Started" <?php if ($status ==="Not Started"): ?> selected <?php endif ?>>Not Started</option>
+                <option value="In Progress" <?php if ($status ==="In Progress"): ?> selected <?php endif ?> >In Progress</option>
+                <option value="Finished" <?php if ($status ==="Finished"): ?> selected <?php endif ?>>Finished</option>
+                </select>
+                </td>
+        </tr>
+    <?php $i++;}?>
+
     <!-- Task rows will be dynamically added here -->
     </tbody>
 </table>
