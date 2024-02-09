@@ -23,7 +23,6 @@
             <span class="material-symbols-outlined" style="font-size: 35px" onclick="goabout()">help</span>
             <span class="material-symbols-outlined" style="font-size: 35px" onclick="togglePopup()" >notifications</span>
             <span class="material-symbols-outlined" style="font-size: 35px" onclick="goprofile()">account_circle</span>
-
         </span>
     </section>
 
@@ -81,44 +80,42 @@
             <span class="material-symbols-outlined" id="addbtn">add</span>
             <span>Add Project </span>
         </button>
+
         <section class="scroll-container">
-
             <?php
-            $i = 0;
-            while ($row = mysqli_fetch_assoc($user_projects_result)){  //Display list of project id
+                while ($projectid_result = mysqli_fetch_assoc($pull_projectid)) {
+                    foreach ($projectid_result as $project_id) {   //Each individual project_id
 
-                $project_id = $row['project_id'];
-                $projects_result = mysqli_query($userbase_db, "SELECT * FROM project_info WHERE project_id = $project_id ");
-                $projects_info = mysqli_fetch_assoc($projects_result); //That project information, in array
-                $project_name = $projects_info['project_name'];
-                $project_end = $projects_info['end_date'];
+                        $pull_each_project = mysqli_query($userbase_db, "SELECT * FROM project_info WHERE project_id = '$project_id'");
+                        $each_project = mysqli_fetch_assoc($pull_each_project);
+                        $project_name =$each_project['project_name'];
 
-                $dateObject = new DateTime($project_end);
-                $formattedDate = $dateObject->format('d-m-Y');
+                        $project_end = $each_project['end_date'];                   //Format the date
+                        $dateObject = new DateTime($project_end);
+                        $formattedDate = $dateObject->format('d-m-Y');
 
-                $project_status = $projects_info['status'];
+                        $project_status = $each_project['status'];     //For CSS part
+                        if ($project_status === "Not started") {
+                            $project_status_id = "Not_started";
+                        } else {
+                            $project_status_id = $project_status;
+                        }
 
-                if ($project_status === "Not started"){
-                    $project_status_id = "Not_started";
-                }
-                else {
-                    $project_status_id =  $project_status;
-                }
-                $project_priority = $projects_info['priority'];
+                        $project_priority = $each_project['priority'];
+                    }
+            ?>
+            <div class="projectrow" onclick="window.location.href='projectpage.php'">
+                <span class="pname"><?php echo $project_name?></span>
+                <span class="enddate"><?php echo $formattedDate?> </span>
+                <span class="status" id="<?php echo $project_status_id?>"><?php echo $project_status?></span>
+                <span class="priority" id="<?php echo $project_priority?>"><?php echo $project_priority?> Priority</span>
+            </div>
+            <?php }?>
 
-                ?>
-
-                <div class="projectrow" onclick="window.location.href='projectpage.php'">
-                    <span class="pname"><?php echo $project_name?></span>
-                    <span class="enddate"><?php echo $formattedDate?> </span>
-                    <span class="status" id="<?php echo $project_status_id?>"><?php echo $project_status?></span>
-                    <span class="priority" id="<?php echo $project_priority?>"><?php echo $project_priority?> Priority</span>
-                </div>
-
-            <?php $i++; }?>
         </section>
     </section>
 
 
 </body>
 </html>
+

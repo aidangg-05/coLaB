@@ -10,7 +10,7 @@ function addTextInput() {
     var input = document.createElement("input");
     input.type = "text";
     input.placeholder = "Enter user's Email";
-    input.name = "users";
+    input.name = "users[]";
     input.className = "user_input";
     input.style.fontSize = "16px";
     input.style.padding = "10px";
