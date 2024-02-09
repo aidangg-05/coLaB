@@ -12,6 +12,17 @@ $project_id = $_COOKIE['current_project'];
 //Pull task for current project
 $tasks_result = mysqli_query($userbase_db, "SELECT * FROM task_table WHERE project_id='$project_id' ");
 
+
+/*
+//Pull list of members for this project
+$members_result =  mysqli_query($userbase_db, "SELECT member FROM project_members WHERE project_id='$project_id'");
+while ($members_row = mysqli_fetch_assoc($members_result)){
+    foreach ($members_row as $member){
+        echo $member;
+    }
+}
+*/
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $task_name = $_POST['name'];
     $assign = $_POST['assign'];
@@ -35,6 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //Insert into table
         if ($userbase_db->query("INSERT INTO task_table(project_id,task_name,assignee,start_date,due_date,status)
                                         VALUES ('$project_id','$task_name', '$assign', '$start', '$due','$status' )") === TRUE) {
+
         } else {
             $errName = "Unable to insert task into project";
         }

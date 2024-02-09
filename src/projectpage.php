@@ -192,7 +192,6 @@
             $due = $task['due_date'];
             $dateObject = new DateTime($due);
             $formattedDate = $dateObject->format('d-m-Y'); ?>
-
             <tr>
                 <td id="task_name"><?php echo $task_name?></td>
                 <td id="end_date"><?php echo $formattedDate?> </td>
