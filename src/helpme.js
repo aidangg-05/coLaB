@@ -45,3 +45,23 @@ document.querySelector("#popup1").onclick = function() {
         }
     }
 };
+
+function closePopup() {
+    const popup = document.getElementById('notificationPopup');
+    const overlay = document.getElementById('overlay');
+
+    popup.style.display = 'none';
+    overlay.style.display = 'none';
+}
+function goprofile(){
+    window.location.href="profile.php";
+}
+function goabout(){
+    window.location.href="about.php"
+}
+function addproject(){
+    window.location.href="addprojectform.php"
+}
+function gocontactus(){
+    window.location.href="contactus.php"
+}

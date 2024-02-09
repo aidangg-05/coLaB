@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="helpme.css">
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 
 </head>
@@ -13,11 +14,13 @@
 <div class ="navbar">
     <ul>
         <div class="navlinks">
-            <li><a href="contactus.html">Contact Us</a></li>
+            <li><a href="#" onclick="goabout() " >About</a></li>
             <li><p class="dot">•</p></li>
-            <li><a href="locations.html">Locations</a></li>
+            <li><a href="#" onclick="gocontactus() " >Contact Us</a></li>
             <li><p class="dot">•</p></li>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="#" onclick="goprofile()" >Profile</a></li>
+            <li><p class="dot">•</p></li>
+            <li><a href="#" onclick="togglePopup()" >Notifications</a></li>
         </div>
         <li>
             <button id="button"><img class="hamburger" src="images/burger.png"/></button>
@@ -29,7 +32,6 @@
         </li>
     </ul>
 </div>
-
 <div class="overlay" id="overlay"></div>
 <div class="popup" id="notificationPopup">
     <div class="popup-header">
@@ -46,6 +48,8 @@
         </ul>
     </div>
 </div>
+
+
 <script src="helpme.js"></script>
 </body>
 </html>
