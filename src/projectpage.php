@@ -194,8 +194,8 @@
             $formattedDate = $dateObject->format('d-m-Y'); ?>
 
             <tr>
-                <td><?php echo $task_name?></td>
-                <td><?php echo $formattedDate?> </td>
+                <td id="task_name"><?php echo $task_name?></td>
+                <td id="end_date"><?php echo $formattedDate?> </td>
                 <td><?php echo $assignee?></td>
                 <td>
                     <select>
@@ -265,7 +265,7 @@
     }
 
     function goGanttchart(){
-        window.location.href="gantt.php";
+        window.location.href="gantt_V2.php";
     }
 </script>
 </body>
