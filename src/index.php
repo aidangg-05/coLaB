@@ -12,6 +12,7 @@
     <!--Bookstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="script.js" type="text/javascript"></script>
     <title>Main Page</title>
 </head>
 <body>
@@ -102,15 +103,16 @@
                     }
 
                     $project_priority = $each_project['priority'];
-                    $_SESSION['project_id'] = $project_id;
                 }
                 ?>
-                <div class="projectrow" onclick="window.location.href='projectpage.php'">
-                    <span class="pname"><?php echo $project_name?></span>
+                <form onclick="toProjectPage(event)" id="<?php echo $project_id?>">
+                <div class="projectrow">
+                    <span class="pname" ><?php echo $project_name?></span>
                     <span class="enddate"><?php echo $formattedDate?> </span>
                     <span class="status" id="<?php echo $project_status_id?>"><?php echo $project_status?></span>
                     <span class="priority" id="<?php echo $project_priority?>"><?php echo $project_priority?> Priority</span>
                 </div>
+                </form>
             <?php }?>
 
         </section>

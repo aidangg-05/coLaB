@@ -94,3 +94,12 @@ function getPriorityOrder(priority) {
     }
 }
 
+//For index.php, set the current project to cookies
+function toProjectPage(event){
+    this_form = event.target.closest('form');
+    project_id = this_form.getAttribute('id');
+    document.cookie ="current_project="+project_id;
+    event.preventDefault();
+    window.location.href='projectpage.php'
+}
+
