@@ -45,24 +45,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errName = "*Name required";
     }
 
-    if ($start_date === "") {
+    else if ($start_date === "") {
         $errStart = "*Start Date required";
     }
 
-    if ($end_date === "") {
+    else if ($end_date === "") {
         $errEnd = "*End Date required";
     }
 
-    if ($project_des === "") {
+    else if (strtotime($start_date) > strtotime($end_date)) {
+        $errStart = "*Start Date cannot be after End Date";
+    }
+
+    else if ($project_des === "") {
         $errDesc = "*Desc required";
     }
 
     else {
 
         //Insert into project_info table
-        if ($userbase_db->query("  
-                                        INSERT INTO project_info (project_name,start_date,end_date,status,priority,creator,project_des)
-                                        VALUES ('$project_name', '$start_date', '$end_date', 'Not started' , '$priority', '$user_id' , '$project_des' )") === TRUE) {
+        if ($userbase_db->query("
+            INSERT INTO project_info (project_name,start_date,end_date,status,priority,creator,project_des)
+            VALUES ('$project_name', '$start_date', '$end_date', 'Not started' , '$priority', '$user_id' , '$project_des' )") === TRUE) {
 
             //Pull project_id from project_info table
             $pull_projectid = mysqli_query($userbase_db, "SELECT * FROM project_info WHERE project_name='$project_name' AND start_date='$start_date' AND end_date = '$end_date'
