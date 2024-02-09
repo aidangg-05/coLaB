@@ -83,33 +83,34 @@
 
         <section class="scroll-container">
             <?php
-                while ($projectid_result = mysqli_fetch_assoc($pull_projectid)) {
-                    foreach ($projectid_result as $project_id) {   //Each individual project_id
+            while ($projectid_result = mysqli_fetch_assoc($pull_projectid)) {
+                foreach ($projectid_result as $project_id) {   //Each individual project_id
 
-                        $pull_each_project = mysqli_query($userbase_db, "SELECT * FROM project_info WHERE project_id = '$project_id'");
-                        $each_project = mysqli_fetch_assoc($pull_each_project);
-                        $project_name =$each_project['project_name'];
+                    $pull_each_project = mysqli_query($userbase_db, "SELECT * FROM project_info WHERE project_id = '$project_id'");  //Fetch info for each project
+                    $each_project = mysqli_fetch_assoc($pull_each_project);
+                    $project_name =$each_project['project_name'];
 
-                        $project_end = $each_project['end_date'];                   //Format the date
-                        $dateObject = new DateTime($project_end);
-                        $formattedDate = $dateObject->format('d-m-Y');
+                    $project_end = $each_project['end_date'];                   //Format the date
+                    $dateObject = new DateTime($project_end);
+                    $formattedDate = $dateObject->format('d-m-Y');
 
-                        $project_status = $each_project['status'];     //For CSS part
-                        if ($project_status === "Not started") {
-                            $project_status_id = "Not_started";
-                        } else {
-                            $project_status_id = $project_status;
-                        }
-
-                        $project_priority = $each_project['priority'];
+                    $project_status = $each_project['status'];     //For CSS part
+                    if ($project_status === "Not started") {
+                        $project_status_id = "Not_started";
+                    } else {
+                        $project_status_id = $project_status;
                     }
-            ?>
-            <div class="projectrow" onclick="window.location.href='projectpage.php'">
-                <span class="pname"><?php echo $project_name?></span>
-                <span class="enddate"><?php echo $formattedDate?> </span>
-                <span class="status" id="<?php echo $project_status_id?>"><?php echo $project_status?></span>
-                <span class="priority" id="<?php echo $project_priority?>"><?php echo $project_priority?> Priority</span>
-            </div>
+
+                    $project_priority = $each_project['priority'];
+                    $_SESSION['project_id'] = $project_id;
+                }
+                ?>
+                <div class="projectrow" onclick="window.location.href='projectpage.php'">
+                    <span class="pname"><?php echo $project_name?></span>
+                    <span class="enddate"><?php echo $formattedDate?> </span>
+                    <span class="status" id="<?php echo $project_status_id?>"><?php echo $project_status?></span>
+                    <span class="priority" id="<?php echo $project_priority?>"><?php echo $project_priority?> Priority</span>
+                </div>
             <?php }?>
 
         </section>

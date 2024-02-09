@@ -10,6 +10,7 @@ $current_email = getEmail($userbase_db, $user_id);
 
 $project_name = $start_date = $end_date = $project_des = $priority  = "";
 $errName = $errStart = $errEnd = $errDesc = $errUsers = "";
+$err1 = $err2 = TRUE;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
