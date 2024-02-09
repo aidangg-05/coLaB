@@ -236,4 +236,11 @@ body {
 
 }
 
+.orange-notification {
+    color: orange !important;
+}
 
+.red-notification {
+    color: red !important;
+    font-weight: bold !important;
+}
