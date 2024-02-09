@@ -147,7 +147,7 @@
 </div>
 
 <div class="popup-form" id="taskForm">
-    <form id="addTaskForm" method="post" >
+    <form id="addTaskForm" method="post">
         <label for="taskName">Task Name:</label>
         <input type="text" id="taskName" name="name">
         <span> </span>
@@ -172,7 +172,6 @@
 </div>
 
 <div class="overlay" id="overlay" onclick="hidePopup()"></div>
-
 <table id="taskTable">
     <thead>
     <tr>
@@ -183,35 +182,31 @@
     </tr>
     </thead>
     <tbody id="taskList">
-    <?php
-    $i = 0;
-    while ($row = mysqli_fetch_assoc($projects_task_result)) {
+        <?php
 
-        $task_id = $row['task_id'];
-        $task = $row['task'];
-        $assignee = $row['assignee'];
-        $status = $row['status'];
-        $due = $row['due_date'];
-        $dateObject = new DateTime($due);
-        $formattedDate = $dateObject->format('d-m-Y');
+        while ($task = mysqli_fetch_assoc($tasks_result)){
 
-    ?>
+            $task_name = $task['task_name'];
+            $assignee = $task['assignee'];
+            $status = $task['status'];
+            $due = $task['due_date'];
+            $dateObject = new DateTime($due);
+            $formattedDate = $dateObject->format('d-m-Y'); ?>
 
-        <tr>
-            <td><?php echo $task?></td>
-            <td><?php echo $formattedDate?> </td>
-            <td><?php echo $assignee?></td>
-            <td>
-                <select>
-                <option value="Not Started" <?php if ($status ==="Not Started"): ?> selected <?php endif ?>>Not Started</option>
-                <option value="In Progress" <?php if ($status ==="In Progress"): ?> selected <?php endif ?> >In Progress</option>
-                <option value="Finished" <?php if ($status ==="Finished"): ?> selected <?php endif ?>>Finished</option>
-                </select>
+            <tr>
+                <td id="task_name"><?php echo $task_name?></td>
+                <td id="end_date"><?php echo $formattedDate?> </td>
+                <td><?php echo $assignee?></td>
+                <td>
+                    <select>
+                        <option value="Not Started" <?php if ($status ==="Not Started"): ?> selected <?php endif ?>>Not Started</option>
+                        <option value="In Progress" <?php if ($status ==="In Progress"): ?> selected <?php endif ?> >In Progress</option>
+                        <option value="Finished" <?php if ($status ==="Finished"): ?> selected <?php endif ?>>Finished</option>
+                    </select>
                 </td>
-        </tr>
-    <?php $i++;}?>
-
-    <!-- Task rows will be dynamically added here -->
+            </tr>
+            <?php }?>
+        <!-- Task rows will be dynamically added here -->
     </tbody>
 </table>
 
@@ -270,7 +265,7 @@
     }
 
     function goGanttchart(){
-        window.location.href="gantt.php";
+        window.location.href="gantt_V2.php";
     }
 </script>
 </body>

@@ -7,17 +7,16 @@ if (!$userbase_db) {
 }
 
 $errName = $errAssign = $errDue = "";
-$project_id = $_SESSION['project_id'];
+$project_id = $_COOKIE['current_project'];
 
-$project_task_name = "project_".$project_id."_tasks";
-$projects_task_result = mysqli_query($userbase_db, "SELECT * FROM `$project_task_name` ");
-
+//Pull task for current project
+$tasks_result = mysqli_query($userbase_db, "SELECT * FROM task_table WHERE project_id='$project_id' ");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
     $task_name = $_POST['name'];
     $assign = $_POST['assign'];
     $due = $_POST['due_date'];
+    $start = "testfirst";
     $status = $_POST['status'];
 
     if ($task_name === "") {
@@ -30,13 +29,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($due === "") {
         $errDue = "Due start cannot be empty";
-    } else {
-        $project_task_name = "project_" . $project_id . "_tasks";
-        if ($userbase_db->query("  
-                                        INSERT INTO `$project_task_name` (task,assignee,status,due_date)
-                                        VALUES ('$task_name', '$assign', '$status', '$due' )") === TRUE) {
+    }
+
+    else {
+        //Insert into table
+        if ($userbase_db->query("INSERT INTO task_table(project_id,task_name,assignee,start_date,due_date,status)
+                                        VALUES ('$project_id','$task_name', '$assign', '$start', '$due','$status' )") === TRUE) {
         } else {
-            $errName = "Unable to insert into to project task";
+            $errName = "Unable to insert task into project";
         }
     }
 }
