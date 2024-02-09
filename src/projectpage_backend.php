@@ -8,7 +8,6 @@ if (!$userbase_db) {
 
 $errName = $errAssign = $errDue = "";
 $project_id = $_SESSION['project_id'];
-echo $project_id;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
