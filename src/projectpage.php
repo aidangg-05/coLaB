@@ -84,6 +84,15 @@
         cursor: pointer;
     }
 
+    input[type="button"] {
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
     input[type="submit"]:hover {
         background-color: #2980b9;
     }
@@ -134,35 +143,46 @@
     <table >
         <tr>
             <td style="border: none;padding: 5px"><span class="project">Project Name:</span></td>
-            <td style="border: none;padding: 5px"><span>placeholder</span></td>
+            <td style="border: none;padding: 5px"><span><?php echo $project_name?></span></td>
         </tr>
         <tr>
             <td style="border: none;padding: 5px"><span class="project">Project Description:</span></td>
-            <td style="border: none;padding: 5px"><span>placeholder</span></td>
+            <td style="border: none;padding: 5px"><span><?php echo $project_des?></span></td>
         </tr>
         <tr>
             <td style="border: none;padding: 5px"><span class="project">Start Date:</span></td>
-            <td style="border: none;padding: 5px"><span>placeholder</span></td>
+            <td style="border: none;padding: 5px"><span><?php echo $project_start?></span></td>
         </tr>
         <tr>
             <td style="border: none;padding: 5px"><span class="project">End Date:</span></td>
-            <td style="border: none;padding: 5px"><span>placeholder</span></td>
+            <td style="border: none;padding: 5px"><span><?php echo $project_due?></span></td>
         </tr>
         <tr>
-            <td style="border: none;padding: 5px"><span class="project">Assignees:</span></td>
-            <td style="border: none;padding: 5px"><span>placeholder</span></td>
+            <td style="border: none;padding: 5px"><span class="project">Members:</span></td>
+            <?php
+            while ($members_row = mysqli_fetch_assoc($members_result)){
+            foreach ($members_row as $member){
+                    $member_email = getEmail($userbase_db,$member)
+                ?>
+            <td style="border: none;padding: 5px"><span><?php echo $member_email?></span></td>
+            <?php }} ?>
         </tr>
         <tr>
             <td style="border: none;padding: 5px"><span class="project">Priority:</span></td>
-            <td style="border: none;padding: 5px"><span>placeholder</span></td>
+            <td style="border: none;padding: 5px"><span><?php echo $project_priority?></span></td>
         </tr>
         <tr>
             <td style="border: none;padding: 5px"><span class="project">Status:</span></td>
-            <td style="border: none;padding: 5px"><span>placeholder</span></td>
+            <td style="border: none;padding: 5px"><span><?php echo $project_status?></span></td>
         </tr>
     </table>
-    <button style="background-color: forestgreen" onclick="showModifyPopup()">Modify</button>
-    <button style="background-color: red">Delete Project</button>
+    <br>
+    <form>
+        <button style="background-color: forestgreen" onclick="showModifyPopup()">Modify</button>
+    </form>
+    <form method="post">
+        <button style="background-color: red" name='delete' type="submit">Delete Project</button>
+    </form>
 </div>
 
 <div class="overlay" id="overlayProjectDetails" onclick="hideProjectDetailsPopup()"></div>
@@ -200,13 +220,11 @@
             <option>Completed</option>
         </select>
 
-
         <input type="submit" value="Modify Project">
     </form>
 </div>
 
 <div class="overlay" id="overlayModify" onclick="hideModifyPopup()"></div>
-
 
 <div class="popup-form" id="taskForm">
     <form id="addTaskForm" method="post">
@@ -229,7 +247,7 @@
             <option value="Finished">Finished</option>
         </select>
 
-        <input type="submit" value="Add Task">
+        <input type="submit" name="AddTask">
     </form>
 </div>
 
@@ -255,8 +273,8 @@
             $dateObject = new DateTime($due);
             $formattedDate = $dateObject->format('d-m-Y'); ?>
             <tr>
-                <td id="task_name"><?php echo $task_name?></td>
-                <td id="end_date"><?php echo $formattedDate?> </td>
+                <td><?php echo $task_name?></td>
+                <td><?php echo $formattedDate?> </td>
                 <td><?php echo $assignee?></td>
                 <td>
                     <select>
