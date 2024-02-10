@@ -211,34 +211,28 @@
 
     while ($task = mysqli_fetch_assoc($tasks_result)){
 
-    $task_name = $task['task_name'];
-    $assignee = $task['assignee'];
-    $status = $task['status'];
-    $due = $task['due_date'];
-    $dateObject = new DateTime($due);
-    $formattedDate = $dateObject->format('d-m-Y'); ?>
+        $task_name = $task['task_name'];
+        $assignee = $task['assignee'];
+        $status = $task['status'];
+        $due = $task['due_date'];
+        $dateObject = new DateTime($due);
+        $formattedDate = $dateObject->format('d-m-Y'); ?>
 
-    <tr>
-        <td><?php echo $task_name?></td>
-        <td><?php echo $formattedDate?> </td>
-        <td><?php echo $assignee?></td>
-        <td>
-            <select disabled>
-                <option value="Not Started" <?php if ($status ==="Not Started"): ?> selected <?php endif ?>>Not Started</option>
-                <option value="In Progress" <?php if ($status ==="In Progress"): ?> selected <?php endif ?> >In Progress</option>
-                <option value="Finished" <?php if ($status ==="Finished"): ?> selected <?php endif ?>>Finished</option>
-            </select>
-        </td>
-        <td>
-            <button class="options-button">
-                <span class="material-symbols-outlined">more_vert</span>
-            </button>
-            <div class="options">
-                <button class="delete-option">Delete</button>
-                <button class="subtask-option">Subtask</button>
-            </div>
-        </td>
-    </tr>
+        <tr>
+            <td><?php echo $task_name?></td>
+            <td><?php echo $formattedDate?> </td>
+            <td><?php echo $assignee?></td>
+            <td><?php echo $status?></td> <!-- Updated this line to display status as text -->
+            <td>
+                <button class="options-button">
+                    <span class="material-symbols-outlined">more_vert</span>
+                </button>
+                <div class="options">
+                    <button class="delete-option">Delete</button>
+                    <button class="subtask-option">Subtask</button>
+                </div>
+            </td>
+        </tr>
     <?php }?>
     <!-- Task rows will be dynamically added here -->
     </tbody>
@@ -298,21 +292,8 @@
         cell2.innerHTML = dueDate;
         cell3.innerHTML = assignee;
 
-        const statusValue = status.value;
-        const statusDropdown = document.createElement('select');
-        statusDropdown.innerHTML = `
-            <option value="Not Started">Not Started</option>
-            <option value="In Progress">In Progress</option>
-            <option value="Finished">Finished</option>
-        `;
-        statusDropdown.value = statusValue;
-
-        statusDropdown.addEventListener('change', function () {
-            status.value = this.value;
-        });
-
-        cell4.innerHTML = '';
-        cell4.appendChild(statusDropdown);
+        // Display status as text
+        cell4.innerHTML = status.value;
 
         hidePopup();
     }
@@ -341,9 +322,6 @@
         // Clear the subtask form
         document.getElementById('subtaskForm').reset();
         document.getElementById('subtaskForm').style.display = 'none'; // Hide subtask form
-
-        // Hide the popup
-
     }
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -362,6 +340,14 @@
                 showSubtaskForm(); // Call the showSubtaskForm function
                 event.stopPropagation(); // Prevent the click event from bubbling
             });
+
+            // Add event listener for the "Delete" button inside the options menu
+            const deleteButton = button.nextElementSibling.querySelector('.delete-option');
+            deleteButton.addEventListener('click', function(event) {
+                const row = button.closest('tr'); // Find the parent row of the button
+                row.remove(); // Remove the row from the table
+                event.stopPropagation(); // Prevent the click event from bubbling
+            });
         });
 
         document.addEventListener('click', function(event) {
@@ -373,7 +359,7 @@
             });
         });
     });
-
 </script>
+
 </body>
 </html>
