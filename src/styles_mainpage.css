@@ -109,7 +109,6 @@ body {
 #notificationPopup {
     display: none;
 }
-
 /*---------------------------------------------------*/
 .headings{
     border-bottom:2px solid rgba(0, 0, 0, 0.2);
@@ -160,7 +159,7 @@ body {
     transition: 0.5s;
 }
 .projectrow{
-
+    position: relative; /* Set the project row as relative */
     display: table;
     border: 1px solid black;
     margin-top: 5px;
@@ -244,3 +243,8 @@ body {
     color: red !important;
     font-weight: bold !important;
 }
+
+.delete-button-container{
+    margin-top: 5px;
+}
+
