@@ -289,6 +289,7 @@
                     <div class="options">
                         <button class="delete-option">Delete</button>
                         <button class="subtask-option">Subtask</button>
+                        <button class="edittask-option">Edit Task</button>
                     </div>
                 </td>
             </tr>
@@ -309,14 +310,105 @@
     </form>
 </div>
 
+<div class="popup-form" id="editTaskForm" style="display: none;">
+    <form id="editTaskForm" method="post">
+        <label for="editTaskName">Task Name:</label>
+        <input type="text" id="editTaskName" name="editTaskName">
+
+        <label for="editDueDate">Due Date:</label>
+        <input type="date" id="editDueDate" name="editDueDate">
+
+        <label for="editAssignee">Assignee:</label>
+        <input type="text" id="editAssignee" name="editAssignee">
+
+        <label for="editStatus">Status:</label>
+        <select id="editStatus" name="editStatus">
+            <option value="Not Started">Not Started</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Finished">Finished</option>
+        </select>
+
+        <button type="button" onclick="hidePopup3()">Add Subtask</button>
+    </form>
+</div>
+
 <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const optionsMenus = document.querySelectorAll('.options');
+
+        optionsMenus.forEach(menu => {
+            menu.style.display = 'none'; // Hide all options menus by default
+        });
+
+        const optionsButtons = document.querySelectorAll('.options-button');
+
+        optionsButtons.forEach(button => {
+            button.addEventListener('click', function(event) {
+                const optionsMenu = button.nextElementSibling;
+                optionsMenu.style.display = optionsMenu.style.display === 'block' ? 'none' : 'block';
+                event.stopPropagation();
+            });
+
+            // Add event listener for the "Subtask" button inside the options menu
+            const subtaskButton = button.nextElementSibling.querySelector('.subtask-option');
+            subtaskButton.addEventListener('click', function(event) {
+                showSubtaskForm(); // Call the showSubtaskForm function
+                event.stopPropagation(); // Prevent the click event from bubbling
+            });
+
+            const editTaskButton = button.nextElementSibling.querySelector('.edittask-option');
+            editTaskButton.addEventListener('click', function(event) {
+                const row = button.closest('tr'); // Find the parent row of the button
+                populateEditForm(row); // Populate the edit form fields with data from the selected row
+                showPopup3(); // Show the edit task form
+                event.stopPropagation(); // Prevent the click event from bubbling
+            });
+
+            // Add event listener for the "Delete" button inside the options menu
+            const deleteButton = button.nextElementSibling.querySelector('.delete-option');
+            deleteButton.addEventListener('click', function(event) {
+                const row = button.closest('tr'); // Find the parent row of the button
+                row.remove(); // Remove the row from the table
+                event.stopPropagation(); // Prevent the click event from bubbling
+            });
+        });
+
+        document.addEventListener('click', function(event) {
+            optionsMenus.forEach(menu => {
+                if (!menu.contains(event.target)) {
+                    menu.style.display = 'none';
+                }
+            });
+        });
+    });
+
     function showPopup() {
         document.getElementById('taskForm').style.display = 'block';
         document.getElementById('overlay').style.display = 'block';
     }
 
+    function populateEditForm(row) {
+        const cells = row.querySelectorAll('td');
+        document.getElementById('editTaskName').value = cells[0].textContent; // Task Name
+        document.getElementById('editDueDate').value = cells[1].textContent; // Due Date
+        document.getElementById('editAssignee').value = cells[2].textContent; // Assignee
+        document.getElementById('editStatus').value = cells[3].textContent; // Status
+    }
+
+
     function hidePopup() {
         document.getElementById('taskForm').style.display = 'none';
+        document.getElementById('overlay').style.display = 'none';
+        resetForm();
+    }
+
+    function showPopup3() {
+        document.getElementById('editTaskForm').style.display = 'block';
+        document.getElementById('overlay').style.display = 'block';
+    }
+
+    function hidePopup3() {
+        document.getElementById('editTaskForm').style.display = 'none';
         document.getElementById('overlay').style.display = 'none';
         resetForm();
     }
@@ -414,42 +506,9 @@
         document.getElementById('subtaskForm').reset();
         document.getElementById('subtaskForm').style.display = 'none'; // Hide subtask form
     }
-
-    document.addEventListener('DOMContentLoaded', function() {
-        const optionsButtons = document.querySelectorAll('.options-button');
-
-        optionsButtons.forEach(button => {
-            button.addEventListener('click', function(event) {
-                const optionsMenu = button.nextElementSibling;
-                optionsMenu.style.display = optionsMenu.style.display === 'block' ? 'none' : 'block';
-                event.stopPropagation();
-            });
-
-            // Add event listener for the "Subtask" button inside the options menu
-            const subtaskButton = button.nextElementSibling.querySelector('.subtask-option');
-            subtaskButton.addEventListener('click', function(event) {
-                showSubtaskForm(); // Call the showSubtaskForm function
-                event.stopPropagation(); // Prevent the click event from bubbling
-            });
-
-            // Add event listener for the "Delete" button inside the options menu
-            const deleteButton = button.nextElementSibling.querySelector('.delete-option');
-            deleteButton.addEventListener('click', function(event) {
-                const row = button.closest('tr'); // Find the parent row of the button
-                row.remove(); // Remove the row from the table
-                event.stopPropagation(); // Prevent the click event from bubbling
-            });
-        });
-
-        document.addEventListener('click', function(event) {
-            optionsButtons.forEach(button => {
-                const optionsMenu = button.nextElementSibling;
-                if (!button.contains(event.target) && !optionsMenu.contains(event.target)) {
-                    optionsMenu.style.display = 'none';
-                }
-            });
-        });
-    });
 </script>
+
+
+
 </body>
 </html>
