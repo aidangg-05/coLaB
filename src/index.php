@@ -130,13 +130,6 @@
                     echo "<span class='status' id='$project_status_id'>$project_status</span>";
                     echo "<span class='priority' id='$project_priority'>$project_priority Priority</span>";
                     echo "</div></form>";
-                    echo "<div class='delete-button-container'>"; // Start delete button container
-                    echo "<button type='submit' class='btn btn-danger btn-sm deletebtn'>";
-                    echo "<span class='material-symbols-outlined' id='deletebtn' onclick='deleteProject()'>delete</span>";
-                    echo "</button>";
-                    echo "</div>"; // End delete button container
-
-
 
                     if ($notificationText !== "") {
                         echo "<script>
@@ -159,9 +152,6 @@
         notificationItem.textContent = text;
         notificationItem.className = className;
         notificationList.appendChild(notificationItem);
-    }
-    function deleteProject(){
-        <?php ?>
     }
 </script>
 </body>

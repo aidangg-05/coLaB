@@ -7,5 +7,3 @@ if (!$userbase_db) {die("Connection failed:" . mysqli_connect_error());}
 $user_id = $_SESSION['current_id'];
 
 $pull_projectid = mysqli_query($userbase_db, "SELECT project_id FROM project_members WHERE member = '$user_id'");
-
-
