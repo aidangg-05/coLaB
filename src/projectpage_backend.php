@@ -21,6 +21,10 @@ $project_name = $project_info['project_id'];
 $project_start = $project_info['start_date'];
 $project_due = $project_info['end_date'];
 $project_status = $project_info['status'];
+
+$project_creator = $project_info['creator'];
+$creator_email = getEmail($userbase_db,$project_creator);
+
 $project_priority= $project_info['priority'];
 $project_des = $project_info['project_des'];
 
