@@ -172,7 +172,7 @@
 
         <tr>
             <td style="border: none;padding: 5px"><span class="project">Members:</span></td>
-            <?php
+            <td style="border: none;padding: 5px"><?php
             while ($members_row = mysqli_fetch_assoc($members_result)){
                 foreach ($members_row as $member){
                     if ($member == $project_creator){
@@ -180,8 +180,9 @@
                     $member_email = getEmail($userbase_db,$member)
 
                     ?>
-                    <td style="border: none;padding: 5px"><span><?php echo $member_email?><br></span></td>
+                    <span><?php echo $member_email?></span>
                 <?php }} ?>
+            </td>
         </tr>
     </table>
     <br>
@@ -208,7 +209,7 @@
         <input type="text" id="modifyProjectName" name="modifyProjectName" value="<?php echo $project_name?>">
 
         <label>Project Description:</label>
-        <textarea id="modifyProjectDescription" name="modifyProjectDescription" style="width:100%;border: 1px solid rgb(182,182,182);border-radius: 5px"><?php echo $project_des?></textarea>
+        <textarea id="modifyProjectDescription" name="modifyProjectDescription" style="width:97%;border: 1px solid rgb(182,182,182);border-radius: 5px"><?php echo $project_des?></textarea>
 
         <label>End Date:</label>
         <input type="date" id="modifyEndDate" name="modifyEndDate" value="<?php echo $project_due?>">
@@ -247,7 +248,12 @@
 
 
         <label for="assignee">Assignee:</label>
-        <input type="text" id="assignee" name="assign">
+        <select id="subAssignee" name="subtaskAssignee">
+            <option value="assignee1">Assignee 1</option>
+            <option value="assignee2">Assignee 2</option>
+            <option value="assignee3">Assignee 3</option>
+            <!-- Add more options as needed -->
+        </select>
         <span> </span>
 
         <label for="status">Status:</label>

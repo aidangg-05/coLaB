@@ -39,10 +39,18 @@
                     $task_name = $task['task_name'];
                     $due = $task['due_date'];
                     $status = $task['status'];
-                    $dateParts = explode('-', $due);
-                    $year = intval($dateParts[0]);
-                    $month = intval($dateParts[1]) - 1; // JavaScript months are 0-based
-                    $day = intval($dateParts[2]);
+                    $startdate =$task['start_date'];
+
+                    $duedateParts = explode('-', $due);
+                    $eyear = intval($duedateParts[0]);
+                    $emonth = intval($duedateParts[1]) - 1; // JavaScript months are 0-based
+                    $eday = intval($duedateParts[2]);
+
+                    $startDateParts = explode('-', $startdate);
+                    $syear = intval($startDateParts[0]);
+                    $smonth = intval($startDateParts[1]) - 1; // JavaScript months are 0-based
+                    $sday = intval($startDateParts[2]);
+
 
                     $percentage = 0;
                     if ($status === 'In Progress') {
@@ -51,7 +59,7 @@
                         $percentage = 100;
                     }
                     //first date is start date, second date is end date
-                    echo "['$task_name', '$task_name', new Date(2024, 1, 9), new Date($year, $month, $day), null, $percentage, null],";
+                    echo "['$task_name', '$task_name', new Date($syear, $smonth, $sday), new Date($eyear, $emonth, $eday), null, $percentage, null],";
                 }
                 ?>
             ];
