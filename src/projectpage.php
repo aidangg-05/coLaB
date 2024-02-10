@@ -158,14 +158,8 @@
             <td style="border: none;padding: 5px"><span><?php echo $project_due?></span></td>
         </tr>
         <tr>
-            <td style="border: none;padding: 5px"><span class="project">Members:</span></td>
-            <?php
-            while ($members_row = mysqli_fetch_assoc($members_result)){
-            foreach ($members_row as $member){
-                    $member_email = getEmail($userbase_db,$member)
-                ?>
-            <td style="border: none;padding: 5px"><span><?php echo $member_email?></span></td>
-            <?php }} ?>
+            <td style="border: none;padding: 5px"><span class="project">Created by:</span></td>
+            <td style="border: none;padding: 5px"><span></span></td>
         </tr>
         <tr>
             <td style="border: none;padding: 5px"><span class="project">Priority:</span></td>
@@ -174,6 +168,17 @@
         <tr>
             <td style="border: none;padding: 5px"><span class="project">Status:</span></td>
             <td style="border: none;padding: 5px"><span><?php echo $project_status?></span></td>
+        </tr>
+
+        <tr>
+            <td style="border: none;padding: 5px"><span class="project">Members:</span></td>
+            <?php
+            while ($members_row = mysqli_fetch_assoc($members_result)){
+                foreach ($members_row as $member){
+                    $member_email = getEmail($userbase_db,$member)
+                    ?>
+                    <td style="border: none;padding: 5px"><span><?php echo $member_email?><br></span></td>
+                <?php }} ?>
         </tr>
     </table>
     <br>
