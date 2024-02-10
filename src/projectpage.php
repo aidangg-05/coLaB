@@ -130,6 +130,25 @@
         background-color: #3498db;
         color: #fff;
     }
+
+    .options-button {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        font-size: 20px;
+        margin: 0;
+        padding: 0;
+        vertical-align: middle;
+    }
+
+    .material-symbols-outlined {
+        color: #333;
+        display: inline-block;
+        font-size: inherit;
+        line-height: 1;
+        text-transform: none;
+        vertical-align: middle;
+    }
 </style>
 <nav class="navbar">
 
@@ -179,36 +198,55 @@
         <th>Due Date</th>
         <th>Assignee</th>
         <th>Status</th>
+        <th>Options</th>
     </tr>
     </thead>
     <tbody id="taskList">
-        <?php
+    <?php
 
-        while ($task = mysqli_fetch_assoc($tasks_result)){
+    while ($task = mysqli_fetch_assoc($tasks_result)){
 
-            $task_name = $task['task_name'];
-            $assignee = $task['assignee'];
-            $status = $task['status'];
-            $due = $task['due_date'];
-            $dateObject = new DateTime($due);
-            $formattedDate = $dateObject->format('d-m-Y'); ?>
+    $task_name = $task['task_name'];
+    $assignee = $task['assignee'];
+    $status = $task['status'];
+    $due = $task['due_date'];
+    $dateObject = new DateTime($due);
+    $formattedDate = $dateObject->format('d-m-Y'); ?>
 
-            <tr>
-                <td id="task_name"><?php echo $task_name?></td>
-                <td id="end_date"><?php echo $formattedDate?> </td>
-                <td><?php echo $assignee?></td>
-                <td>
-                    <select>
-                        <option value="Not Started" <?php if ($status ==="Not Started"): ?> selected <?php endif ?>>Not Started</option>
-                        <option value="In Progress" <?php if ($status ==="In Progress"): ?> selected <?php endif ?> >In Progress</option>
-                        <option value="Finished" <?php if ($status ==="Finished"): ?> selected <?php endif ?>>Finished</option>
-                    </select>
-                </td>
-            </tr>
-            <?php }?>
-        <!-- Task rows will be dynamically added here -->
+    <tr>
+        <td><?php echo $task_name?></td>
+        <td><?php echo $formattedDate?> </td>
+        <td><?php echo $assignee?></td>
+        <td>
+            <select disabled>
+                <option value="Not Started" <?php if ($status ==="Not Started"): ?> selected <?php endif ?>>Not Started</option>
+                <option value="In Progress" <?php if ($status ==="In Progress"): ?> selected <?php endif ?> >In Progress</option>
+                <option value="Finished" <?php if ($status ==="Finished"): ?> selected <?php endif ?>>Finished</option>
+            </select>
+        </td>
+        <td>
+            <button class="options-button">
+                <span class="material-symbols-outlined">more_vert</span>
+            </button>
+        </td>
+    </tr>
+    <?php }?>
+    <!-- Task rows will be dynamically added here -->
     </tbody>
 </table>
+
+<!-- Add Subtask Form -->
+<div class="popup-form" id="subtaskForm" style="display: none;">
+    <form>
+        <label for="subtaskName">Subtask Name:</label>
+        <input type="text" id="subtaskName" name="subtaskName">
+
+        <label for="subtaskDueDate">Due Date:</label>
+        <input type="date" id="subtaskDueDate" name="subtaskDueDate">
+
+        <button type="button" onclick="hidePopup2()">Add Subtask</button>
+    </form>
+</div>
 
 <script>
     function showPopup() {
@@ -218,6 +256,12 @@
 
     function hidePopup() {
         document.getElementById('taskForm').style.display = 'none';
+        document.getElementById('overlay').style.display = 'none';
+        resetForm();
+    }
+
+    function hidePopup2() {
+        document.getElementById('subtaskForm').style.display = 'none';
         document.getElementById('overlay').style.display = 'none';
         resetForm();
     }
@@ -267,6 +311,37 @@
     function goGanttchart(){
         window.location.href="gantt_V2.php";
     }
+
+    // Function to show subtask form
+    function showSubtaskForm() {
+        document.getElementById('subtaskForm').style.display = 'block';
+    }
+
+    // Function to add subtasks
+    function addSubtask() {
+        const subtaskName = document.getElementById('subtaskName').value;
+        const subtaskDueDate = document.getElementById('subtaskDueDate').value;
+
+        // Create a new subtask element
+        const subtaskElement = document.createElement('p');
+        subtaskElement.textContent = subtaskName + ' - Due Date: ' + subtaskDueDate;
+
+        // Append the subtask to the subtask container
+        document.getElementById('subtaskContainer').appendChild(subtaskElement);
+
+        // Clear the subtask form
+        document.getElementById('subtaskForm').reset();
+        document.getElementById('subtaskForm').style.display = 'none'; // Hide subtask form
+
+        // Hide the popup
+
+    }
+
+    // Show the subtask form when the options button is clicked
+    const optionsButtons = document.querySelectorAll('.options-button');
+    optionsButtons.forEach(button => {
+        button.addEventListener('click', showSubtaskForm);
+    });
 </script>
 </body>
 </html>
