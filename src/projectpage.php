@@ -131,23 +131,28 @@
         color: #fff;
     }
 
-    .options-button {
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
-        font-size: 20px;
-        margin: 0;
-        padding: 0;
-        vertical-align: middle;
+    .options {
+        display: none;
+        position: absolute;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        z-index: 1;
     }
 
-    .material-symbols-outlined {
-        color: #333;
-        display: inline-block;
-        font-size: inherit;
-        line-height: 1;
-        text-transform: none;
-        vertical-align: middle;
+    .options button {
+        display: block;
+        width: 100%;
+        padding: 8px 12px;
+        text-align: left;
+        border: none;
+        background: none;
+        cursor: pointer;
+    }
+
+    .options button:hover {
+        background-color: #f0f0f0;
     }
 </style>
 <nav class="navbar">
@@ -228,6 +233,10 @@
             <button class="options-button">
                 <span class="material-symbols-outlined">more_vert</span>
             </button>
+            <div class="options">
+                <button class="delete-option">Delete</button>
+                <button class="subtask-option">Subtask</button>
+            </div>
         </td>
     </tr>
     <?php }?>
@@ -337,11 +346,34 @@
 
     }
 
-    // Show the subtask form when the options button is clicked
-    const optionsButtons = document.querySelectorAll('.options-button');
-    optionsButtons.forEach(button => {
-        button.addEventListener('click', showSubtaskForm);
+    document.addEventListener('DOMContentLoaded', function() {
+        const optionsButtons = document.querySelectorAll('.options-button');
+
+        optionsButtons.forEach(button => {
+            button.addEventListener('click', function(event) {
+                const optionsMenu = button.nextElementSibling;
+                optionsMenu.style.display = optionsMenu.style.display === 'block' ? 'none' : 'block';
+                event.stopPropagation();
+            });
+
+            // Add event listener for the "Subtask" button inside the options menu
+            const subtaskButton = button.nextElementSibling.querySelector('.subtask-option');
+            subtaskButton.addEventListener('click', function(event) {
+                showSubtaskForm(); // Call the showSubtaskForm function
+                event.stopPropagation(); // Prevent the click event from bubbling
+            });
+        });
+
+        document.addEventListener('click', function(event) {
+            optionsButtons.forEach(button => {
+                const optionsMenu = button.nextElementSibling;
+                if (!button.contains(event.target) && !optionsMenu.contains(event.target)) {
+                    optionsMenu.style.display = 'none';
+                }
+            });
+        });
     });
+
 </script>
 </body>
 </html>
