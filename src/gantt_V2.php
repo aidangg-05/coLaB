@@ -50,7 +50,7 @@
                     } else if ($status === 'Finished') {
                         $percentage = 100;
                     }
-
+                    //first date is start date, second date is end date
                     echo "['$task_name', '$task_name', new Date(2024, 1, 9), new Date($year, $month, $day), null, $percentage, null],";
                 }
                 ?>

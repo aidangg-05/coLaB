@@ -103,3 +103,27 @@ function toProjectPage(event){
     window.location.href='projectpage.php'
 }
 
+function deleteProject(projectId) {
+    if (confirm("Are you sure you want to delete this project?")) {
+        // Create a new XMLHttpRequest object
+        var xhr = new XMLHttpRequest();
+
+        // Specify the HTTP method and URL destination
+        xhr.open("POST", "deleteproject_backend.php", true);
+
+        // Set the request header
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+        // Define what happens on successful data submission
+        xhr.onload = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                alert(xhr.responseText); // Display the response message
+                // Reload the page or update the project list as needed
+            }
+        };
+
+        // Send the request with the project_id data
+        xhr.send("project_id=" + projectId);
+    }
+}
+
