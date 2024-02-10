@@ -251,18 +251,7 @@
 
 
         <label for="assignee">Assignee:</label>
-        <select>
-            <?php
-            while ($members_row = mysqli_fetch_assoc($members_result)){
-                foreach ($members_row as $member){
-                    if ($member == $project_creator){
-                        continue;}
-                    $member_email = getEmail($userbase_db,$member)
-
-                    ?>
-                    <option value="<?php $member_email?>" name="assign" id="assignee"><?php $member_email?></option>
-                <?php }} ?>
-        </select>
+        <input type="text" id="assignee" name="assign">
         <span> </span>
 
         <label for="status">Status:</label>
@@ -527,5 +516,8 @@
         document.getElementById('subtaskForm').style.display = 'none'; // Hide subtask form
     }
 </script>
+
+
+
 </body>
 </html>
