@@ -186,7 +186,7 @@
     </table>
     <br>
     <form>
-        <button style="background-color: forestgreen" onclick="showModifyPopup()">Modify</button>
+        <button style="background-color: forestgreen" onclick="showModifyPopup()" type="button">Modify</button>
     </form>
     <form method="post">
         <button style="background-color: red" name='delete' type="submit">Delete Project</button>
@@ -205,31 +205,27 @@
 <div class="popup-form" id="modifyForm">
     <form id="modifyProjectForm" method="post">
         <label>Project Name:</label>
-        <input type="text" id="modifyProjectName" name="modifyProjectName">
+        <input type="text" id="modifyProjectName" name="modifyProjectName" value="<?php echo $project_name?>">
 
         <label>Project Description:</label>
-        <textarea id="modifyProjectDescription" name="modifyProjectDescription" style="width:100%;border: 1px solid rgb(182,182,182);border-radius: 5px"></textarea>
+        <textarea id="modifyProjectDescription" name="modifyProjectDescription" style="width:100%;border: 1px solid rgb(182,182,182);border-radius: 5px"><?php echo $project_des?></textarea>
 
         <label>End Date:</label>
-        <input type="date" id="modifyEndDate" name="modifyEndDate">
+        <input type="date" id="modifyEndDate" name="modifyEndDate" value="<?php echo $project_due?>">
 
-
+        <!--
         <label>Assignee:</label>
-        <input type="text" id="modifyProjectName" name="modifyProjectName">
+        <input type="text" id="modifyProjectName" name="modifyPr">
+        -->
+
         <label>Priority:</label>
-        <select>
-            <option>High</option>
-            <option>Medium</option>
-            <option>Low</option>
-        </select>
-        <label>Status:</label>
-        <select>
-            <option>Not Started</option>
-            <option>In Progress</option>
-            <option>Completed</option>
+        <select name="modifypriority">
+            <option <?php if ($project_priority == "High"){echo'selected';}?>>High</option>
+            <option <?php if ($project_priority == "Medium"){echo'selected';}?>>Medium</option>
+            <option <?php if ($project_priority == "Low"){echo'selected';}?>>Low</option>
         </select>
 
-        <input type="submit" value="Modify Project">
+        <input type="submit" name="modify_project" value="Save changes">
     </form>
 </div>
 
@@ -279,7 +275,7 @@
         <?php
 
         while ($task = mysqli_fetch_assoc($tasks_result)){
-
+            $task_id = $task['task_id'];
             $task_name = $task['task_name'];
             $assignee = $task['assignee'];
             $status = $task['status'];
@@ -296,9 +292,15 @@
                         <span class="material-symbols-outlined">more_vert</span>
                     </button>
                     <div class="options">
-                        <button class="delete-option">Delete</button>
-                        <button class="subtask-option">Subtask</button>
-                        <button class="edittask-option">Edit Task</button>
+                        <form method="post">
+                            <button type="submit" name="deletetask" value="<?php echo $task_id?>">Delete</button>
+                        </form>
+                        <form>
+                            <button type="button" class="subtask-option" value="<?php echo $task_id?>">Subtask</button>
+                        </form>
+                        <form>
+                            <button type="button" class="edittask-option">Edit Task</button>
+                        </form>
                     </div>
                 </td>
             </tr>
@@ -306,23 +308,25 @@
         <!-- Task rows will be dynamically added here -->
     </tbody>
 </table>
-
 <div class="popup-form" id="subtaskForm" style="display: none;">
-    <form>
+    <form method="post">
         <label for="subtaskName">Subtask Name:</label>
         <input type="text" id="subtaskName" name="subtaskName">
 
         <label for="subtaskDueDate">Due Date:</label>
         <input type="date" id="subtaskDueDate" name="subtaskDueDate">
 
-        <button type="button" onclick="hidePopup2()">Add Subtask</button>
+        <label for="subAssignee">Assignee:</label>
+        <input type="text" id="subAssignee" name="subtaskAssignee">
+
+        <button type="submit" onclick="hidePopup2()" name="addsubtask">Add Subtask</button>
     </form>
 </div>
 
 <div class="popup-form" id="editTaskForm" style="display: none;">
     <form id="editTaskForm" method="post">
         <label for="editTaskName">Task Name:</label>
-        <input type="text" id="editTaskName" name="editTaskName">
+        <input type="text" id="editTaskName" name="editTaskName" value="<?php ?>">
 
         <label for="editDueDate">Due Date:</label>
         <input type="date" id="editDueDate" name="editDueDate">
@@ -337,7 +341,7 @@
             <option value="Finished">Finished</option>
         </select>
 
-        <button type="button" onclick="hidePopup3()">Add Subtask</button>
+        <button type="submit" onclick="hidePopup3()" name="edittask_save">Save changes</button>
     </form>
 </div>
 

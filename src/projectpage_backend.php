@@ -17,7 +17,7 @@ $tasks_result = mysqli_query($userbase_db, "SELECT * FROM task_table WHERE proje
 //Pull project info from project_info table
 $projectinfo_results = mysqli_query($userbase_db, "SELECT * FROM project_info WHERE project_id='$project_id' ");
 $project_info = mysqli_fetch_assoc($projectinfo_results);
-$project_name = $project_info['project_id'];
+$project_name = $project_info['project_name'];
 $project_start = $project_info['start_date'];
 $project_due = $project_info['end_date'];
 $project_status = $project_info['status'];
@@ -32,7 +32,7 @@ $project_des = $project_info['project_des'];
 $members_result =  mysqli_query($userbase_db, "SELECT member FROM project_members WHERE project_id='$project_id'");
 
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if (isset($_POST['AddTask'])){
 
     $task_name = trim($_POST['name']);
     $assign = trim($_POST['assign']);
@@ -71,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-if (isset($_POST["delete"])) {
+if (isset($_POST["delete"])) {  //To delete project
     $wrong1 = $wrong2 = $wrong3 = $wrong4 = TRUE;
 
     //Delete Project from project_info
@@ -97,8 +97,82 @@ if (isset($_POST["delete"])) {
         header("Location: index.php");
         exit();
     }
-
 }
+
+if (isset($_POST["deletetask"])) {  //To delete task
+    $current_task = $_POST["deletetask"];
+    $wong1 = $wong2 = TRUE;
+
+    if ($userbase_db->query("DELETE FROM task_table WHERE task_id='$current_task'") === TRUE) {  //Delete task from task_table
+        $wong1 = FALSE;
+    }
+
+
+    //Delete subtask that has this task id from subtask_table
+    $wong2 = FALSE;
+
+
+    if ($wong1 == FALSE && $wong2 == FALSE){   //Refresh content
+        echo "<meta http-equiv='refresh' content='0'>";
+    }
+}
+
+if (isset($_POST["modify_project"])) {  //To modify project
+    $modify_name = trim($_POST['modifyProjectName']);
+    $modify_des = trim($_POST['modifyProjectDescription']);
+    $modify_end = $_POST['modifyEndDate'];
+    $modify_priority = $_POST['modifypriority'];
+
+    if ($modify_name === "") {
+
+    }
+
+
+    else if ($modify_des === "") {
+
+    }
+
+    else if ($modify_end === "") {
+
+    }
+
+
+    else {
+
+        //Update in project_info table
+        if ($userbase_db->query("
+            UPDATE project_info SET project_name='$modify_name',end_date='$modify_end',priority='$modify_priority',project_des='$modify_des' WHERE project_id='$project_id'") === TRUE) {
+            echo "<meta http-equiv='refresh' content='0'>";
+        }
+
+    }
+}
+
+
+
+/*
+if (isset($_POST["addsubtask"])) {
+    $sub_name = trim($_POST['subtaskName']);
+    $due_date = $_POST['subtaskDueDate'];
+    $sub_assignee = $_POST['subtaskAssignee'];
+
+
+    if ($sub_name === "") {
+
+    }
+
+    else if ($sub_assignee === "") {
+
+    }
+
+    else {
+
+
+        $errDue = "Due start cannot be empty";
+    }
+}
+*/
+
 
 
 /*
