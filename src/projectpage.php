@@ -22,17 +22,6 @@
         justify-content: flex-start; /* Updated to start from the top */
         height: 100vh;
     }
-
-    #projectDetails {
-        text-align: center;
-        margin-top: 20px;
-    }
-
-    h1 {
-        color: #3498db;
-        margin: 0;
-    }
-
     button {
         padding: 10px 20px;
         background-color: #3498db;
@@ -95,6 +84,15 @@
         cursor: pointer;
     }
 
+    input[type="button"] {
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
     input[type="submit"]:hover {
         background-color: #2980b9;
     }
@@ -140,11 +138,98 @@
     </ul>
 </nav>
 
-<!-- Add Task Modal -->
-<div id="projectDetails">
-    <h1 id="projectName">Your Project Name</h1>
-    <button onclick="showPopup()">Add Task</button>
+<!-- project details -->
+<div class="popup-form" id="projectDetailsForm">
+    <table >
+        <tr>
+            <td style="border: none;padding: 5px"><span class="project">Project Name:</span></td>
+            <td style="border: none;padding: 5px"><span><?php echo $project_name?></span></td>
+        </tr>
+        <tr>
+            <td style="border: none;padding: 5px"><span class="project">Project Description:</span></td>
+            <td style="border: none;padding: 5px"><span><?php echo $project_des?></span></td>
+        </tr>
+        <tr>
+            <td style="border: none;padding: 5px"><span class="project">Start Date:</span></td>
+            <td style="border: none;padding: 5px"><span><?php echo $project_start?></span></td>
+        </tr>
+        <tr>
+            <td style="border: none;padding: 5px"><span class="project">End Date:</span></td>
+            <td style="border: none;padding: 5px"><span><?php echo $project_due?></span></td>
+        </tr>
+        <tr>
+            <td style="border: none;padding: 5px"><span class="project">Created by:</span></td>
+            <td style="border: none;padding: 5px"><span></span></td>
+        </tr>
+        <tr>
+            <td style="border: none;padding: 5px"><span class="project">Priority:</span></td>
+            <td style="border: none;padding: 5px"><span><?php echo $project_priority?></span></td>
+        </tr>
+        <tr>
+            <td style="border: none;padding: 5px"><span class="project">Status:</span></td>
+            <td style="border: none;padding: 5px"><span><?php echo $project_status?></span></td>
+        </tr>
+
+        <tr>
+            <td style="border: none;padding: 5px"><span class="project">Members:</span></td>
+            <?php
+            while ($members_row = mysqli_fetch_assoc($members_result)){
+                foreach ($members_row as $member){
+                    $member_email = getEmail($userbase_db,$member)
+                    ?>
+                    <td style="border: none;padding: 5px"><span><?php echo $member_email?><br></span></td>
+                <?php }} ?>
+        </tr>
+    </table>
+    <br>
+    <form>
+        <button style="background-color: forestgreen" onclick="showModifyPopup()">Modify</button>
+    </form>
+    <form method="post">
+        <button style="background-color: red" name='delete' type="submit">Delete Project</button>
+    </form>
 </div>
+
+<div class="overlay" id="overlayProjectDetails" onclick="hideProjectDetailsPopup()"></div>
+
+<!-- add button and more info button-->
+<span style="margin: 5px">
+    <button onclick="showPopup()">Add Task</button>
+    <button onclick="showProjectDetailsPopup()">More Info</button>
+</span>
+
+<!-- Modify Project Modal -->
+<div class="popup-form" id="modifyForm">
+    <form id="modifyProjectForm" method="post">
+        <label>Project Name:</label>
+        <input type="text" id="modifyProjectName" name="modifyProjectName">
+
+        <label>Project Description:</label>
+        <textarea id="modifyProjectDescription" name="modifyProjectDescription" style="width:100%;border: 1px solid rgb(182,182,182);border-radius: 5px"></textarea>
+
+        <label>End Date:</label>
+        <input type="date" id="modifyEndDate" name="modifyEndDate">
+
+        <label>Assignee:</label>
+        <input type="text" id="modifyProjectName" name="modifyProjectName">
+        <label>Priority:</label>
+        <select>
+            <option>High</option>
+            <option>Medium</option>
+            <option>Low</option>
+        </select>
+        <label>Status:</label>
+        <select>
+            <option>Not Started</option>
+            <option>In Progress</option>
+            <option>Completed</option>
+        </select>
+
+        <input type="submit" value="Modify Project">
+    </form>
+</div>
+
+<div class="overlay" id="overlayModify" onclick="hideModifyPopup()"></div>
 
 <div class="popup-form" id="taskForm">
     <form id="addTaskForm" method="post">
@@ -167,7 +252,7 @@
             <option value="Finished">Finished</option>
         </select>
 
-        <input type="submit" value="Add Task">
+        <input type="submit" name="AddTask">
     </form>
 </div>
 
@@ -192,10 +277,9 @@
             $due = $task['due_date'];
             $dateObject = new DateTime($due);
             $formattedDate = $dateObject->format('d-m-Y'); ?>
-
             <tr>
-                <td id="task_name"><?php echo $task_name?></td>
-                <td id="end_date"><?php echo $formattedDate?> </td>
+                <td><?php echo $task_name?></td>
+                <td><?php echo $formattedDate?> </td>
                 <td><?php echo $assignee?></td>
                 <td>
                     <select>
@@ -266,6 +350,26 @@
 
     function goGanttchart(){
         window.location.href="gantt_V2.php";
+    }
+
+    function showModifyPopup() {
+        document.getElementById('modifyForm').style.display = 'block';
+        document.getElementById('overlayModify').style.display = 'block';
+    }
+
+    function hideModifyPopup() {
+        document.getElementById('modifyForm').style.display = 'none';
+        document.getElementById('overlayModify').style.display = 'none';
+    }
+
+    function showProjectDetailsPopup() {
+        document.getElementById('projectDetailsForm').style.display = 'block';
+        document.getElementById('overlayProjectDetails').style.display = 'block';
+    }
+
+    function hideProjectDetailsPopup() {
+        document.getElementById('projectDetailsForm').style.display = 'none';
+        document.getElementById('overlayProjectDetails').style.display = 'none';
     }
 </script>
 </body>
