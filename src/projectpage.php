@@ -177,7 +177,7 @@
                 foreach ($members_row as $member){
                     $member_email = getEmail($userbase_db,$member)
                     ?>
-                    <td style="border: none;padding: 5px"><span><?php echo $member_email?><br></span></td>
+                    <td style="border: none;padding: 5px"><span><?php echo $member_email?></span></td>
                 <?php }} ?>
         </tr>
     </table>
