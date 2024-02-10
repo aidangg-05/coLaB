@@ -281,18 +281,33 @@
                 <td><?php echo $task_name?></td>
                 <td><?php echo $formattedDate?> </td>
                 <td><?php echo $assignee?></td>
+                <td><?php echo $status?></td> <!-- Updated this line to display status as text -->
                 <td>
-                    <select>
-                        <option value="Not Started" <?php if ($status ==="Not Started"): ?> selected <?php endif ?>>Not Started</option>
-                        <option value="In Progress" <?php if ($status ==="In Progress"): ?> selected <?php endif ?> >In Progress</option>
-                        <option value="Finished" <?php if ($status ==="Finished"): ?> selected <?php endif ?>>Finished</option>
-                    </select>
+                    <button class="options-button">
+                        <span class="material-symbols-outlined">more_vert</span>
+                    </button>
+                    <div class="options">
+                        <button class="delete-option">Delete</button>
+                        <button class="subtask-option">Subtask</button>
+                    </div>
                 </td>
             </tr>
             <?php }?>
         <!-- Task rows will be dynamically added here -->
     </tbody>
 </table>
+
+<div class="popup-form" id="subtaskForm" style="display: none;">
+    <form>
+        <label for="subtaskName">Subtask Name:</label>
+        <input type="text" id="subtaskName" name="subtaskName">
+
+        <label for="subtaskDueDate">Due Date:</label>
+        <input type="date" id="subtaskDueDate" name="subtaskDueDate">
+
+        <button type="button" onclick="hidePopup2()">Add Subtask</button>
+    </form>
+</div>
 
 <script>
     function showPopup() {
@@ -348,6 +363,12 @@
         hidePopup();
     }
 
+    function hidePopup2() {
+        document.getElementById('subtaskForm').style.display = 'none';
+        document.getElementById('overlay').style.display = 'none';
+        resetForm();
+    }
+
     function goGanttchart(){
         window.location.href="gantt_V2.php";
     }
@@ -371,6 +392,64 @@
         document.getElementById('projectDetailsForm').style.display = 'none';
         document.getElementById('overlayProjectDetails').style.display = 'none';
     }
+
+    // Function to show subtask form
+    function showSubtaskForm() {
+        document.getElementById('subtaskForm').style.display = 'block';
+    }
+
+    // Function to add subtasks
+    function addSubtask() {
+        const subtaskName = document.getElementById('subtaskName').value;
+        const subtaskDueDate = document.getElementById('subtaskDueDate').value;
+
+        // Create a new subtask element
+        const subtaskElement = document.createElement('p');
+        subtaskElement.textContent = subtaskName + ' - Due Date: ' + subtaskDueDate;
+
+        // Append the subtask to the subtask container
+        document.getElementById('subtaskContainer').appendChild(subtaskElement);
+
+        // Clear the subtask form
+        document.getElementById('subtaskForm').reset();
+        document.getElementById('subtaskForm').style.display = 'none'; // Hide subtask form
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const optionsButtons = document.querySelectorAll('.options-button');
+
+        optionsButtons.forEach(button => {
+            button.addEventListener('click', function(event) {
+                const optionsMenu = button.nextElementSibling;
+                optionsMenu.style.display = optionsMenu.style.display === 'block' ? 'none' : 'block';
+                event.stopPropagation();
+            });
+
+            // Add event listener for the "Subtask" button inside the options menu
+            const subtaskButton = button.nextElementSibling.querySelector('.subtask-option');
+            subtaskButton.addEventListener('click', function(event) {
+                showSubtaskForm(); // Call the showSubtaskForm function
+                event.stopPropagation(); // Prevent the click event from bubbling
+            });
+
+            // Add event listener for the "Delete" button inside the options menu
+            const deleteButton = button.nextElementSibling.querySelector('.delete-option');
+            deleteButton.addEventListener('click', function(event) {
+                const row = button.closest('tr'); // Find the parent row of the button
+                row.remove(); // Remove the row from the table
+                event.stopPropagation(); // Prevent the click event from bubbling
+            });
+        });
+
+        document.addEventListener('click', function(event) {
+            optionsButtons.forEach(button => {
+                const optionsMenu = button.nextElementSibling;
+                if (!button.contains(event.target) && !optionsMenu.contains(event.target)) {
+                    optionsMenu.style.display = 'none';
+                }
+            });
+        });
+    });
 </script>
 </body>
 </html>
