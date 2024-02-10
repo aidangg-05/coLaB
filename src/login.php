@@ -10,7 +10,7 @@
 <body>
 <div class="login-container">
         <h1>Login</h1>
-        <form method="post">
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>">
             <label for="email">Email:</label>
             <input type="text" name="email" value="<?php echo $email?>">
             <span class="error-text">  <?php echo $errEmail ?>  &nbsp; </span>

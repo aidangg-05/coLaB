@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errEmail = "*Invalid email";
     }
 
-    if($password===""){
+    else if($password===""){
         $errPassword = "*Password required";
     }
     else {
@@ -38,18 +38,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if ($password_pull == $password) {          //Password correct
 
-                $userid_result = mysqli_query($userbase_db, "SELECT user_id FROM user_table WHERE email = '$email'");
-                $userid = mysqli_fetch_array($userid_result)['user_id'];       //Fetch user_id
+                $userid_result = mysqli_query($userbase_db, "SELECT user_id FROM user_table WHERE email = '$email'");  //Fetch user_id
+                $userid = mysqli_fetch_array($userid_result)['user_id'];
 
-                $_SESSION['current_id'] = $userid;
+                $_SESSION['current_id'] = $userid;  //Set the session (To determine current user)
                 header("Location: index.php");
                 exit();
 
             } else {                                     //Incorrect Password
-                $errPassword = "Password Incorrect";
+                $errPassword = "*Password Incorrect";
             }
         } else {          //No available record
-            $errEmail = "Account don't exist";
+            $errEmail = "*Account don't exist";
         }
     }
 }

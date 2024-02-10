@@ -21,7 +21,7 @@
             <span class="textB">Update your personal information</span>
         </p>
 
-        <form method="post">
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" value="<?php echo $name ?>">
             <span class="error-text">  <?php echo $errName ?>  &nbsp; </span>

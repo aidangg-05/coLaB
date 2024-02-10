@@ -12,12 +12,12 @@
 <body>
 
 </body>
-    <form method="post">
+    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>">
         <h1>Add Your Project Here!</h1>
         <section>
             <div class="input_box">
                 <span class="input_text">Project Name:</span>
-                <input type="text" class="project_name_input" placeholder="Your project name" name="name">
+                <input type="text" class="project_name_input" placeholder="Your project name" name="name" value="<?php echo $project_name ?>">
                 <span class="error-text"><?php echo $errName ?>  &nbsp; </span>
             </div>
 
@@ -35,7 +35,7 @@
 
             <div class="input_box">
                 <span class="input_text">Project Description:</span>
-                <textarea placeholder="Input your project description here" class="desc_input" name="desc"></textarea>
+                <textarea placeholder="Brief project description" class="desc_input" name="desc"><?php echo $project_des ?></textarea>
                 <span class="error-text"> <?php echo $errDesc?> &nbsp; </span>
             </div>
 

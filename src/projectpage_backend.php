@@ -34,10 +34,10 @@ $members_result =  mysqli_query($userbase_db, "SELECT member FROM project_member
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $task_name = $_POST['name'];
-    $assign = $_POST['assign'];
+    $task_name = trim($_POST['name']);
+    $assign = trim($_POST['assign']);
+    $start = $_POST['start_date'];
     $due = $_POST['due_date'];
-    $start = "testfirst";
     $status = $_POST['status'];
 
     if ($task_name === "") {
@@ -48,8 +48,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errAssign = "Cannot be empty";
     }
 
+    else if ($start === "") {
+        $errDue = "Due start cannot be empty";
+    }
+
     else if ($due === "") {
         $errDue = "Due start cannot be empty";
+    }
+
+    else if (strtotime($start) > strtotime($due)) {
+        $errStart = "*Start Date cannot be after End Date";
     }
 
     else {

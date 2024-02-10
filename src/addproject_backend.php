@@ -14,10 +14,10 @@ $err1 = $err2 = TRUE;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $project_name = $_POST['name'];
+    $project_name = trim($_POST['name']);
     $start_date = $_POST['start'];
     $end_date = $_POST['end'];
-    $project_des = $_POST['desc'];
+    $project_des = trim($_POST['desc']);
     $priority = $_POST['priority'];
     if (isset($_POST['users']))         //For incase,no users are added
     {
@@ -31,19 +31,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     foreach ($user_array as $email){
         $id = getUserID($userbase_db, $email);
 
-        if ($id != -1){         //Valid Email
+        if ($id != -1){             //Valid Email, email in database
             $user_array_id[] = $id;
         }
 
-        else {
+        else {                      //Invalid Email, email not in database/email not in correct format
             $errUsers = $errUsers."<br>".
-                "Email: $email"." is not valid !";
+                "Email  $email"."  is not valid !";
         }
     }
 
     if ($project_name === "") {
-        $errName = "*Name required";
+        $errName = "*Project Name required";
     }
+
 
     else if ($start_date === "") {
         $errStart = "*Start Date required";
@@ -58,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     else if ($project_des === "") {
-        $errDesc = "*Desc required";
+        $errDesc = "*Project Description required";
     }
 
     else {

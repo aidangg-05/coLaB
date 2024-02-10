@@ -213,6 +213,7 @@
         <label>End Date:</label>
         <input type="date" id="modifyEndDate" name="modifyEndDate">
 
+
         <label>Assignee:</label>
         <input type="text" id="modifyProjectName" name="modifyProjectName">
         <label>Priority:</label>
@@ -240,12 +241,28 @@
         <input type="text" id="taskName" name="name">
         <span> </span>
 
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate" name="start_date">
+        <span> </span>
+
         <label for="dueDate">Due Date:</label>
         <input type="date" id="dueDate" name="due_date">
         <span> </span>
 
+
         <label for="assignee">Assignee:</label>
-        <input type="text" id="assignee" name="assign">
+        <select>
+            <?php
+            while ($members_row = mysqli_fetch_assoc($members_result)){
+                foreach ($members_row as $member){
+                    if ($member == $project_creator){
+                        continue;}
+                    $member_email = getEmail($userbase_db,$member)
+
+                    ?>
+                    <option value="<?php $member_email?>" name="assign" id="assignee"><?php $member_email?></option>
+                <?php }} ?>
+        </select>
         <span> </span>
 
         <label for="status">Status:</label>
@@ -510,8 +527,5 @@
         document.getElementById('subtaskForm').style.display = 'none'; // Hide subtask form
     }
 </script>
-
-
-
 </body>
 </html>

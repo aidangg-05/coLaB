@@ -11,18 +11,18 @@
 
 <div class="signup-container">
     <h1>Sign Up</h1>
-    <form method="post">
+    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>">
         <label for="email">Email:</label>
-        <input type="text" name="email">
+        <input type="text" name="email" value="<?php echo $email?>">
         <span class="error-text"> <?php echo $errEmail ?> &nbsp; </span>
 
 
         <label for="name">Full Name:</label>
-        <input type="text" name="name">
+        <input type="text" name="name" value="<?php echo $name?>">
         <span class="error-text">  <?php echo $errName ?> &nbsp; </span>
 
         <label for="password">Password:</label>
-        <input type="password" name="password">
+        <input type="password" name="password" value="<?php echo $password?>">
         <span class="error-text"> <?php echo $errPassword ?> &nbsp; </span>
 
         <button type="submit" >Sign Up</button>

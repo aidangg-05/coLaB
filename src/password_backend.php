@@ -24,11 +24,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errOld = "*Existing Password required";
     }
 
-    if ($new_pass==="") {
+    elseif ($new_pass==="") {
         $errNew = "*New password required";
     }
 
-    if ($confirm_pass==="") {
+    elseif ($confirm_pass==="") {
         $errConfirm = "*Confirm password required";
     }
 

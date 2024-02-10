@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errName = "*Name required";
 
     }
-    if($new_email===""){
+    else if($new_email===""){
         $errEmail = "*Email required";
     }
 
@@ -45,12 +45,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $pull_new_email = "SELECT * FROM user_table WHERE email='$new_email'";
             $new_email_result = mysqli_query($userbase_db, $pull_new_email);
 
-            if (mysqli_num_rows($new_email_result) == 1) {           //Available record
+            if ($new_email != $email){ //If email changed
+                if (mysqli_num_rows($new_email_result) == 1) {           //Someone else using that email
 
-                $errEmail = "*Email already used";
+                    $errEmail = "*Email already used";
 
+                }
+            }
 
-            } else {                                             //No available record
+            else {                                             //No available record
 
                 $update_email = "UPDATE user_table SET email='$new_email' WHERE user_id='$userid'";
                 $update_email_result = mysqli_query($userbase_db, $update_email);
