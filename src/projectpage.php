@@ -22,17 +22,6 @@
         justify-content: flex-start; /* Updated to start from the top */
         height: 100vh;
     }
-
-    #projectDetails {
-        text-align: center;
-        margin-top: 20px;
-    }
-
-    h1 {
-        color: #3498db;
-        margin: 0;
-    }
-
     button {
         padding: 10px 20px;
         background-color: #3498db;
@@ -140,11 +129,84 @@
     </ul>
 </nav>
 
-<!-- Add Task Modal -->
-<div id="projectDetails">
-    <h1 id="projectName">Your Project Name</h1>
-    <button onclick="showPopup()">Add Task</button>
+<!-- project details -->
+<div class="popup-form" id="projectDetailsForm">
+    <table >
+        <tr>
+            <td style="border: none;padding: 5px"><span class="project">Project Name:</span></td>
+            <td style="border: none;padding: 5px"><span>placeholder</span></td>
+        </tr>
+        <tr>
+            <td style="border: none;padding: 5px"><span class="project">Project Description:</span></td>
+            <td style="border: none;padding: 5px"><span>placeholder</span></td>
+        </tr>
+        <tr>
+            <td style="border: none;padding: 5px"><span class="project">Start Date:</span></td>
+            <td style="border: none;padding: 5px"><span>placeholder</span></td>
+        </tr>
+        <tr>
+            <td style="border: none;padding: 5px"><span class="project">End Date:</span></td>
+            <td style="border: none;padding: 5px"><span>placeholder</span></td>
+        </tr>
+        <tr>
+            <td style="border: none;padding: 5px"><span class="project">Assignees:</span></td>
+            <td style="border: none;padding: 5px"><span>placeholder</span></td>
+        </tr>
+        <tr>
+            <td style="border: none;padding: 5px"><span class="project">Priority:</span></td>
+            <td style="border: none;padding: 5px"><span>placeholder</span></td>
+        </tr>
+        <tr>
+            <td style="border: none;padding: 5px"><span class="project">Status:</span></td>
+            <td style="border: none;padding: 5px"><span>placeholder</span></td>
+        </tr>
+    </table>
+    <button style="background-color: forestgreen" onclick="showModifyPopup()">Modify</button>
+    <button style="background-color: red">Delete Project</button>
 </div>
+
+<div class="overlay" id="overlayProjectDetails" onclick="hideProjectDetailsPopup()"></div>
+
+<!-- add button and more info button-->
+<span style="margin: 5px">
+    <button onclick="showPopup()">Add Task</button>
+    <button onclick="showProjectDetailsPopup()">More Info</button>
+</span>
+
+<!-- Modify Project Modal -->
+<div class="popup-form" id="modifyForm">
+    <form id="modifyProjectForm" method="post">
+        <label>Project Name:</label>
+        <input type="text" id="modifyProjectName" name="modifyProjectName">
+
+        <label>Project Description:</label>
+        <textarea id="modifyProjectDescription" name="modifyProjectDescription"></textarea>
+
+        <label>End Date:</label>
+        <input type="date" id="modifyEndDate" name="modifyEndDate">
+
+        <label>Assignee:</label>
+        <input type="text" id="modifyProjectName" name="modifyProjectName">
+        <label>Priority:</label>
+        <select>
+            <option>High</option>
+            <option>Medium</option>
+            <option>Low</option>
+        </select>
+        <label>Status:</label>
+        <select>
+            <option>Not Started</option>
+            <option>In Progress</option>
+            <option>Completed</option>
+        </select>
+
+
+        <input type="submit" value="Modify Project">
+    </form>
+</div>
+
+<div class="overlay" id="overlayModify" onclick="hideModifyPopup()"></div>
+
 
 <div class="popup-form" id="taskForm">
     <form id="addTaskForm" method="post">
@@ -265,6 +327,26 @@
 
     function goGanttchart(){
         window.location.href="gantt_V2.php";
+    }
+
+    function showModifyPopup() {
+        document.getElementById('modifyForm').style.display = 'block';
+        document.getElementById('overlayModify').style.display = 'block';
+    }
+
+    function hideModifyPopup() {
+        document.getElementById('modifyForm').style.display = 'none';
+        document.getElementById('overlayModify').style.display = 'none';
+    }
+
+    function showProjectDetailsPopup() {
+        document.getElementById('projectDetailsForm').style.display = 'block';
+        document.getElementById('overlayProjectDetails').style.display = 'block';
+    }
+
+    function hideProjectDetailsPopup() {
+        document.getElementById('projectDetailsForm').style.display = 'none';
+        document.getElementById('overlayProjectDetails').style.display = 'none';
     }
 </script>
 </body>
