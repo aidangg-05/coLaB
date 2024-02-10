@@ -110,14 +110,17 @@
                     $daysRemaining = $interval->format('%r%a');
 
                     // Set notification text and class
-                    $notificationText = "";
                     $notificationClass = "";
-                    if ($daysRemaining > 0) {
+
+                    if ($daysRemaining > 3) {
+                        // No notification for projects with more than 3 days remaining
+                        $notificationText = "";
+                    } elseif ($daysRemaining > 0) {
                         $notificationText = "Project $project_name due in $daysRemaining day(s)";
-                    } elseif ($daysRemaining == 0) {
+                    } elseif ($daysRemaining > -1) {
                         $notificationText = "Project $project_name due today";
                         $notificationClass = 'orange-notification';
-                    } elseif ($daysRemaining < 0) {
+                    } else {
                         $notificationText = "Project $project_name is overdue!";
                         $notificationClass = 'red-notification';
                     }

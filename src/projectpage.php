@@ -159,7 +159,7 @@
         </tr>
         <tr>
             <td style="border: none;padding: 5px"><span class="project">Created by:</span></td>
-            <td style="border: none;padding: 5px"><span></span></td>
+            <td style="border: none;padding: 5px"><span><?php echo $creator_email?></span></td>
         </tr>
         <tr>
             <td style="border: none;padding: 5px"><span class="project">Priority:</span></td>
@@ -175,7 +175,10 @@
             <?php
             while ($members_row = mysqli_fetch_assoc($members_result)){
                 foreach ($members_row as $member){
+                    if ($member == $project_creator){
+                        continue;}
                     $member_email = getEmail($userbase_db,$member)
+
                     ?>
                     <td style="border: none;padding: 5px"><span><?php echo $member_email?><br></span></td>
                 <?php }} ?>
