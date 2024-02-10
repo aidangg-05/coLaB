@@ -180,7 +180,7 @@
         <input type="text" id="modifyProjectName" name="modifyProjectName">
 
         <label>Project Description:</label>
-        <textarea id="modifyProjectDescription" name="modifyProjectDescription"></textarea>
+        <textarea id="modifyProjectDescription" name="modifyProjectDescription" style="width:100%;border: 1px solid rgb(182,182,182);border-radius: 5px"></textarea>
 
         <label>End Date:</label>
         <input type="date" id="modifyEndDate" name="modifyEndDate">
