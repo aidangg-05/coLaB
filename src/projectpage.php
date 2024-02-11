@@ -227,14 +227,11 @@
 
         <label>Assignee:</label>
         <div class="input_box" id="add_users_box">
-            <span class="input_text">Add Other Users:</span>
             <span id="errmsg" class="error-text"></span>
             <span class="material-symbols-outlined" onclick="addTextInput()">add</span>
         </div>
-        <!-- <input type="text" id="modifyProjectName" name="modifyPr">
 
         <input type="submit" name="modify_project" value="Save changes">
-        -->
     </form>
 </div>
 
