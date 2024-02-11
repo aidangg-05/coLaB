@@ -26,7 +26,7 @@
         <p class="dot">•</p>
         <a href="#" onclick="togglePopup()">Notifications</a>
     </div>
-    <button id="button" class="hamburger" ><img src="images/burger.png"/></button>
+    <button id="button" class="hamburger" ><img src="img/burger.png"/></button>
 </div>
 
 
