@@ -28,22 +28,22 @@
                         <span class="name">Jun Sheng</span><br />
                         <span class="role">Team Leader</span><br /><br />
                         <span class="desc">
-                            - Backend <br />
+                            - Reminding Backend <br />
                             - Hosting Website (AWS EC2) <br />
                             - Database Management <br />
-                            - Linking to AWS RDS
+                            - Hosting MySql database (AWS RDS)
                         </span>
                     </p>
                     <p class="right">
                         <span class="name">Yun Yang</span><br />
                         <span class="role">Vice Leader</span><br /><br />
                         <span class="desc">
-                            - Project Filter <br />
-                            - Gantt Chart <br />
+                            - Project Filter [Frontend + Backend]<br />
+                            - Gantt Chart [Frontend + Backend]<br />
                             - Notification Pop Up [Frontend] <br />
-                            - Add Project Form <br />
+                            - Add Project Form [Frontend]<br />
                             - About Page [Frontend] <br />
-                            - Mainpage [Frontend]
+                            - Main Page  [Frontend]
                         </span>
                     </p>
                 </div>
@@ -54,17 +54,17 @@
                             - Redesigned CSS [Frontend] <br />
                             - Project Page [Frontend] <br />
                             - Login and Sign In [Frontend] <br />
-                            - Contact Us Form
+                            - Contact Us Form [Frontend + Backend]
                         </span>
                     </p>
                     <p class="right">
                         <span class="name">Ian</span><br />
                     <span class="desc">
-                        - Payment System <br />
+                        - Payment System [Frontend + Backend]<br/>
                         - Notifications [Backend] <br />
-                        - Profile Page <br />
-                        - Profile Page Change Password <br />
-                        - About Page
+                        - Profile Page [Frontend]<br />
+                        - Profile Page Change Password [Frontend] <br />
+                        - About Page [Frontend]
                      </span>
                     </p>
                 </div>
