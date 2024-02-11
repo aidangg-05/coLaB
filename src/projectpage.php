@@ -290,7 +290,7 @@
 </style>
 <div class="nav-container">
     <div>
-        <a href='helpme.php'><img id="doodle" src="img/girl.gif"/></a>
+        <a href='helpme.php'><img id="doodle" src="img/back.png" style="width: 25px"/></a>
     </div>
     <div>
         <b id="name">CoLab</b>
@@ -302,7 +302,7 @@
 </div>
 
 <!-- project details -->
-<div class="popup-form" id="projectDetailsForm">
+<div class="popup-form" id="projectDetailsForm" style="width: 350px">
     <table>
         <tr>
             <td style="border: none;padding: 5px"><span class="project">Project Name:</span></td>

@@ -126,7 +126,7 @@
                     }
 
                     // Output project details and notification
-                    echo "<form onclick='toProjectPage(event)' id='$project_id'>";
+                    echo "<form onclick='toProjectPage(event)' id='$project_id' >";
                     echo "<div class='projectrow'>";
                     echo "<span class='pname'>$project_name</span>";
                     echo "<span class='enddate'>$formattedDate</span>";
