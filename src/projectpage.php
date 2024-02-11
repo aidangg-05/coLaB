@@ -224,7 +224,6 @@
             <option <?php if ($project_priority == "Low"){echo'selected';}?>>Low</option>
         </select>
 
-
         <label>Assignee:</label>
         <div class="input_box" id="add_users_box">
             <span id="errmsg" class="error-text"></span>
@@ -257,8 +256,6 @@
             <?php
             while ($members_row1 = mysqli_fetch_assoc($members_result1)){
                 foreach ($members_row1 as $member){
-                    if ($member == $project_creator){
-                        continue;}
                     $member_Name = getName($userbase_db,$member)
                     ?>
                     <option value="<?php echo $member?>" id="assignee"><?php echo $member_Name?></option>
@@ -288,20 +285,20 @@
         <th>Status</th>
     </tr>
     </thead>
-    <tbody id="taskList">
+    <tbody id="taskList" onclick="showPopup4()" >
     <?php
 
     while ($task = mysqli_fetch_assoc($tasks_result)){
         $task_id = $task['task_id'];
         $task_name = $task['task_name'];
+
         $assignee = $task['assignee'];
         $assignee_name = getName($userbase_db,$assignee);
         $status = $task['status'];
         $due = $task['due_date'];
         $dateObject = new DateTime($due);
         $formattedDate = $dateObject->format('d-m-Y'); ?>
-        <tr>
-            <input type="hidden" value="<?php echo $task_name?>" name="task_id">
+        <tr value="<?php echo $task_id?>" onclick="get_CurrentTask(event)">
             <td><?php echo $task_name?></td>
             <td><?php echo $formattedDate?> </td>
             <td><?php echo $assignee_name?></td>
@@ -310,16 +307,18 @@
                     <form method="post">
                         <button type="submit" name="deletetask" value="<?php echo $task_id?>">Delete</button>
                     </form>
+                <form>
+                    <button onclick="get_CurrentTask(event); window.location.href='subtask.php'">View Subtask</button>
+                </form>
                     <form>
-                        <button class="subtask-option" name="add_subtask" value="<?php echo $task_id?>">Subtask</button>
+                        <button class="subtask-option" name="add_subtask" value="<?php echo $task_id?>" onclick="showSubtaskForm(); get_CurrentTask(event)" type="button">Add Subtask</button>
                     </form>
                     <form>
-                        <button class="edittask-option" name="edit_task" value="<?php echo $task_id?>">Edit Task</button>
+                        <button class="edittask-option" name="edit_task" value="<?php echo $task_id?>" onclick="showPopup3(); get_CurrentTask(event)"" type="button">Edit Task</button>
                     </form>
             </td>
         </tr>
     <?php }?>
-    <!-- Task rows will be dynamically added here -->
     </tbody>
 </table>
 <div class="popup-form" id="subtaskForm" style="display: none;">
@@ -331,22 +330,38 @@
         <input type="date" id="subtaskDueDate" name="subtaskDueDate">
 
         <label for="subAssignee">Assignee:</label>
-        <input type="text" id="subAssignee" name="subtaskAssignee">
+        <select id="SubAssignee" name="Subassign">
+            <?php
+            while ($members_row2 = mysqli_fetch_assoc($members_result2)){
+                foreach ($members_row2 as $member){
+                    $member_Name = getName($userbase_db,$member)
+                    ?>
+                    <option value="<?php echo $member?>" id="subassignee"><?php echo $member_Name?></option>
+                <?php }} ?>
+        </select>
 
-        <button type="submit" onclick="hidePopup2()" name="addsubtask">Add Subtask</button>
+        <button type="submit" name="addsubtask">Add Subtask</button>
     </form>
 </div>
 
 <div class="popup-form" id="editTaskForm" style="display: none;">
     <form id="editTaskForm" method="post">
         <label for="editTaskName">Task Name:</label>
-        <input type="text" id="editTaskName" name="editTaskName" value="<?php ?>">
+        <input type="text" id="editTaskName" name="editTaskName">
 
         <label for="editDueDate">Due Date:</label>
         <input type="date" id="editDueDate" name="editDueDate">
 
         <label for="editAssignee">Assignee:</label>
-        <input type="text" id="editAssignee" name="editAssignee">
+        <select id="editAssignee" name="editAssignee">
+            <?php
+            while ($members_row3 = mysqli_fetch_assoc($members_result3)){
+                foreach ($members_row3 as $member){
+                    $member_Name = getName($userbase_db,$member)
+                    ?>
+                    <option value="<?php echo $member?>" id="subassignee"><?php echo $member_Name?></option>
+                <?php }} ?>
+        </select>
 
         <label for="editStatus">Status:</label>
         <select id="editStatus" name="editStatus">
@@ -354,12 +369,13 @@
             <option value="In Progress">In Progress</option>
             <option value="Finished">Finished</option>
         </select>
-
-        <button type="submit" onclick="hidePopup3()" name="edittask_save">Save changes</button>
+        <button type="submit" name="edittask_save">Save changes</button>
     </form>
 </div>
 
+
 <script>
+    /*
     document.addEventListener('DOMContentLoaded', function() {
         const optionsMenus = document.querySelectorAll('.options');
 
@@ -408,20 +424,12 @@
             });
         });
     });
+    */
 
     function showPopup() {
         document.getElementById('taskForm').style.display = 'block';
         document.getElementById('overlay').style.display = 'block';
     }
-
-    function populateEditForm(row) {
-        const cells = row.querySelectorAll('td');
-        document.getElementById('editTaskName').value = cells[0].textContent; // Task Name
-        document.getElementById('editDueDate').value = cells[1].textContent; // Due Date
-        document.getElementById('editAssignee').value = cells[2].textContent; // Assignee
-        document.getElementById('editStatus').value = cells[3].textContent; // Status
-    }
-
 
     function hidePopup() {
         document.getElementById('taskForm').style.display = 'none';
@@ -433,6 +441,11 @@
         document.getElementById('editTaskForm').style.display = 'block';
         document.getElementById('overlay').style.display = 'block';
     }
+    function showPopup4() {
+        document.getElementById('subtask').style.display = 'block';
+        document.getElementById('overlay').style.display = 'block';
+    }
+
 
     function hidePopup3() {
         document.getElementById('editTaskForm').style.display = 'none';
@@ -511,11 +524,23 @@
         document.getElementById('projectDetailsForm').style.display = 'none';
         document.getElementById('overlayProjectDetails').style.display = 'none';
     }
+    function showEdittaskForm() {
+        document.getElementById('').style.display = 'block';
+    }
+
+    function populateEditForm(row) {
+        const cells = row.querySelectorAll('td');
+        document.getElementById('editTaskName').value = cells[0].textContent; // Task Name
+        document.getElementById('editDueDate').value = cells[1].textContent; // Due Date
+        document.getElementById('editAssignee').value = cells[2].textContent; // Assignee
+        document.getElementById('editStatus').value = cells[3].textContent; // Status
+    }
 
     // Function to show subtask form
     function showSubtaskForm() {
         document.getElementById('subtaskForm').style.display = 'block';
     }
+
 
     // Function to add subtasks
     function addSubtask() {
@@ -532,6 +557,13 @@
         // Clear the subtask form
         document.getElementById('subtaskForm').reset();
         document.getElementById('subtaskForm').style.display = 'none'; // Hide subtask form
+    }
+
+    function get_CurrentTask(event){
+        this_row = event.target.closest('tr');
+        task_id = this_row.getAttribute('value');
+        document.cookie ="current_task="+task_id;
+        event.preventDefault();
     }
 </script>
 

@@ -13,7 +13,6 @@ $project_id = $_COOKIE['current_project'];
 //Pull task for current project
 $tasks_result = mysqli_query($userbase_db, "SELECT * FROM task_table WHERE project_id='$project_id' ");
 
-
 //Pull project info from project_info table
 $projectinfo_results = mysqli_query($userbase_db, "SELECT * FROM project_info WHERE project_id='$project_id' ");
 $project_info = mysqli_fetch_assoc($projectinfo_results);
@@ -31,8 +30,10 @@ $project_des = $project_info['project_des'];
 //Pull list of members for this project
 $members_result =  mysqli_query($userbase_db, "SELECT member FROM project_members WHERE project_id='$project_id'");
 $members_result1 =  mysqli_query($userbase_db, "SELECT member FROM project_members WHERE project_id='$project_id'");
+$members_result2 =  mysqli_query($userbase_db, "SELECT member FROM project_members WHERE project_id='$project_id'");
+$members_result3 =  mysqli_query($userbase_db, "SELECT member FROM project_members WHERE project_id='$project_id'");
 
-
+/*      To add task     */
 if (isset($_POST['AddTask'])){
 
     $task_name = trim($_POST['name']);
@@ -72,7 +73,8 @@ if (isset($_POST['AddTask'])){
     }
 }
 
-if (isset($_POST["delete"])) {  //To delete project
+/* To delete project */
+if (isset($_POST["delete"])) {
     $wrong1 = $wrong2 = $wrong3 = $wrong4 = TRUE;
 
     //Delete Project from project_info
@@ -95,12 +97,13 @@ if (isset($_POST["delete"])) {  //To delete project
 
     //If everything is deleted
     if ($wrong1 == FALSE && $wrong2 == FALSE && $wrong3 == FALSE){
-        header("Location: index.php");
+        header("Location: helpme.php");
         exit();
     }
 }
 
-if (isset($_POST["deletetask"])) {  //To delete task
+/* To delete taski */
+if (isset($_POST["deletetask"])) {
     $current_task = $_POST["deletetask"];
     $wong1 = $wong2 = TRUE;
 
@@ -110,7 +113,9 @@ if (isset($_POST["deletetask"])) {  //To delete task
 
 
     //Delete subtask that has this task id from subtask_table
-    $wong2 = FALSE;
+    if ($userbase_db->query("DELETE FROM subtask_table WHERE task_id='$current_task'") === TRUE) {  //Delete task from task_table
+        $wong2 = FALSE;
+    }
 
 
     if ($wong1 == FALSE && $wong2 == FALSE){   //Refresh content
@@ -118,7 +123,9 @@ if (isset($_POST["deletetask"])) {  //To delete task
     }
 }
 
-if (isset($_POST["modify_project"])) {  //To modify project
+
+/* To modify project */
+if (isset($_POST["modify_project"])) {
     $modify_name = trim($_POST['modifyProjectName']);
     $modify_des = trim($_POST['modifyProjectDescription']);
     $modify_end = $_POST['modifyEndDate'];
@@ -145,9 +152,63 @@ if (isset($_POST["modify_project"])) {  //To modify project
             UPDATE project_info SET project_name='$modify_name',end_date='$modify_end',priority='$modify_priority',project_des='$modify_des' WHERE project_id='$project_id'") === TRUE) {
             echo "<meta http-equiv='refresh' content='0'>";
         }
-
     }
 }
+
+
+
+/* To add sub task*/
+if (isset($_POST["addsubtask"])) {
+
+    $sub_name = trim($_POST['subtaskName']);
+    $sub_end = $_POST['subtaskDueDate'];
+    $sub_assignee = $_POST['Subassign'];
+    $current_taskid = $_COOKIE['current_task'];
+
+    if ($sub_name === "") {}
+
+    else if ($sub_end === "") {}
+
+    else if ($sub_assignee === "") {}
+
+    else {
+
+        //Insert into sub-task table
+        if ($userbase_db->query("
+            INSERT INTO subtask_table(task_id,subtask_name,due_date,assignee) 
+            VALUES ('$current_taskid', '$sub_name','$sub_end','$sub_assignee')") === TRUE) {
+            echo "<meta http-equiv='refresh' content='0'>";
+        }
+    }
+}
+
+/* To update task */
+if (isset($_POST["edittask_save"])) {
+    $current_taskid = $_COOKIE['current_task'];
+    $new_tname = trim($_POST['editTaskName']);
+    $new_tend = $_POST['editDueDate'];
+    $new_tassignee = $_POST['editAssignee'];
+    $new_tstatus = $_POST['editStatus'];
+
+    if ($new_tname === "") {
+
+    }
+
+
+    else if ($new_tend === "") {
+
+    }
+
+    else {
+
+        //Insert into sub-task table
+        if ($userbase_db->query("
+            UPDATE task_table SET task_name='$new_tname',due_date='$new_tend', assignee='$new_tassignee', status='$new_tstatus' WHERE task_id='$current_taskid'") === TRUE) {
+            echo "<meta http-equiv='refresh' content='0'>";
+        }
+    }
+}
+
 
 
 
