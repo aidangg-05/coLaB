@@ -28,14 +28,22 @@
                         <span class="name">Jun Sheng</span><br />
                         <span class="role">Team Leader</span><br /><br />
                         <span class="desc">
-                            Responsibilities include delegating tasks to team members and overseeing their adherence to specified timelines. Additionally, played a key role in contributing to the website's back-end code.
+                            - Backend <br />
+                            - Hosting Website (AWS EC2) <br />
+                            - Database Management <br />
+                            - Linking to AWS RDS
                         </span>
                     </p>
                     <p class="right">
                         <span class="name">Yun Yang</span><br />
                         <span class="role">Vice Leader</span><br /><br />
                         <span class="desc">
-                            Crafted and implemented a diverse array of user-friendly front-end pages, aiming to elevate and optimize the overall user experience.
+                            - Project Filter <br />
+                            - Gantt Chart <br />
+                            - Notification Pop Up [Frontend] <br />
+                            - Add Project Form <br />
+                            - About Page [Frontend] <br />
+                            - Mainpage [Frontend]
                         </span>
                     </p>
                 </div>
@@ -43,13 +51,20 @@
                     <p class="left">
                         <span class="name">Aidan</span><br />
                         <span class="desc">
-                            Participated in the creation of multiple front-end pages and played a crucial role in developing essential features, such as the Gantt chart, implemented across both the front-end and back-end of the system.
+                            - Redesigned CSS [Frontend] <br />
+                            - Project Page [Frontend] <br />
+                            - Login and Sign In [Frontend] <br />
+                            - Contact Us Form
                         </span>
                     </p>
                     <p class="right">
                         <span class="name">Ian</span><br />
                     <span class="desc">
-                        Developed multiple front-end pages and design features while overseeing key functionalities, including the implementation and management of the payment feature.
+                        - Payment System <br />
+                        - Notifications [Backend] <br />
+                        - Profile Page <br />
+                        - Profile Page Change Password <br />
+                        - About Page
                      </span>
                     </p>
                 </div>
