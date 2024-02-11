@@ -24,7 +24,7 @@ $email = $results['email'];
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $new_name = trim($_POST['name']);
-    $new_email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
+    $new_email =trim($_POST['email']);
 
     if ($new_name==="") {
         $errName = "*Name required";
@@ -40,23 +40,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     else
     {
+
             $new_name = filter_var($new_name, FILTER_SANITIZE_STRING);
 
             $pull_new_email = "SELECT * FROM user_table WHERE email='$new_email'";
             $new_email_result = mysqli_query($userbase_db, $pull_new_email);
 
-            if ($new_email != $email){ //If email changed
+            if ($new_email !== $email){ //If email changed
                 if (mysqli_num_rows($new_email_result) == 1) {           //Someone else using that email
-
                     $errEmail = "*Email already used";
+                }
 
+                else {                                             //No available record
+                    $update_email = "UPDATE user_table SET email='$new_email' WHERE user_id='$userid'";
+                    $update_email_result = mysqli_query($userbase_db, $update_email);
+
+                    header("Location: profile.php");
+                    exit();
                 }
             }
 
             else {                                             //No available record
-
-                $update_email = "UPDATE user_table SET email='$new_email' WHERE user_id='$userid'";
-                $update_email_result = mysqli_query($userbase_db, $update_email);
 
                 $update_name = "UPDATE user_table SET name='$new_name' WHERE user_id='$userid'";
                 $update_name_result = mysqli_query($userbase_db, $update_name);
@@ -66,6 +70,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
 
     }
-
-
 }
