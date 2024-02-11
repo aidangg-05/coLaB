@@ -107,7 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //No issue for both
         if ($err1 == FALSE && $err2 == FALSE) {
 
-            header("Location: index.php");
+            header("Location: helpme.php");
             exit();
         }
     }

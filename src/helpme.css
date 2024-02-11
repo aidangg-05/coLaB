@@ -241,7 +241,7 @@ wigger {
 .projectrow {
     max-width: 100%;
     width: 600px;
-    padding: 20px;
+    padding: 15px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -277,6 +277,17 @@ wigger {
 
 .orange-notification {
     color: #f39c12;
+}
+
+
+#High{
+    color: red;
+}
+#Medium{
+    color: orange;
+}
+#Low{
+    color: #04AA6D;
 }
 
 

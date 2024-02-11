@@ -67,6 +67,11 @@
     </div>
 </div>
 <div class="scroll-container">
+    <div style="display: flex;justify-content: space-between;width: 600px;font-weight: bold;margin-bottom: 10px">
+        <span>Project Name</span>
+        <span>End Date</span>
+        <span>Priority</span>
+    </div>
     <?php
     while ($projectid_result = mysqli_fetch_assoc($pull_projectid)) {
         foreach ($projectid_result as $project_id) {
@@ -116,8 +121,8 @@
                 echo "<div class='projectrow'>";
                 echo "<span class='pname'>$project_name</span>";
                 echo "<span class='enddate'>$formattedDate</span>";
-                echo "<span class='status' id='$project_status_id'>$project_status</span>";
                 echo "<span class='priority' id='$project_priority'>$project_priority Priority</span>";
+
                 echo "</div></form>";
 
                 if ($notificationText !== "") {
