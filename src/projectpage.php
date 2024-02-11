@@ -407,8 +407,7 @@
         <label for="dueDate">Due Date:</label>
         <input type="date" id="dueDate" name="due_date">
         <span> </span>
-
-
+        
         <label for="assignee">Assignee:</label>
         <select id="Assignee" name="assign">
             <?php
