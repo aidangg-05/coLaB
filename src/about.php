@@ -28,22 +28,22 @@
                         <span class="name">Jun Sheng</span><br />
                         <span class="role">Team Leader</span><br /><br />
                         <span class="desc">
-                            - Reminding Backend <br />
+                            - Backend <br />
                             - Hosting Website (AWS EC2) <br />
                             - Database Management <br />
-                            - Hosting MySql database (AWS RDS)
+                            - Linking to AWS RDS
                         </span>
                     </p>
                     <p class="right">
                         <span class="name">Yun Yang</span><br />
                         <span class="role">Vice Leader</span><br /><br />
                         <span class="desc">
-                            - Project Filter [Frontend + Backend]<br />
-                            - Gantt Chart [Frontend + Backend]<br />
+                            - Project Filter <br />
+                            - Gantt Chart <br />
                             - Notification Pop Up [Frontend] <br />
-                            - Add Project Form [Frontend]<br />
+                            - Add Project Form <br />
                             - About Page [Frontend] <br />
-                            - Main Page  [Frontend]
+                            - Mainpage [Frontend]
                         </span>
                     </p>
                 </div>
@@ -54,17 +54,17 @@
                             - Redesigned CSS [Frontend] <br />
                             - Project Page [Frontend] <br />
                             - Login and Sign In [Frontend] <br />
-                            - Contact Us Form [Frontend + Backend]
+                            - Contact Us Form
                         </span>
                     </p>
                     <p class="right">
                         <span class="name">Ian</span><br />
                     <span class="desc">
-                        - Payment System [Frontend + Backend]<br/>
+                        - Payment System <br />
                         - Notifications [Backend] <br />
-                        - Profile Page [Frontend]<br />
-                        - Profile Page Change Password [Frontend] <br />
-                        - About Page [Frontend]
+                        - Profile Page <br />
+                        - Profile Page Change Password <br />
+                        - About Page
                      </span>
                     </p>
                 </div>
@@ -77,7 +77,9 @@
 
         <div class="donate-container">
             <span id="support">Support us by buying us a coffee!</span>
-            <button type="button" id="donate" onclick="window.location.href='https://buy.stripe.com/test_aEU006fzC3aieRi8ww'">Donate</button>
+            <button type="button" id="donate">
+                <a href="https://buy.stripe.com/test_aEU006fzC3aieRi8ww" target="_blank">Donate</a>
+            </button>
         </div>
     </div>
 </body>
