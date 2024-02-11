@@ -66,8 +66,8 @@
     </div>
 </div>
 <div class="scroll-container">
-    <div style="display: flex;justify-content: space-between;width: 600px;font-weight: bold;margin-bottom: 10px">
-        <span>Project Name</span>
+    <div class="headersProjectrow">
+        <span >Project Name</span>
         <span>End Date</span>
         <span>Priority</span>
     </div>
