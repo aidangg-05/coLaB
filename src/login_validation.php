@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $userid = mysqli_fetch_array($userid_result)['user_id'];
 
                 $_SESSION['current_id'] = $userid;  //Set the session (To determine current user)
-                header("Location: index.php");
+                header("Location: helpme.php");
                 exit();
 
             } else {                                     //Incorrect Password

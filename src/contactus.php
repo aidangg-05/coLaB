@@ -32,7 +32,7 @@
         <label for="subject">Subject</label>
         <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
 
-        <input type="button" value="back" onclick="window.location.href='index.php'">
+        <input type="button" value="back" onclick="window.location.href='helpme.php'">
         <input type="submit" value="Submit">
     </form>
 </div>
