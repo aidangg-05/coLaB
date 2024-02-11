@@ -1,5 +1,5 @@
 function backtomain(){
-    window.location.href="index.php";
+    window.location.href="helpme.php";
 }
 
 
