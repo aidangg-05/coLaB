@@ -340,7 +340,7 @@
                 <?php }} ?>
         </select>
 
-        <button type="button" onclick="">Close</button>
+        <button type="button" onclick="hidePopup2()">Close</button>
         <button type="submit" name="addsubtask">Add Subtask</button>
     </form>
 </div>
@@ -370,6 +370,7 @@
             <option value="In Progress">In Progress</option>
             <option value="Finished">Finished</option>
         </select>
+        <button type="button" onclick="hidePopup3()">Close</button>
         <button type="submit" name="edittask_save">Save changes</button>
     </form>
 </div>
