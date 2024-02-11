@@ -137,6 +137,11 @@ body {
     border-radius: 4px;
 }
 
-    #donate:hover {
-        background-color: #2980b9;
-    }
+a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+#donate:hover {
+    background-color: #2980b9;
+}
