@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="helpme.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
-
 </head>
 <body>
 <div class="nav-container">

@@ -8,7 +8,7 @@
     <title>Project Management</title>
     <!--For icons-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-
+    <script type="text/javascript" src="script_addprojectform.js"></script>
 </head>
 <body>
 <style>
@@ -151,11 +151,19 @@
         </tr>
         <tr>
             <td style="border: none;padding: 5px"><span class="project">Start Date:</span></td>
-            <td style="border: none;padding: 5px"><span><?php echo $project_start?></span></td>
+            <?php
+            $dateObject1 = new DateTime($project_start);
+            $formatted_Start = $dateObject1->format('d-m-Y');
+            ?>
+            <td style="border: none;padding: 5px"><span><?php echo $formatted_Start ?></span></td>
         </tr>
         <tr>
             <td style="border: none;padding: 5px"><span class="project">End Date:</span></td>
-            <td style="border: none;padding: 5px"><span><?php echo $project_due?></span></td>
+            <?php
+            $dateObject2 = new DateTime($project_due);
+            $formatted_Due = $dateObject2->format('d-m-Y');
+            ?>
+            <td style="border: none;padding: 5px"><span><?php echo $formatted_Due?></span></td>
         </tr>
         <tr>
             <td style="border: none;padding: 5px"><span class="project">Created by:</span></td>
@@ -165,11 +173,6 @@
             <td style="border: none;padding: 5px"><span class="project">Priority:</span></td>
             <td style="border: none;padding: 5px"><span><?php echo $project_priority?></span></td>
         </tr>
-        <tr>
-            <td style="border: none;padding: 5px"><span class="project">Status:</span></td>
-            <td style="border: none;padding: 5px"><span><?php echo $project_status?></span></td>
-        </tr>
-
         <tr>
             <td style="border: none;padding: 5px"><span class="project">Members:</span></td>
             <td style="border: none;padding: 5px"><?php
@@ -223,9 +226,15 @@
 
 
         <label>Assignee:</label>
-        <input type="text" id="modifyProjectName" name="modifyPr">
+        <div class="input_box" id="add_users_box">
+            <span class="input_text">Add Other Users:</span>
+            <span id="errmsg" class="error-text"></span>
+            <span class="material-symbols-outlined" onclick="addTextInput()">add</span>
+        </div>
+        <!-- <input type="text" id="modifyProjectName" name="modifyPr">
 
         <input type="submit" name="modify_project" value="Save changes">
+        -->
     </form>
 </div>
 
@@ -247,11 +256,17 @@
 
 
         <label for="assignee">Assignee:</label>
-        <select id="subAssignee" name="subtaskAssignee">
-            <option value="assignee1">Assignee 1</option>
-            <option value="assignee2">Assignee 2</option>
-            <option value="assignee3">Assignee 3</option>
-            <!-- Add more options as needed -->
+        <select id="Assignee" name="assign">
+                <?php
+                while ($members_row1 = mysqli_fetch_assoc($members_result1)){
+                    foreach ($members_row1 as $member){
+                        if ($member == $project_creator){
+                            continue;}
+                        $member_Name = getName($userbase_db,$member)
+                        ?>
+                        <option value="<?php echo $member?>" id="assignee"><?php echo $member_Name?></option>
+                    <?php }} ?>
+            <span> </span>
         </select>
         <span> </span>
 
@@ -283,14 +298,16 @@
             $task_id = $task['task_id'];
             $task_name = $task['task_name'];
             $assignee = $task['assignee'];
+            $assignee_name = getName($userbase_db,$assignee);
             $status = $task['status'];
             $due = $task['due_date'];
             $dateObject = new DateTime($due);
             $formattedDate = $dateObject->format('d-m-Y'); ?>
             <tr>
+                <input type="hidden" value="<?php echo $task_name?>" name="task_id">
                 <td><?php echo $task_name?></td>
                 <td><?php echo $formattedDate?> </td>
-                <td><?php echo $assignee?></td>
+                <td><?php echo $assignee_name?></td>
                 <td><?php echo $status?></td> <!-- Updated this line to display status as text -->
                 <td>
                     <button class="options-button">
@@ -301,10 +318,10 @@
                             <button type="submit" name="deletetask" value="<?php echo $task_id?>">Delete</button>
                         </form>
                         <form>
-                            <button type="button" class="subtask-option" value="<?php echo $task_id?>">Subtask</button>
+                            <button class="subtask-option" name="add_subtask" value="<?php echo $task_id?>">Subtask</button>
                         </form>
                         <form>
-                            <button type="button" class="edittask-option">Edit Task</button>
+                            <button class="edittask-option" name="edit_task" value="<?php echo $task_id?>">Edit Task</button>
                         </form>
                     </div>
                 </td>

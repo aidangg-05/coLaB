@@ -2,7 +2,6 @@ function backtomain(){
     window.location.href="helpme.php";
 }
 
-
 function addTextInput() {
     var container = document.getElementById("add_users_box");
     var inputWrapper = document.createElement("div"); // Create a wrapper for input and delete button

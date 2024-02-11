@@ -31,3 +31,20 @@ function getUserID($userbase_db,$email)
     }
 }
 
+function getName($userbase_db,$user_id)
+{
+
+    $pull_userid = mysqli_query($userbase_db, "SELECT name FROM user_table WHERE user_id='$user_id' ");
+
+    if (mysqli_num_rows($pull_userid) == 1) {           //Available to pull
+
+        $userid_result = mysqli_fetch_array($pull_userid);
+        $name = $userid_result['name'];
+
+        return $name;
+    }
+    else {                                //No available record or email not valid
+        return $name = -1;
+    }
+}
+

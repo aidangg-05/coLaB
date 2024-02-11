@@ -30,6 +30,7 @@ $project_des = $project_info['project_des'];
 
 //Pull list of members for this project
 $members_result =  mysqli_query($userbase_db, "SELECT member FROM project_members WHERE project_id='$project_id'");
+$members_result1 =  mysqli_query($userbase_db, "SELECT member FROM project_members WHERE project_id='$project_id'");
 
 
 if (isset($_POST['AddTask'])){
