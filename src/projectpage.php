@@ -340,6 +340,7 @@
                 <?php }} ?>
         </select>
 
+        <button type="button" onclick="">Close</button>
         <button type="submit" name="addsubtask">Add Subtask</button>
     </form>
 </div>
@@ -372,7 +373,6 @@
         <button type="submit" name="edittask_save">Save changes</button>
     </form>
 </div>
-
 
 <script>
     /*

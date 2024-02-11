@@ -104,8 +104,6 @@ if (isset($_POST["delete"])) {
 
 /* To delete task */
 if (isset($_POST["deletetask"])) {
-    header("Location: helpme.php");
-    exit();
     $current_task = $_POST["deletetask"];
     $wong1 = $wong2 = TRUE;
 
