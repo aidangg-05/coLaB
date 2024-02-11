@@ -1,59 +1,63 @@
-
-body{
-    margin:0;
-    padding:0;
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f2f2f2;
 }
-.form{
-    border: 1px solid black;
-    margin: 50px;
+
+.form {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 50px auto;
+    max-width: 400px;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 input[type=text], select, textarea {
-    width: 100%; /* Full width */
-    padding: 12px; /* Some padding */
-    border: 1px solid #ccc; /* Gray border */
-    border-radius: 4px; /* Rounded borders */
-    box-sizing: border-box; /* Make sure that padding and width stays in place */
-    margin-top: 6px; /* Add a top margin */
-    margin-bottom: 16px; /* Bottom margin */
-    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    font-size: 16px;
 }
 
-/* Style the submit button with a specific background color etc */
+label {
+    font-weight: bold;
+}
+
 input[type=submit] {
-    background-color: #04AA6D;
-    color: white;
-    padding: 15px;
+    background-color: #007bff;
+    color: #fff;
+    padding: 12px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
 }
 
-/* When moving the mouse over the submit button, add a darker green color */
 input[type=submit]:hover {
-    background-color: #45a049;
+    background-color: #0056b3;
 }
-input[type=button]{
-    background-color: white;
-    color: black;
-    padding:15px;
-    border: 1px solid black;
+
+input[type=button] {
+    background-color: #fff;
+    color: #007bff;
+    padding: 12px 20px;
+    border: 1px solid #007bff;
     border-radius: 5px;
-    cursor:pointer;
-    margin-right: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
+
 input[type=button]:hover {
-    background-color: rgba(0, 0, 0, 0.91);
-    color: white;
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
 }
-
-/* Add a background color and some padding around the form */
-
-.form {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
-    display:flex;
-}
-
-
