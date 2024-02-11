@@ -102,8 +102,10 @@ if (isset($_POST["delete"])) {
     }
 }
 
-/* To delete taski */
+/* To delete task */
 if (isset($_POST["deletetask"])) {
+    header("Location: helpme.php");
+    exit();
     $current_task = $_POST["deletetask"];
     $wong1 = $wong2 = TRUE;
 
@@ -111,12 +113,10 @@ if (isset($_POST["deletetask"])) {
         $wong1 = FALSE;
     }
 
-
     //Delete subtask that has this task id from subtask_table
     if ($userbase_db->query("DELETE FROM subtask_table WHERE task_id='$current_task'") === TRUE) {  //Delete task from task_table
         $wong2 = FALSE;
     }
-
 
     if ($wong1 == FALSE && $wong2 == FALSE){   //Refresh content
         echo "<meta http-equiv='refresh' content='0'>";

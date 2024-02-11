@@ -298,24 +298,24 @@
         $due = $task['due_date'];
         $dateObject = new DateTime($due);
         $formattedDate = $dateObject->format('d-m-Y'); ?>
-        <tr value="<?php echo $task_id?>" onclick="get_CurrentTask(event)">
+        <tr value="<?php echo $task_id?>" >
             <td><?php echo $task_name?></td>
             <td><?php echo $formattedDate?> </td>
             <td><?php echo $assignee_name?></td>
             <td><?php echo $status?></td> <!-- Updated this line to display status as text -->
             <td>
-                    <form method="post">
-                        <button type="submit" name="deletetask" value="<?php echo $task_id?>">Delete</button>
-                    </form>
+                <form method="post">
+                    <button type="submit" name="deletetask" value="<?php echo $task_id?>">Delete</button>
+                </form>
                 <form>
                     <button onclick="get_CurrentTask(event); window.location.href='subtask.php'">View Subtask</button>
                 </form>
-                    <form>
-                        <button class="subtask-option" name="add_subtask" value="<?php echo $task_id?>" onclick="showSubtaskForm(); get_CurrentTask(event)" type="button">Add Subtask</button>
-                    </form>
-                    <form>
-                        <button class="edittask-option" name="edit_task" value="<?php echo $task_id?>" onclick="showPopup3(); get_CurrentTask(event)"" type="button">Edit Task</button>
-                    </form>
+                <form>
+                    <button class="subtask-option" name="add_subtask" value="<?php echo $task_id?>" onclick="showSubtaskForm(); get_CurrentTask(event)" type="button">Add Subtask</button>
+                </form>
+                <form>
+                    <button class="edittask-option" name="edit_task" value="<?php echo $task_id?>" onclick="showPopup3(); get_CurrentTask(event)"" type="button">Edit Task</button>
+                </form>
             </td>
         </tr>
     <?php }?>
@@ -446,7 +446,6 @@
         document.getElementById('overlay').style.display = 'block';
     }
 
-
     function hidePopup3() {
         document.getElementById('editTaskForm').style.display = 'none';
         document.getElementById('overlay').style.display = 'none';
@@ -566,8 +565,5 @@
         event.preventDefault();
     }
 </script>
-
-
-
 </body>
 </html>
