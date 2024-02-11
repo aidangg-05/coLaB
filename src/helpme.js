@@ -83,12 +83,6 @@ function sorting() {
             );
             return dateA - dateB;
         });
-    } else if (sort === "status") {
-        sortedProjects.sort((a, b) => {
-            let statusA = getStatusOrder(a.querySelector('.status').textContent);
-            let statusB = getStatusOrder(b.querySelector('.status').textContent);
-            return statusA - statusB; // Compare statuses for sorting
-        });
     } else if (sort === "priority") {
         sortedProjects.sort((a, b) => {
             let priorityA = getPriorityOrder(a.querySelector('.priority').textContent);
@@ -102,19 +96,6 @@ function sorting() {
     });
 }
 
-// Helper function to determine order of statuses
-function getStatusOrder(status) {
-    switch (status.toLowerCase()) {
-        case "not started":
-            return 1;
-        case "progress":
-            return 2;
-        case "complete":
-            return 3;
-        default:
-            return 0;
-    }
-}
 
 // Helper function to determine order of priorities
 function getPriorityOrder(priority) {

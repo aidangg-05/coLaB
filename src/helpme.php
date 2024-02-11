@@ -50,7 +50,6 @@
                 <select class="form-select" id="form-select" aria-label="Default select example">
                     <option selected disabled>Sort by:</option>
                     <option value="end_date" name="end_date" id="end_date">End Date</option>
-                    <option value="status" name="status" id="status">Status</option>
                     <option value="priority" name="priority" id="priority">Priority</option>
                 </select>
             </div>
