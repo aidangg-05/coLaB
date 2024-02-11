@@ -127,3 +127,11 @@ function deleteProject(projectId) {
     }
 }
 
+function addNotification(text, className) {
+    const notificationList = document.getElementById('notificationList');
+    const notificationItem = document.createElement('li');
+    notificationItem.textContent = text;
+    notificationItem.className = className;
+    notificationList.appendChild(notificationItem);
+}
+
