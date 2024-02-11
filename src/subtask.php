@@ -203,7 +203,7 @@
         <b id="name">CoLab</b>
     </div>
     <div class="navlinks" id="navlinks">
-        <a href="helpme.php">Gantt Chart</a>
+        <a href="helpme.php"><img src="img/home.png" style="width: 25px"/></a>
     </div>
     <button id="button" class="hamburger" ><img src="img/burger.png"/></button>
 </div>
