@@ -12,7 +12,7 @@
         <h1>Transaction Successful</h1>
         <h3>Thank you for supporting our site!</h3>
         <div class="buttons">
-            <button type="button" id="back" onclick="window.location.href='index.php'">Back</button>
+            <button type="button" id="back" onclick="window.location.href='helpme.php.php'">Back</button>
         </div>
     </div>
 </body>

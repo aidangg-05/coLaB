@@ -160,3 +160,15 @@ button:hover {
 .project{
     font-weight: bold;
 }
+.delete-button{
+    color: red;
+    cursor: pointer;
+}
+
+.error-text{
+    color: red;
+}
+#modifyForm{
+    overflow-y: auto;
+    height:550px;
+}

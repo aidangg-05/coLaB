@@ -1,7 +1,6 @@
 function backtomain(){
-    window.location.href="index.php";
+    window.location.href="helpme.php";
 }
-
 
 function addTextInput() {
     var container = document.getElementById("add_users_box");

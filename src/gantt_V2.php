@@ -23,6 +23,7 @@
 
         function drawChart() {
 
+
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Task ID');
             data.addColumn('string', 'Task Name');
@@ -63,6 +64,12 @@
                 }
                 ?>
             ];
+            // Check if there are tasks to display
+            if (taskData.length === 0) {
+                // If there are no tasks, display a message or adjust the layout
+                document.getElementById('chart_div').innerText = 'No tasks to display';
+                return; // Exit the function
+            }
 
             data.addRows(taskData);
 

@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="helpme.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
-
 </head>
 <body>
 <div class="nav-container">
@@ -50,7 +49,6 @@
                 <select class="form-select" id="form-select" aria-label="Default select example">
                     <option selected disabled>Sort by:</option>
                     <option value="end_date" name="end_date" id="end_date">End Date</option>
-                    <option value="status" name="status" id="status">Status</option>
                     <option value="priority" name="priority" id="priority">Priority</option>
                 </select>
             </div>
@@ -67,6 +65,11 @@
     </div>
 </div>
 <div class="scroll-container">
+    <div class="headersProjectrow">
+        <span >Project Name</span>
+        <span>End Date</span>
+        <span>Priority</span>
+    </div>
     <?php
     while ($projectid_result = mysqli_fetch_assoc($pull_projectid)) {
         foreach ($projectid_result as $project_id) {
@@ -116,8 +119,8 @@
                 echo "<div class='projectrow'>";
                 echo "<span class='pname'>$project_name</span>";
                 echo "<span class='enddate'>$formattedDate</span>";
-                echo "<span class='status' id='$project_status_id'>$project_status</span>";
                 echo "<span class='priority' id='$project_priority'>$project_priority Priority</span>";
+
                 echo "</div></form>";
 
                 if ($notificationText !== "") {
