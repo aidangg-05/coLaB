@@ -1,4 +1,4 @@
-function togglePopup() {
+/*function togglePopup() {
     const popup = document.getElementById('notificationPopup');
     const overlay = document.getElementById('overlay');
 
@@ -134,4 +134,4 @@ function addNotification(text, className) {
     notificationItem.className = className;
     notificationList.appendChild(notificationItem);
 }
-
+*/

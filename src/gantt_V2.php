@@ -11,7 +11,7 @@
     <!--For gantt chart-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-    <title>Gantt Chart Generator</title>
+    <title>Gantt Chart</title>
 
     <script type="text/javascript">
         google.charts.load('current', {'packages':['gantt']});
@@ -112,7 +112,7 @@
 <body>
 <nav class="navbar">
     <ul>
-        <li><span class="material-symbols-outlined" onclick="window.location.href='index.php'" style="font-size: 20px">arrow_back</span></li>
+        <li><span class="material-symbols-outlined" onclick="window.location.href='helpme.php'" style="font-size: 20px">arrow_back</span></li>
         <li onclick="window.location.href='projectpage.php'">Projects</li>
         <li style="background-color: white;color: black">Gantt Chart</li>
     </ul>

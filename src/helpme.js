@@ -162,3 +162,22 @@ function deleteProject(projectId) {
         xhr.send("project_id=" + projectId);
     }
 }
+function addNotification(text, className) {
+    const notificationList = document.getElementById('notificationList');
+    const notificationItem = document.createElement('li');
+    notificationItem.textContent = text;
+    notificationItem.className = className;
+    notificationList.appendChild(notificationItem);
+}
+function togglePopup() {
+    const popup = document.getElementById('notificationPopup');
+    const overlay = document.getElementById('overlay');
+
+    if (popup.style.display === 'block') {
+        popup.style.display = 'none';
+        overlay.style.display = 'none';
+    } else {
+        popup.style.display = 'block';
+        overlay.style.display = 'block';
+    }
+}

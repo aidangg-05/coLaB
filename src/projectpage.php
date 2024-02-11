@@ -132,7 +132,7 @@
 <nav class="navbar">
 
     <ul>
-        <li><span class="material-symbols-outlined" onclick="window.location.href='index.php'" style="font-size: 20px">arrow_back</span></li>
+        <li><span class="material-symbols-outlined" onclick="window.location.href='helpme.php'" style="font-size: 20px">arrow_back</span></li>
         <li style="background-color: white;color: black">Projects</li>
         <li onclick="goGanttchart()">Gnatt Chart</li>
     </ul>
@@ -214,17 +214,16 @@
         <label>End Date:</label>
         <input type="date" id="modifyEndDate" name="modifyEndDate" value="<?php echo $project_due?>">
 
-        <!--
-        <label>Assignee:</label>
-        <input type="text" id="modifyProjectName" name="modifyPr">
-        -->
-
         <label>Priority:</label>
         <select name="modifypriority">
             <option <?php if ($project_priority == "High"){echo'selected';}?>>High</option>
             <option <?php if ($project_priority == "Medium"){echo'selected';}?>>Medium</option>
             <option <?php if ($project_priority == "Low"){echo'selected';}?>>Low</option>
         </select>
+
+
+        <label>Assignee:</label>
+        <input type="text" id="modifyProjectName" name="modifyPr">
 
         <input type="submit" name="modify_project" value="Save changes">
     </form>

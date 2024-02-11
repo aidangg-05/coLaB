@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles_profile.css">
     <title>Profile</title>
-    <script src="script.js" type="text/javascript"></script>
+    <script src="not in use/script.js" type="text/javascript"></script>
 </head>
 <body>
     <div class="profile-container">
@@ -33,7 +33,7 @@
             <a class="chg-password" href="password.php">Change Password</a>
 
             <div class="buttons">
-                <button type="button" id="back" onclick="window.location.href='index.php'">Back</button>
+                <button type="button" id="back" onclick="window.location.href='helpme.php'">Back</button>
                 <button type="reset" id="reset">Discard</button>
                 <button type="submit" id="submit">Update Info</button>
             </div>

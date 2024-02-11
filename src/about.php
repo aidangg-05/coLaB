@@ -56,7 +56,7 @@
             </div>
 
             <div class="buttons">
-                <button type="button" id="back" onclick="window.location.href='index.php'">Back</button>
+                <button type="button" id="back" onclick="window.location.href='helpme.php'">Back</button>
             </div>
         </div>
 

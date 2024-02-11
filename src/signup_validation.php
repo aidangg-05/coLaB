@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
                 $_SESSION['current_id'] = $userid;          //Set the session (To determine current user)
-                header("Location: index.php");
+                header("Location: helpme.php");
                 exit();
                 }
 

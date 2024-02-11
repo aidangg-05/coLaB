@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="helpme.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+
 </head>
 <body>
 <div class="nav-container">
@@ -29,22 +30,21 @@
     <button id="button" class="hamburger" ><img src="images/burger.png"/></button>
 </div>
 
+
 <div class="overlay" id="overlay"></div>
 <div class="popup" id="notificationPopup">
     <div class="popup-header">
         <span>Notifications</span>
-        <span class="material-symbols-outlined close-icon" onclick="closePopup()">close</span>
+        <span class="material-symbols-outlined close-icon" onclick="closePopup()">x</span>
     </div>
     <div class="popup-content">
         <!--pop-up content here -->
-        <ul>
-            <li>Notification 1</li>
-            <li>Notification 2</li>
-            <li>Notification 3</li>
+        <ul id="notificationList">
             <!-- Add more notifications here -->
         </ul>
     </div>
 </div>
+
 <div class="filter-container">
             <div class="col-auto" style="order: 2">
                 <select class="form-select" id="form-select" aria-label="Default select example">
@@ -132,7 +132,6 @@
     }
     ?>
 </div>
-
 <script src="helpme.js"></script>
 </body>
 </html>
