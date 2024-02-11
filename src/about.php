@@ -11,7 +11,7 @@
     <div>
         <div class="about-container">
             <p class="title">
-                <span id="title-top">OURS PROJECT </span><br />
+                <span id="title-top">OUR PROJECT </span><br />
                 <span id="title-bottom">&amp; OUR ROLES</span>
             </p>
             <div class="scroll-container">
