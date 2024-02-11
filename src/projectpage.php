@@ -31,11 +31,9 @@
         cursor: pointer;
         margin-bottom: 20px;
     }
-
     button:hover {
         background-color: #2980b9;
     }
-
     .popup-form {
         display: none;
         position: fixed;
@@ -50,17 +48,14 @@
         width: 300px;
         text-align: center;
     }
-
     form {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
-
     label {
         margin-top: 10px;
     }
-
     input, select {
         width: 100%;
         padding: 8px;
@@ -70,11 +65,9 @@
         border: 1px solid #ccc;
         border-radius: 5px;
     }
-
     input[type="date"] {
         padding: 8px;
     }
-
     input[type="submit"] {
         background-color: #3498db;
         color: #fff;
@@ -83,7 +76,6 @@
         border-radius: 5px;
         cursor: pointer;
     }
-
     input[type="button"] {
         background-color: #3498db;
         color: #fff;
@@ -92,11 +84,9 @@
         border-radius: 5px;
         cursor: pointer;
     }
-
     input[type="submit"]:hover {
         background-color: #2980b9;
     }
-
     .overlay {
         display: none;
         position: fixed;
@@ -110,24 +100,72 @@
 
     #taskTable {
         width: 100%;
+        width: 75%; /* Set width to 75% of the screen */
+        margin: 0 auto; /* Center the table horizontally */
         border-collapse: collapse;
         margin-top: 20px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         border-radius: 10px;
         overflow: hidden;
         background-color: #fff;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Updated box shadow */
     }
 
     th, td {
         border: 1px solid #ddd;
         padding: 12px;
         text-align: left;
+        border: none; /* Remove border */
+        padding: 8px; /* Adjust padding */
+        text-align: center; /* Center align text */
     }
 
     th {
         background-color: #3498db;
         color: #fff;
     }
+
+    tbody tr {
+        background-color: #f9f9f9; /* Alternate row background color */
+    }
+
+    tbody tr:hover {
+        background-color: #eaeaea; /* Hover background color */
+    }
+
+    td button {
+        display: inline-block; /* Display buttons inline */
+        margin-right: 5px; /* Add some spacing between buttons */
+    }
+
+    /* Adjust the height of the rows */
+    .button-container {
+        display: grid; /* Use grid layout */
+        grid-template-columns: repeat(2, 1fr); /* Arrange columns in a 2x2 grid */
+        gap: 5px; /* Add some gap between buttons */
+    }
+
+    /* Adjust the height of the rows */
+    tbody tr {
+        height: auto; /* Set height to auto */
+    }
+
+    /* Style for the form within the table */
+    form {
+        margin: 0; /* Remove default margin */
+    }
+
+    .button-container {
+        display: grid; /* Use grid layout */
+        grid-template-columns: repeat(2, 1fr); /* Arrange columns in a 2x2 grid */
+        gap: 5px; /* Add some gap between buttons */
+    }
+
+    /* Adjust the height of the rows */
+    tbody tr {
+        height: auto; /* Set height to auto */
+    }
+
 </style>
 <nav class="navbar">
 
@@ -304,6 +342,7 @@
             <td><?php echo $assignee_name?></td>
             <td><?php echo $status?></td> <!-- Updated this line to display status as text -->
             <td>
+                <div class="button-container">
                     <form method="post">
                         <button type="submit" name="deletetask" value="<?php echo $task_id?>">Delete</button>
                     </form>
@@ -316,6 +355,7 @@
                     <form>
                         <button class="edittask-option" name="edit_task" value="<?php echo $task_id?>" onclick="showPopup3(); get_CurrentTask(event)"" type="button">Edit Task</button>
                     </form>
+                </div>
             </td>
         </tr>
     <?php }?>
