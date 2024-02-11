@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="styles_projectpage.css">
     <title>Project Management</title>
     <!--For icons-->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <script type="text/javascript" src="script_addprojectform.js"></script>
 </head>
@@ -14,8 +16,7 @@
 <style>
     /* Add your own styles here */
     body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #f4f4f4;
+        font-family: "Poppins";
         margin: 0;
         display: flex;
         flex-direction: column;
@@ -99,7 +100,7 @@
     }
 
     #taskTable {
-        width: 100%;
+        width: 75%;
         margin: 0 auto; /* Center the table horizontally */
         border-collapse: collapse;
         margin-top: 20px;
@@ -137,43 +138,168 @@
         margin-right: 5px; /* Add some spacing between buttons */
     }
 
-    /* Adjust the height of the rows */
     .button-container {
-        display: grid; /* Use grid layout */
-        grid-template-columns: repeat(2, 1fr); /* Arrange columns in a 2x2 grid */
-        gap: 5px; /* Add some gap between buttons */
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5px;
     }
 
-    /* Adjust the height of the rows */
+
     tbody tr {
-        height: auto; /* Set height to auto */
+        height: auto;
     }
 
-    /* Style for the form within the table */
+
     form {
-        margin: 0; /* Remove default margin */
+        margin: 0;
     }
 
     .button-container {
-        display: grid; /* Use grid layout */
-        grid-template-columns: repeat(2, 1fr); /* Arrange columns in a 2x2 grid */
-        gap: 5px; /* Add some gap between buttons */
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5px;
     }
 
-    /* Adjust the height of the rows */
     tbody tr {
-        height: auto; /* Set height to auto */
+        height: auto;
+    }
+
+    .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+    }
+
+    #name {
+        font-family: "kanit";
+        color: #3498db;
+        font-size: 30px;
+        margin-left:60px;
+    }
+
+    #doodle {
+        width: 70px;
+    }
+    @media screen and (max-width: 1000px) {
+        .navlinks {
+            display: none;
+        }
+
+        .hamburger {
+            display: inline;
+        }
+
+        #button {
+            display: inline;
+            background-color: white;
+            border: none;
+        }
+    }
+
+    .navlinks {
+        display: flex;
+        align-items: center;
+    }
+
+    .navlinks a {
+        color: #e67e22; /* Use complementary orange color */
+        display: block;
+        padding: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 20px;
+        text-transform: uppercase;
+    }
+
+
+    .navlinks a:hover {
+        color: lightgray;
+    }
+
+    #button {
+        display:none;
+    }
+
+    .hamburger {
+        width:40px;
+        margin-top:5px;
+        margin-right:5px;
+        display:none
+    }
+
+    @media screen and (max-width: 1000px) {
+        .navlinks {
+            display: none;
+        }
+
+        .hamburger {
+            display:inline;
+        }
+
+        #button {
+            display:inline;
+            background-color: white;
+            border: none;
+        }
+    }
+
+    .dot {
+        padding: 0 5px;
+    }
+
+    .kanye {
+        display: flex;
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+    }
+
+    .kanye .west {
+        margin: 5px;
+    }
+
+    .kanye .west button {
+        background-color: #2ecc71;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 12px 24px;
+        cursor: pointer;
+        transition: background-color 0.3s, box-shadow 0.3s;
+        font-family: "Poppins", sans-serif;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-right: 10px;
+    }
+
+    .kanye .west button:last-child {
+        background-color: #3498db;
+    }
+
+    .kanye .west button:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .kanye .west button:last-child:hover {
+        background-color: #2980b9;
+    }
+
+    .kanye .west button span {
+        margin-right: 8px;
     }
 
 </style>
-<nav class="navbar">
-
-    <ul>
-        <li><span class="material-symbols-outlined" onclick="window.location.href='helpme.php'" style="font-size: 20px">arrow_back</span></li>
-        <li style="background-color: white;color: black">Projects</li>
-        <li onclick="goGanttchart()">Gnatt Chart</li>
-    </ul>
-</nav>
+<div class="nav-container">
+    <div>
+        <a href='helpme.php'><img id="doodle" src="img/girl.gif"/></a>
+    </div>
+    <div>
+        <b id="name">CoLab</b>
+    </div>
+    <div class="navlinks" id="navlinks">
+        <a href="gantt_V2.php">Gantt Chart</a>
+    </div>
+    <button id="button" class="hamburger" ><img src="img/burger.png"/></button>
+</div>
 
 <!-- project details -->
 <div class="popup-form" id="projectDetailsForm">
@@ -237,11 +363,12 @@
 <div class="overlay" id="overlayProjectDetails" onclick="hideProjectDetailsPopup()"></div>
 
 <!-- add button and more info button-->
-<span style="margin: 5px">
-    <button onclick="showPopup()">Add Task</button>
-    <button onclick="showProjectDetailsPopup()">More Info</button>
-</span>
-
+<div class="kanye">
+    <div class='west' style="margin: 5px">
+        <button onclick="showPopup()">+ Task</button>
+        <button onclick="showProjectDetailsPopup()">More Info</button>
+    </div>
+</div>
 <!-- Modify Project Modal -->
 <div class="popup-form" id="modifyForm">
     <form id="modifyProjectForm" method="post">
@@ -314,6 +441,7 @@
         <th>Due Date</th>
         <th>Assignee</th>
         <th>Status</th>
+        <th>Options</th>
     </tr>
     </thead>
     <tbody id="taskList" onclick="showPopup4()" >
