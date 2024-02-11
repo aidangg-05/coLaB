@@ -44,7 +44,7 @@
 </div>
 
 
-<span style="font-size: large;font-weight: bold; padding-left: 10px;color: blackx">Your Projects:</span>
+<span style="font-size: large;font-weight: bold; padding-left: 10px;color: black">Your Projects:</span>
 
 
 <section class="filter" style="margin-right: 20px;">
