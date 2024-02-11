@@ -100,7 +100,6 @@
 
     #taskTable {
         width: 100%;
-        width: 75%; /* Set width to 75% of the screen */
         margin: 0 auto; /* Center the table horizontally */
         border-collapse: collapse;
         margin-top: 20px;
@@ -178,7 +177,7 @@
 
 <!-- project details -->
 <div class="popup-form" id="projectDetailsForm">
-    <table >
+    <table>
         <tr>
             <td style="border: none;padding: 5px"><span class="project">Project Name:</span></td>
             <td style="border: none;padding: 5px"><span><?php echo $project_name?></span></td>
@@ -262,12 +261,6 @@
             <option <?php if ($project_priority == "Low"){echo'selected';}?>>Low</option>
         </select>
 
-        <label>Assignee:</label>
-        <div class="input_box" id="add_users_box">
-            <span id="errmsg" class="error-text"></span>
-            <span class="material-symbols-outlined" onclick="addTextInput()">add</span>
-        </div>
-
         <input type="submit" name="modify_project" value="Save changes">
     </form>
 </div>
@@ -336,7 +329,7 @@
         $due = $task['due_date'];
         $dateObject = new DateTime($due);
         $formattedDate = $dateObject->format('d-m-Y'); ?>
-        <tr value="<?php echo $task_id?>" onclick="get_CurrentTask(event)">
+        <tr value="<?php echo $task_id?>">
             <td><?php echo $task_name?></td>
             <td><?php echo $formattedDate?> </td>
             <td><?php echo $assignee_name?></td>
@@ -379,7 +372,7 @@
                     <option value="<?php echo $member?>" id="subassignee"><?php echo $member_Name?></option>
                 <?php }} ?>
         </select>
-
+        <button type="button" onclick="hidePopup2()">Close</button>
         <button type="submit" name="addsubtask">Add Subtask</button>
     </form>
 </div>
@@ -409,6 +402,7 @@
             <option value="In Progress">In Progress</option>
             <option value="Finished">Finished</option>
         </select>
+        <button type="button" onclick="hidePopup3()">Close</button>
         <button type="submit" name="edittask_save">Save changes</button>
     </form>
 </div>

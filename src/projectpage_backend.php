@@ -130,7 +130,7 @@ if (isset($_POST["modify_project"])) {
     $modify_priority = $_POST['modifypriority'];
 
     if ($modify_name === "") {
-
+        echo '<script>alert("Welcome to Geeks for Geeks")</script>';
     }
 
 
